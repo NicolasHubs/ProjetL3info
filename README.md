@@ -1,7 +1,6 @@
-# The New World
+# Planet Raider
 
-The game centres around its little protagonist Barthélémy (and his good old Russian friend Boris ?), a small guy.
-He explores the world around him only composed of ever larger objects because of his small size.
+You play a treasure hunter also called "Planet Raiders" who is looking for a treasure: the legendary "Stone of the Soul". His journey will take him to different planets where he will follow the directions left by his father while escaping the muchachos on his heels. Throughout his adventure, he will learn more about his father's past, the stone of the soul and the real intentions of the muchachos.
 
 ## Getting Started
 
@@ -56,6 +55,12 @@ Demo ?
 ## Authors
 
 * **Croq Nicolas** - *Initial work* - [NicolasHubs](https://github.com/NicolasHubs)
+* **Sammani Axel** - *Initial work* -
+* **Merrien Maxime** - *Initial work* -
+* **Esnault Alexis** - *Initial work* -
+* **Boury Arthur** - *Initial work* -
+* **Al Hussein Ryan** - *Initial work* -
+* **Varis Florian** - *Initial work* -
 
 ## Acknowledgments
 

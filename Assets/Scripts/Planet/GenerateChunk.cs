@@ -20,10 +20,6 @@ public class GenerateChunk : MonoBehaviour {
 	public float a;
 	public float b;
 
-	/*[HideInInspector]
-	public bool isFirstChunk = false;
-	public bool isLastChunk = false;*/
-
 	public GameObject tileCoal;
 	public GameObject tileDiamond;
 	public GameObject tileGold;
@@ -33,8 +29,6 @@ public class GenerateChunk : MonoBehaviour {
 	public float chanceDiamond;
 	public float chanceGold;
 	public float chanceIron;
-
-	// private List<List<GameObject>> chunkData = new List<List<GameObject>>(); // this is how you define a 2d generic List.
 
 	void Awake () {
 		seed = GameObject.Find("Planet").GetComponent<GenerateChunks>().seed;
@@ -74,23 +68,16 @@ public class GenerateChunk : MonoBehaviour {
 						newTile.transform.localPosition = new Vector3 (i, j);
 					}
 				}
-			
-
-
 		} else {
 
 			for (float i = 0.0f; i < width; i+=0.5f) {
 				float height = Mathf.Round((Mathf.PerlinNoise (seed, (i + transform.position.x) / smoothness) * heightMultiplier + heightAddition)*100f)/100f;
-				// chunkData.Add(new List<GameObject>());
 
 				if(i == 0.0f){
 					a = height;
 				} else if (i == width-0.5f) {
 					b = height;
 				}
-
-
-
 
 				for (float j = 0.0f; j < height; j+=0.5f) {
 					GameObject selectedTile;
@@ -111,7 +98,6 @@ public class GenerateChunk : MonoBehaviour {
 		// AddCaves ();
 		AddRessources();
 	}
-
 
 	float interpolation_cos(float a, float b, float x) {
 		if(a < b){

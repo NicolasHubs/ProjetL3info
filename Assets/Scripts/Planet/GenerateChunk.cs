@@ -16,6 +16,9 @@ public class GenerateChunk : MonoBehaviour {
 
 	[HideInInspector]
 	public float seed;
+	public bool special;
+	public float a;
+	public float b;
 
 	/*[HideInInspector]
 	public bool isFirstChunk = false;
@@ -33,44 +36,91 @@ public class GenerateChunk : MonoBehaviour {
 
 	// private List<List<GameObject>> chunkData = new List<List<GameObject>>(); // this is how you define a 2d generic List.
 
-	void Start () {
+	void Awake () {
+		seed = GameObject.Find("Planet").GetComponent<GenerateChunks>().seed;
+		special = GameObject.Find("Planet").GetComponent<GenerateChunks>().special;
 		Generate ();
 	}
 
 	public void Generate () {
-		for (float i = 0.0f; i < width; i+=0.5f) {
-			float height = Mathf.Round((Mathf.PerlinNoise (seed, (i + transform.position.x) / smoothness) * heightMultiplier + heightAddition)*100f)/100f;
-			// chunkData.Add(new List<GameObject>());
-			for (float j = 0.0f; j < height; j+=0.5f) {
-				GameObject selectedTile;
-				if (j < height - 6) {
-					selectedTile = StoneTile;
-				} else if (j < height - 0.5f) {
-					selectedTile = DirtTile;
-				} else {
-					selectedTile = GrassTile;
+
+		if(this.special){
+			a = GameObject.Find("Planet").GetComponent<GenerateChunks>().a;
+			b = GameObject.Find("Planet").GetComponent<GenerateChunks>().b;
+
+			float d = 0.0f;
+
+			float ratioY = Mathf.Abs(b - a);
+			float distX = 1.0f / width * 0.5f;
+
+				for (float i = 0.0f; i < width; i+=0.5f) {
+					float height = interpolation_cos(a, b, d);
+					height *= ratioY;
+					height += Mathf.Min(a,b);
+					d += distX;
+
+					for (float j = 0.0f; j < height; j+=0.5f) {
+						GameObject selectedTile;
+						if (j < height - 6) {
+							selectedTile = StoneTile;
+						} else if (j < height - 0.5f) {
+							selectedTile = DirtTile;
+						} else {
+							selectedTile = GrassTile;
+						}
+						GameObject newTile = Instantiate (selectedTile, Vector3.zero, Quaternion.identity) as GameObject;
+						newTile.transform.parent = this.gameObject.transform;
+						newTile.transform.localScale = new Vector3 (0.5f, 0.5f);
+						newTile.transform.localPosition = new Vector3 (i, j);
+					}
 				}
-				GameObject newTile = Instantiate (selectedTile, Vector3.zero, Quaternion.identity) as GameObject;
-				newTile.transform.parent = this.gameObject.transform;
-				newTile.transform.localScale = new Vector3 (0.5f, 0.5f);
-				newTile.transform.localPosition = new Vector3 (i, j);
-				/*if (selectedTile == GrassTile && ((isFirstChunk && i == 0.0f) || (isLastChunk && i+0.5f >= width))) {
-					newTile.AddComponent<TeleportEntity> ();
-					newTile.GetComponent<BoxCollider2D> ().isTrigger = true;
-					newTile.GetComponent<BoxCollider2D> ().size = new Vector2 (2f,100f);
-					newTile.GetComponent<TeleportEntity> ().x = 60f;
-					newTile.GetComponent<TeleportEntity> ().y = 40f;
+			
 
-				}*/
 
-				/*if (selectedTile == StoneTile)
-					chunkData[i].Add(newTile);*/
+		} else {
+
+			for (float i = 0.0f; i < width; i+=0.5f) {
+				float height = Mathf.Round((Mathf.PerlinNoise (seed, (i + transform.position.x) / smoothness) * heightMultiplier + heightAddition)*100f)/100f;
+				// chunkData.Add(new List<GameObject>());
+
+				if(i == 0.0f){
+					a = height;
+				} else if (i == width-0.5f) {
+					b = height;
+				}
+
+
+
+
+				for (float j = 0.0f; j < height; j+=0.5f) {
+					GameObject selectedTile;
+					if (j < height - 6) {
+						selectedTile = StoneTile;
+					} else if (j < height - 0.5f) {
+						selectedTile = DirtTile;
+					} else {
+						selectedTile = GrassTile;
+					}
+					GameObject newTile = Instantiate (selectedTile, Vector3.zero, Quaternion.identity) as GameObject;
+					newTile.transform.parent = this.gameObject.transform;
+					newTile.transform.localScale = new Vector3 (0.5f, 0.5f);
+					newTile.transform.localPosition = new Vector3 (i, j);
+				}
 			}
 		}
 		// AddCaves ();
 		AddRessources();
 	}
 
+
+	float interpolation_cos(float a, float b, float x) {
+		if(a < b){
+			return (1 - Mathf.Cos(x * Mathf.PI)) / 2;
+		} else {
+			return (-1 * (1 - Mathf.Cos(x * Mathf.PI)) / 2) + 1;
+		}
+	}
+	
 	public void AddRessources() {
 		foreach(GameObject t in GameObject.FindGameObjectsWithTag("TileStone")){
 			if (t.transform.parent == this.gameObject.transform) {

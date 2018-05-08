@@ -17,12 +17,20 @@ public class GenerateChunks : MonoBehaviour {
 	public GameObject chunk;
 	int chunkWidth;
 	public int numChunks;
-	float seed;
+	public float seed;
+
+	[HideInInspector]
+	public bool special;
+	[HideInInspector]
+	public float a;
+	[HideInInspector]
+	public float b;
 
 	private int rightChunkStartedPos;
 	private int leftChunkEndedPos;
 
 	void Start () {
+		special = false;
 		chunkWidth = chunk.GetComponent<GenerateChunk> ().width;
 		seed = UnityEngine.Random.Range (-100000f, 100000f);
 		Generate ();
@@ -48,13 +56,22 @@ public class GenerateChunks : MonoBehaviour {
 
 	public void Generate () {
 		leftChunkEndedPos = chunkWidth;
-		for (int i = 0; i < numChunks; i++) {
+		for (int i = 0; i < numChunks-1; i++) {
 			GameObject newChunk = Instantiate(chunk, new Vector3(i*chunkWidth, 0f), Quaternion.identity) as GameObject;
-			newChunk.GetComponent<GenerateChunk> ().seed = seed;
 			newChunk.SetActive (false);
 			chunkList.Add (newChunk);
+			if(i == 0) b = newChunk.GetComponent<GenerateChunk>().a;
+			if(i == numChunks-2) a = newChunk.GetComponent<GenerateChunk>().b;
 		}
-		rightChunkStartedPos = numChunks*chunkWidth - chunkWidth;
+
+		special = true;
+
+		GameObject specialChunk = Instantiate(chunk, new Vector3((numChunks-1)*chunkWidth, 0f), Quaternion.identity) as GameObject;
+		specialChunk.SetActive (false);
+		chunkList.Add (specialChunk);
+
+
+		rightChunkStartedPos = (numChunks)*chunkWidth - chunkWidth;
 	}
 
 	void Update() {

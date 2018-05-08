@@ -59,8 +59,9 @@ MonoBehaviour:
   heightAddition: 25
   smoothness: 17.5
   seed: 0
-  isFirstChunk: 0
-  isLastChunk: 0
+  special: 0
+  a: 0
+  b: 0
   tileCoal: {fileID: 1100555551820460, guid: ad70b584dd2db1246a33a65550638620, type: 2}
   tileDiamond: {fileID: 1831682260737806, guid: b4933674a1870da42836bc1aa95f5f2e,
     type: 2}

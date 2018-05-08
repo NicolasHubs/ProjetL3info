@@ -16,7 +16,11 @@ public class GenerateChunks : MonoBehaviour {
 
 	public GameObject chunk;
 	int chunkWidth;
+
+	[Range(3,50)]
 	public int numChunks;
+
+	[Tooltip("To set a random seed value, set the seed to 0")]
 	public float seed;
 
 	[HideInInspector]
@@ -32,22 +36,32 @@ public class GenerateChunks : MonoBehaviour {
 	void Start () {
 		special = false;
 		chunkWidth = chunk.GetComponent<GenerateChunk> ().width;
-		seed = UnityEngine.Random.Range (-100000f, 100000f);
-		Generate ();
+		if (seed == 0)
+			seed = UnityEngine.Random.Range (-100000f, 100000f);
+		
+		viewer.position = new Vector3 (chunkWidth * 1.5f, viewer.position.y, viewer.position.z);
 		viewerPosition = new Vector2 (viewer.position.x, viewer.position.z);
-		locationArrayCharacter = Mathf.RoundToInt (viewer.position.x / chunkWidth);
+
+		Generate ();
+
+		locationArrayCharacter = Mathf.RoundToInt (Mathf.Floor(viewer.position.x / chunkWidth));
+
+		Debug.Log ("locationArrayCharacter = " + locationArrayCharacter);
 
 		chunkList [locationArrayCharacter].SetActive (true);
 
 		if (locationArrayCharacter < numChunks && locationArrayCharacter > 0) {
 			chunkList [locationArrayCharacter - 1].SetActive (true);
 			chunkList [locationArrayCharacter + 1].SetActive (true);
+			Debug.Log ("1");
 		} else if (locationArrayCharacter == numChunks) { // Nb de chunk >= 3 sinon wtf
 			chunkList [locationArrayCharacter - 1].SetActive (true);
 			chunkList [0].transform.position = new Vector3(numChunks*chunkWidth,0f);
+			Debug.Log ("2");
 		} else if (locationArrayCharacter == 0){
 			chunkList [locationArrayCharacter + 1].SetActive (true);
 			chunkList [numChunks - 1].transform.position = new Vector3 (-chunkWidth, 0f);
+			Debug.Log ("3");
 		}
 	
 		rightChunkStartedPos = (locationArrayCharacter+1) * chunkWidth;
@@ -55,7 +69,6 @@ public class GenerateChunks : MonoBehaviour {
 	}
 
 	public void Generate () {
-		leftChunkEndedPos = chunkWidth;
 		for (int i = 0; i < numChunks-1; i++) {
 			GameObject newChunk = Instantiate(chunk, new Vector3(i*chunkWidth, 0f), Quaternion.identity) as GameObject;
 			newChunk.SetActive (false);
@@ -69,9 +82,6 @@ public class GenerateChunks : MonoBehaviour {
 		GameObject specialChunk = Instantiate(chunk, new Vector3((numChunks-1)*chunkWidth, 0f), Quaternion.identity) as GameObject;
 		specialChunk.SetActive (false);
 		chunkList.Add (specialChunk);
-
-
-		rightChunkStartedPos = (numChunks)*chunkWidth - chunkWidth;
 	}
 
 	void Update() {

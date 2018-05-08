@@ -17,9 +17,9 @@ public class GenerateChunk : MonoBehaviour {
 	[HideInInspector]
 	public float seed;
 
-	[HideInInspector]
+	/*[HideInInspector]
 	public bool isFirstChunk = false;
-	public bool isLastChunk = false;
+	public bool isLastChunk = false;*/
 
 	public GameObject tileCoal;
 	public GameObject tileDiamond;
@@ -54,14 +54,14 @@ public class GenerateChunk : MonoBehaviour {
 				newTile.transform.parent = this.gameObject.transform;
 				newTile.transform.localScale = new Vector3 (0.5f, 0.5f);
 				newTile.transform.localPosition = new Vector3 (i, j);
-				if (selectedTile == GrassTile && ((isFirstChunk && i == 0.0f) || (isLastChunk && i+0.5f >= width))) {
+				/*if (selectedTile == GrassTile && ((isFirstChunk && i == 0.0f) || (isLastChunk && i+0.5f >= width))) {
 					newTile.AddComponent<TeleportEntity> ();
 					newTile.GetComponent<BoxCollider2D> ().isTrigger = true;
 					newTile.GetComponent<BoxCollider2D> ().size = new Vector2 (2f,100f);
 					newTile.GetComponent<TeleportEntity> ().x = 60f;
 					newTile.GetComponent<TeleportEntity> ().y = 40f;
 
-				}
+				}*/
 
 				/*if (selectedTile == StoneTile)
 					chunkData[i].Add(newTile);*/
@@ -89,6 +89,7 @@ public class GenerateChunk : MonoBehaviour {
 
 				if (selectedTile != null) {
 					GameObject stoneTileToChange = Instantiate (selectedTile, t.transform.position, Quaternion.identity) as GameObject;
+					stoneTileToChange.transform.parent = this.gameObject.transform;
 					stoneTileToChange.transform.localScale = new Vector3 (0.5f, 0.5f);
 					Destroy (t);
 				}

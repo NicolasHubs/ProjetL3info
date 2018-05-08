@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247d56fb5cc71a74bbcb38950d4e3429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  viewer: {fileID: 1086975965}
   chunk: {fileID: 1730639360274714, guid: d3b82b37d8f7f83429db32b56080deba, type: 2}
   numChunks: 5
 --- !u!4 &303624252

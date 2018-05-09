@@ -12,7 +12,6 @@ public class GenerateChunks : MonoBehaviour {
 	public static Vector2 viewerPosition;
 
 	List<GameObject> columnList = new List<GameObject> ();
-	List<GameObject> chunkList = new List<GameObject> ();
 	int locationArrayCharacter;
 
 	public GameObject chunk;
@@ -66,7 +65,7 @@ public class GenerateChunks : MonoBehaviour {
 		}
 
 		special = true;
-		GameObject specialChunk = Instantiate(chunk, new Vector3((numChunks-1)*chunkWidth, 0f), Quaternion.identity) as GameObject;
+		Instantiate(chunk, new Vector3((numChunks-1)*chunkWidth, 0f), Quaternion.identity);
 	}
 		
 	void UpdateVisibleChunks() {

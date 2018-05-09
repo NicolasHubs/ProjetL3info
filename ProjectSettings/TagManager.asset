@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TileStone
   - FirstChunk
+  - Column
   layers:
   - Default
   - TransparentFX

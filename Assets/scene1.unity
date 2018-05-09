@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewer: {fileID: 1086975965}
   chunk: {fileID: 1730639360274714, guid: d3b82b37d8f7f83429db32b56080deba, type: 2}
-  numChunks: 20
+  numChunks: 6
   seed: 0
   special: 0
   a: 0

@@ -54,7 +54,7 @@ MonoBehaviour:
   DirtTile: {fileID: 1033255043061842, guid: b2f3c7d32d299ef40b818575030822d1, type: 2}
   GrassTile: {fileID: 1151406811251950, guid: 28de8925bd05a0045837677a6e706b65, type: 2}
   StoneTile: {fileID: 1876189632875576, guid: efcd90cd5e17df1429d38904cb81d45a, type: 2}
-  width: 25
+  width: 26
   heightMultiplier: 10
   heightAddition: 25
   smoothness: 17.5
@@ -67,6 +67,7 @@ MonoBehaviour:
     type: 2}
   tileGold: {fileID: 1266131539301470, guid: 395a74656908e2e43b254351f6ab0a28, type: 2}
   tileIron: {fileID: 1856201470915940, guid: 020b7e3e4e3b9ca4d9d9f489cc12d6f7, type: 2}
+  column: {fileID: 1585359719677732, guid: 5287956397183e14d9e9a698a8008a80, type: 2}
   chanceCoal: 2
   chanceDiamond: 0.075
   chanceGold: 0.3125

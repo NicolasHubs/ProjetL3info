@@ -25,6 +25,8 @@ public class GenerateChunk : MonoBehaviour {
 	public GameObject tileGold;
 	public GameObject tileIron;
 
+	public GameObject column;
+
 	public float chanceCoal;
 	public float chanceDiamond;
 	public float chanceGold;
@@ -47,37 +49,16 @@ public class GenerateChunk : MonoBehaviour {
 			float ratioY = Mathf.Abs(b - a);
 			float distX = 1.0f / width * 0.5f;
 
-				for (float i = 0.0f; i < width; i+=0.5f) {
-					float height = interpolation_cos(a, b, d);
-					height *= ratioY;
-					height += Mathf.Min(a,b);
-					d += distX;
-
-					for (float j = 0.0f; j < height; j+=0.5f) {
-						GameObject selectedTile;
-						if (j < height - 6) {
-							selectedTile = StoneTile;
-						} else if (j < height - 0.5f) {
-							selectedTile = DirtTile;
-						} else {
-							selectedTile = GrassTile;
-						}
-						GameObject newTile = Instantiate (selectedTile, Vector3.zero, Quaternion.identity) as GameObject;
-						newTile.transform.parent = this.gameObject.transform;
-						newTile.transform.localScale = new Vector3 (0.5f, 0.5f);
-						newTile.transform.localPosition = new Vector3 (i, j);
-					}
-				}
-		} else {
-
 			for (float i = 0.0f; i < width; i+=0.5f) {
-				float height = Mathf.Round((Mathf.PerlinNoise (seed, (i + transform.position.x) / smoothness) * heightMultiplier + heightAddition)*100f)/100f;
+				float height = interpolation_cos(a, b, d);
+				height *= ratioY;
+				height += Mathf.Min(a,b);
+				d += distX;
 
-				if(i == 0.0f){
-					a = height;
-				} else if (i == width-0.5f) {
-					b = height;
-				}
+				GameObject columne = Instantiate (column, Vector3.zero, Quaternion.identity) as GameObject;
+				columne.transform.parent = this.gameObject.transform;
+				columne.name = "column";
+				columne.transform.localPosition = new Vector3 (i, 0.0f);
 
 				for (float j = 0.0f; j < height; j+=0.5f) {
 					GameObject selectedTile;
@@ -89,14 +70,43 @@ public class GenerateChunk : MonoBehaviour {
 						selectedTile = GrassTile;
 					}
 					GameObject newTile = Instantiate (selectedTile, Vector3.zero, Quaternion.identity) as GameObject;
-					newTile.transform.parent = this.gameObject.transform;
+					newTile.transform.parent = columne.transform;
 					newTile.transform.localScale = new Vector3 (0.5f, 0.5f);
-					newTile.transform.localPosition = new Vector3 (i, j);
+					newTile.transform.localPosition = new Vector3 (0.0f, j);
+				}
+			}
+		} else {
+			for (float i = 0.0f; i < width; i+=0.5f) {
+				float height = Mathf.Round((Mathf.PerlinNoise (seed, (i + transform.position.x) / smoothness) * heightMultiplier + heightAddition)*100f)/100f;
+
+				if(i == 0.0f){
+					a = height;
+				} else if (i == width-0.5f) {
+					b = height;
+				}
+				GameObject columne = Instantiate (column, Vector3.zero, Quaternion.identity) as GameObject;
+				columne.transform.parent = this.gameObject.transform;
+				columne.transform.localPosition = new Vector3 (i, 0.0f);
+
+				for (float j = 0.0f; j < height; j+=0.5f) {
+					GameObject selectedTile;
+					if (j < height - 6) {
+						selectedTile = StoneTile;
+					} else if (j < height - 0.5f) {
+						selectedTile = DirtTile;
+					} else {
+						selectedTile = GrassTile;
+					}
+					GameObject newTile = Instantiate (selectedTile, Vector3.zero, Quaternion.identity) as GameObject;
+					newTile.transform.parent = columne.transform;
+					newTile.transform.localScale = new Vector3 (0.5f, 0.5f);
+					newTile.transform.localPosition = new Vector3 (0.0f, j);
 				}
 			}
 		}
 		// AddCaves ();
 		AddRessources();
+		print ("End");
 	}
 
 	float interpolation_cos(float a, float b, float x) {

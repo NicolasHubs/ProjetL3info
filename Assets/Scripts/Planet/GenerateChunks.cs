@@ -11,6 +11,7 @@ public class GenerateChunks : MonoBehaviour {
 
 	public static Vector2 viewerPosition;
 
+	List<GameObject> columnList = new List<GameObject> ();
 	List<GameObject> chunkList = new List<GameObject> ();
 	int locationArrayCharacter;
 
@@ -30,8 +31,8 @@ public class GenerateChunks : MonoBehaviour {
 	[HideInInspector]
 	public float b;
 
-	private int rightEndPos;
-	private int leftEndPos;
+	private float rightEndPos;
+	private float leftEndPos;
 
 	void Start () {
 		special = false;
@@ -39,64 +40,51 @@ public class GenerateChunks : MonoBehaviour {
 		if (seed == 0)
 			seed = UnityEngine.Random.Range (-100000f, 100000f);
 		
-		viewer.position = new Vector3 (chunkWidth * 1.5f, viewer.position.y, viewer.position.z);
-		viewerPosition = new Vector2 (viewer.position.x, viewer.position.z);
+		viewerPosition = new Vector2 (viewer.position.x, viewer.position.y);
 
 		Generate ();
 
-		locationArrayCharacter = Mathf.RoundToInt (Mathf.Floor(viewer.position.x / chunkWidth));
+		foreach (GameObject t in GameObject.FindGameObjectsWithTag("Column")) {
+			t.SetActive (false);
+			columnList.Add (t);
+		}
+		locationArrayCharacter = Mathf.RoundToInt(Mathf.Floor(viewerPosition.x))*2;
 
-		chunkList [locationArrayCharacter].SetActive (true);
+		for (int i = locationArrayCharacter-chunkWidth ; i<=locationArrayCharacter + chunkWidth; i++){
+			columnList [i].SetActive (true);
+		}
+		rightEndPos = (Mathf.Abs (viewerPosition.x) % 1) >= 0.5f ? Mathf.Ceil(viewerPosition.x) - 0f: Mathf.Ceil(viewerPosition.x) - 0.5f;
 
-		chunkList [locationArrayCharacter - 1].SetActive (true);
-		chunkList [locationArrayCharacter + 1].SetActive (true);
-
-		rightEndPos = (locationArrayCharacter) * chunkWidth + chunkWidth;
-		leftEndPos = locationArrayCharacter * chunkWidth;
+		leftEndPos = (Mathf.Abs (viewerPosition.x) % 1) > 0.5f ?  Mathf.Floor(viewerPosition.x) + 0.5f :  Mathf.Floor(viewerPosition.x) + 0f;
 	}
 
 	public void Generate () {
 		for (int i = 0; i < numChunks-1; i++) {
 			GameObject newChunk = Instantiate(chunk, new Vector3(i*chunkWidth, 0f), Quaternion.identity) as GameObject;
-			newChunk.SetActive (false);
-			chunkList.Add (newChunk);
 			if(i == 0) b = newChunk.GetComponent<GenerateChunk>().a;
 			if(i == numChunks-2) a = newChunk.GetComponent<GenerateChunk>().b;
 		}
 
 		special = true;
-
 		GameObject specialChunk = Instantiate(chunk, new Vector3((numChunks-1)*chunkWidth, 0f), Quaternion.identity) as GameObject;
-		specialChunk.SetActive (false);
-		chunkList.Add (specialChunk);
 	}
-	/*
-	void Update() {
-		viewerPosition = new Vector2 (viewer.position.x, viewer.position.z);
-		UpdateVisibleChunks();
-	}*/
 		
 	void UpdateVisibleChunks() {
-		if (viewerPosition.x > rightEndPos) {
-			chunkList [mod(locationArrayCharacter - 1,numChunks)].SetActive (false); // => -1%4 = 3
+		if (viewerPosition.x >= rightEndPos) {
+			columnList [mod(locationArrayCharacter - chunkWidth,numChunks*chunkWidth*2)].SetActive (false); // => -1%4 = 3
 			locationArrayCharacter += 1;
-			rightEndPos += chunkWidth;
-			leftEndPos += chunkWidth;
-			chunkList [mod(locationArrayCharacter + 1,numChunks)].transform.position = new Vector3(rightEndPos,0f);
-			chunkList [mod(locationArrayCharacter + 1,numChunks)].SetActive (true);
-
-
+			rightEndPos += 0.5f;
+			leftEndPos += 0.5f;
+			columnList [mod(locationArrayCharacter + chunkWidth,numChunks*chunkWidth*2)].transform.position = new Vector3(rightEndPos + (chunkWidth/2) - 0.5f,0f);
+			columnList [mod(locationArrayCharacter + chunkWidth,numChunks*chunkWidth*2)].SetActive (true);
 		} else if (viewerPosition.x < leftEndPos) {
-			chunkList [mod(locationArrayCharacter + 1,numChunks)].SetActive (false);
+			columnList [mod(locationArrayCharacter + chunkWidth,numChunks*chunkWidth*2)].SetActive (false);
 			locationArrayCharacter -= 1;
-			rightEndPos -= chunkWidth;
-			leftEndPos -= chunkWidth;
-			chunkList [mod(locationArrayCharacter - 1,numChunks)].transform.position = new Vector3(leftEndPos-chunkWidth,0f);
-			chunkList [mod(locationArrayCharacter - 1,numChunks)].SetActive (true);
+			rightEndPos -= 0.5f;
+			leftEndPos -= 0.5f;
+			columnList [mod(locationArrayCharacter - chunkWidth,numChunks*chunkWidth*2)].transform.position = new Vector3(leftEndPos - (chunkWidth/2),0f);
+			columnList [mod(locationArrayCharacter - chunkWidth,numChunks*chunkWidth*2)].SetActive (true);
 		}
-
-
-
 	}
 
 	int mod(int x, int y){
@@ -106,19 +94,5 @@ public class GenerateChunks : MonoBehaviour {
 	void Update() {
 		viewerPosition = new Vector2 (viewer.position.x, viewer.position.y);
 		UpdateVisibleChunks ();
-		//Invoke ("UpdateVisibleChunks", 5);
-	}
-	
-	public void AnimationCompleted()
-	{
-		StartCoroutine(WaitDisable());
-	}
-
-	private IEnumerator WaitDisable()
-	{
-		//yield return new WaitForSeconds(7); // Le freeze est décalé avec cette instruction, bizarre
-
-		UpdateVisibleChunks ();
-		yield return null;
 	}
 }

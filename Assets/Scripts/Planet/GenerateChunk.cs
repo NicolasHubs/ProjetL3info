@@ -75,6 +75,7 @@ public class GenerateChunk : MonoBehaviour {
 					newTile.transform.localPosition = new Vector3 (0.0f, j);
 				}
 			}
+			AddCaves (100,100,0,20f,5,0.5f,2f, new Vector2(0f,0f));
 		} else {
 			for (float i = 0.0f; i < width; i+=0.5f) {
 				float height = Mathf.Round((Mathf.PerlinNoise (seed, (i + transform.position.x) / smoothness) * heightMultiplier + heightAddition)*100f)/100f;
@@ -104,8 +105,7 @@ public class GenerateChunk : MonoBehaviour {
 				}
 			}
 		}
-		// AddCaves ();
-		AddRessources();
+		//AddRessources();
 	}
 
 	float interpolation_cos(float a, float b, float x) {
@@ -141,25 +141,64 @@ public class GenerateChunk : MonoBehaviour {
 			}
 		}
 	}
-	/*
-	public void AddCaves() {
 
-		SimplexNoiseGenerator noise = new SimplexNoiseGenerator();
-		string noise_seed = noise.GetSeed();
-		Vector3 coords = Vector3.one;
-
-		int octaves = 6;
-		int multiplier = 25;
-		float amplitude = 0.5f;
-		float lacunarity = 2.0f;
-		float persistence = 0.5f;
-
-		for (int i=0;i<=chunkData.Count;i++){
-			for (int j=0;j<=chunkData[i].Count;j++){
-				float perlin = noise.coherentNoise(i,j,0,octaves,multiplier,amplitude,lacunarity,persistence);
-				if (perlin < -0.05)
-					Destroy (chunkData[i][j]);
-			}
+	public void AddCaves(int mapWidth, int mapHeight, int seed, float scale, int octaves, float persistance, float lacunarity, Vector2 offset) {
+		System.Random prng = new System.Random (seed);
+		Vector2[] octaveOffsets = new Vector2[octaves];
+		for (int i = 0; i < octaves; i++) {
+			float offsetX = prng.Next (-100000, 100000) + offset.x;
+			float offsetY = prng.Next (-100000, 100000) + offset.y;
+			octaveOffsets [i] = new Vector2 (offsetX, offsetY);
 		}
-	}*/
+
+		if (scale <= 0) {
+			scale = 0.0001f;
+		}
+
+		float maxNoiseHeight = float.MinValue;
+		float minNoiseHeight = float.MaxValue;
+
+		float halfWidth = mapWidth / 2f;
+		float halfHeight = mapHeight / 2f;
+
+		int x = 0, y = 0;
+		GameObject t;
+		foreach (GameObject tutu in GameObject.FindGameObjectsWithTag("Column")){
+			
+			foreach (Transform child in tutu.transform) {
+				
+				t = child.gameObject;
+				if (child.tag == "TileStone") {
+					x++;
+
+					float amplitude = 1;
+					float frequency = 1;
+					float noiseHeight = 0;
+
+					for (int i = 0; i < octaves; i++) {
+						float sampleX = (x - halfWidth) / scale * frequency + octaveOffsets [i].x;
+						float sampleY = (y - halfHeight) / scale * frequency + octaveOffsets [i].y;
+
+						float perlinValue = Mathf.PerlinNoise (sampleX, sampleY) * 2 - 1;
+						noiseHeight += perlinValue * amplitude;
+
+						amplitude *= persistance;
+						frequency *= lacunarity;
+					}
+
+					if (noiseHeight > maxNoiseHeight) {
+						maxNoiseHeight = noiseHeight;
+					} else if (noiseHeight < minNoiseHeight) {
+						minNoiseHeight = noiseHeight;
+					}
+
+					if (Mathf.InverseLerp (minNoiseHeight, maxNoiseHeight, noiseHeight) <= 0.4) {
+						Destroy (child.gameObject);
+					}
+				}
+			}
+			x = 0;
+			y++;
+		}
+	}
 }

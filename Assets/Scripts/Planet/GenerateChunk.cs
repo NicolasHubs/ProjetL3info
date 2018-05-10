@@ -106,7 +106,6 @@ public class GenerateChunk : MonoBehaviour {
 		}
 		// AddCaves ();
 		AddRessources();
-		print ("End");
 	}
 
 	float interpolation_cos(float a, float b, float x) {
@@ -119,7 +118,7 @@ public class GenerateChunk : MonoBehaviour {
 	
 	public void AddRessources() {
 		foreach(GameObject t in GameObject.FindGameObjectsWithTag("TileStone")){
-			if (t.transform.parent == this.gameObject.transform) {
+			if (t.transform.parent.parent == this.gameObject.transform) {
 				float r = Random.Range (0f, 100f);
 				GameObject selectedTile = null;
 
@@ -135,7 +134,7 @@ public class GenerateChunk : MonoBehaviour {
 
 				if (selectedTile != null) {
 					GameObject stoneTileToChange = Instantiate (selectedTile, t.transform.position, Quaternion.identity) as GameObject;
-					stoneTileToChange.transform.parent = this.gameObject.transform;
+					stoneTileToChange.transform.parent = t.transform.parent;
 					stoneTileToChange.transform.localScale = new Vector3 (0.5f, 0.5f);
 					Destroy (t);
 				}

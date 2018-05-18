@@ -18,26 +18,39 @@ public class PickUpItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(this.gameObject.transform.position, _player.transform.position);
         Vector3 newPos = this.gameObject.transform.position;
+        // characPos = center of the player;
         Vector3 characPos = _player.transform.position;
+        characPos.y += _player.transform.localScale.y / 2;
+        float distance = Vector3.Distance(this.gameObject.transform.position, characPos);
         speedMultiplier = distance * 0.05f;
 
-        if (newPos.x - characPos.x < 0)
+        if (this.gameObject.tag == "BrokenObject" || (this.gameObject.tag == "DroppedObject" && distance <= 1f))
         {
-            newPos.x += speedMultiplier;
-        }
-        else if (newPos.x - characPos.x > 0)
-        {
-            newPos.x -= speedMultiplier;
-        }
+            // moving the item to the player
+            if (newPos.x - characPos.x < 0)
+            {
+                newPos.x += speedMultiplier;
+            }
+            else if (newPos.x - characPos.x > 0)
+            {
+                newPos.x -= speedMultiplier;
+            }
 
-        this.gameObject.transform.position = newPos;
+            if (newPos.y - characPos.y < 0)
+            {
+                newPos.y += speedMultiplier;
+            }
+            else if (newPos.y - characPos.y > 0)
+            {
+                newPos.y -= speedMultiplier;
+            }
+            this.gameObject.transform.position = newPos;
 
-        if (_inventory != null && distance <= 0.3f /*Input.GetMouseButtonDown(0)*/)
-        {
-            /*if (distance <= 1f)
-            {*/
+            // picking up the item
+            if (_inventory != null && /*distance <= 0.5f*/ Mathf.Abs(this.gameObject.transform.position.x - characPos.x) <= 0.3f
+                && Mathf.Abs(this.gameObject.transform.position.y - characPos.y) <= 0.3f * (0.9f / 0.38f))
+            {
                 bool check = _inventory.checkIfItemAllreadyExist(item.itemID, item.itemValue);
                 if (check)
                     Destroy(this.gameObject);
@@ -48,8 +61,7 @@ public class PickUpItem : MonoBehaviour
                     _inventory.stackableSettings();
                     Destroy(this.gameObject);
                 }
-            //}
+            }
         }
     }
-
 }

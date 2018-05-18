@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4282465822295946}
   - component: {fileID: 212731115589117716}
   - component: {fileID: 114010207336261680}
-  - component: {fileID: 61298065595561708}
   - component: {fileID: 50894436080063786}
+  - component: {fileID: 61411802950353156}
   m_Layer: 0
   m_Name: GrassPrefab
   m_TagString: Untagged
@@ -63,7 +63,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61298065595561708
+--- !u!61 &61411802950353156
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -124,7 +124,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:

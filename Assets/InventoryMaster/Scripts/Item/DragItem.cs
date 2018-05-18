@@ -12,6 +12,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
     private GameObject oldSlot;
     private Inventory inventory;
     private Transform draggedItemBox;
+    private ItemDataBaseList _database;
 
     public delegate void ItemDelegate();
     public static event ItemDelegate updateInventoryList;
@@ -22,8 +23,8 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
         rectTransformSlot = GameObject.FindGameObjectWithTag("DraggingItem").GetComponent<RectTransform>();
         inventory = transform.parent.parent.parent.GetComponent<Inventory>();
         draggedItemBox = GameObject.FindGameObjectWithTag("DraggingItem").transform;
+        _database = (ItemDataBaseList)Resources.Load("ItemDatabase");
     }
-
 
     public void OnDrag(PointerEventData data)
     {
@@ -46,8 +47,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
 
         inventory.OnUpdateItemList();
     }
-
-
 
     public void OnPointerDown(PointerEventData data)
     {
@@ -601,17 +600,28 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
             }
             else
             {
+                GroundGenerator scriptGen = GameObject.FindGameObjectWithTag("FrontGround").transform.parent.GetComponent<GroundGenerator>();
+                UnityEngine.Tilemaps.Tilemap world = GameObject.FindGameObjectWithTag("FrontGround").GetComponent<UnityEngine.Tilemaps.Tilemap>();
+
+                // when dropping the item
                 GameObject dropItem = (GameObject)Instantiate(GetComponent<ItemOnObject>().item.itemModel);
                 dropItem.AddComponent<PickUpItem>();
-                dropItem.GetComponent<PickUpItem>().item = this.gameObject.GetComponent<ItemOnObject>().item;             
-                Vector3 v = GameObject.FindGameObjectWithTag("Player").transform.localPosition;
-                float mouseX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-                if (mouseX - v.x < 0)
-                    v.x -= 1f; // Test
-                else
-                    v.x += 1f; // Test
-                v.y += 0.25f;
-                dropItem.transform.localPosition = v;
+                dropItem.GetComponent<PickUpItem>().item = this.gameObject.GetComponent<ItemOnObject>().item;
+
+                // position of the dropped item (i.e. gameObject)
+                Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mouse.z = 0;
+                Vector3Int temp;
+
+                if (_database.getItemByID(scriptGen.mapMatrix[world.WorldToCell(mouse).x, world.WorldToCell(mouse).y]).itemID > 0)
+                {
+                    temp = new Vector3Int(world.WorldToCell(mouse).x, scriptGen.mapHeight[world.WorldToCell(mouse).x], 0);
+                    mouse = world.CellToWorld(temp);
+                }
+
+                dropItem.transform.localPosition = mouse;
+                dropItem.tag = "DroppedObject";
+
                 inventory.OnUpdateItemList();
                 if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() != null)
                     inventory.GetComponent<Inventory>().UnEquipItem1(dropItem.GetComponent<PickUpItem>().item);
@@ -620,5 +630,12 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
         }
         inventory.OnUpdateItemList();
     }
-
 }
+
+/*Vector3 v = GameObject.FindGameObjectWithTag("Player").transform.localPosition;
+                v.y += GameObject.FindGameObjectWithTag("Player").transform.localScale.y / 2;
+                float mouseX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+                if (mouseX - v.x < 0)
+                    v.x -= 2f;
+                else
+                    v.x += 2f;*/

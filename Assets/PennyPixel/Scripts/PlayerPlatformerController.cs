@@ -10,9 +10,9 @@ public class PlayerPlatformerController : PhysicsObject {
 	public GameObject frontground;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-
-    private Inventory _inventory;
+    
     private GameObject _player;
+    private ItemDataBaseList _database;
 
     // Use this for initialization
     void Awake()
@@ -25,7 +25,7 @@ public class PlayerPlatformerController : PhysicsObject {
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         if (_player != null)
-            _inventory = _player.GetComponent<PlayerInventory>().inventory.GetComponent<Inventory>();
+            _database = (ItemDataBaseList)Resources.Load("ItemDatabase");
     } 
 
     protected override void ComputeVelocity()
@@ -63,28 +63,36 @@ public class PlayerPlatformerController : PhysicsObject {
 
 		if (Input.GetButton("Fire1") || Input.GetMouseButtonDown (0)) {
 			Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+            Vector3 characterPos = this.transform.position;
+            characterPos.y += this.transform.localScale.y / 2;
+            float distMax = Vector2.Distance (mouseWorldPosition, characterPos);
 
-			float distMax = Vector2.Distance (mouseWorldPosition, this.transform.position);
 			if (distMax <= 1f) {
-				//RaycastHit2D hit2d = Physics2D.Raycast (transform.position, mouseWorldPosition - transform.position, distMax);
 				GroundGenerator scriptGen = frontground.transform.parent.GetComponent<GroundGenerator> ();
-				//GameObject clickedGameObject = hit2d.collider.gameObject;
 				UnityEngine.Tilemaps.Tilemap world = frontground.GetComponent<UnityEngine.Tilemaps.Tilemap> ();
 				Vector3Int v = world.WorldToCell (mouseWorldPosition);
+                Vector3 theOne = characterPos;
 
-                bool check = _inventory.checkIfItemAllreadyExist(scriptGen.getMatrix(v.x, v.y), 1); //Value pas utile pour le moment      
-                if ( (check) && (v.y < scriptGen.maximalHeight - 10) && scriptGen.getMatrix(v.x, v.y) > 0)
+                // if we click on an actual block (i.e. not empty)
+                if (_database.getItemByID(scriptGen.mapMatrix[v.x, v.y]).itemID > 0)
                 {
+                    // creates a gameObject to be displayed
+                    GameObject go = (GameObject)Instantiate(_database.getItemByID(scriptGen.mapMatrix[v.x, v.y]).itemModel);
+                    // adds script so it can be picked up
+                    go.AddComponent<PickUpItem>();
+                    go.GetComponent<PickUpItem>().item = _database.getItemByID(scriptGen.mapMatrix[v.x, v.y]);
+                    // position of the gameObject when the item is destroyed
+                    if (mouseWorldPosition.x - theOne.x < 0)
+                        theOne.x -= 0.5f;
+                    else
+                        theOne.x += 0.5f;
+                    go.transform.localPosition = theOne;
+                    go.tag = "BrokenObject";
+
                     v.x = ((v.x % scriptGen.numberOfColumns) + scriptGen.numberOfColumns) % scriptGen.numberOfColumns;
-                    scriptGen.setMatrix(v.x, v.y, 0);
-                }
-                else if(_inventory.ItemsInInventory.Count < (_inventory.width * _inventory.height) && (v.y < scriptGen.maximalHeight - 10) && scriptGen.getMatrix(v.x, v.y) > 0) 
-                {
-                    _inventory.addItemToInventory(scriptGen.getMatrix(v.x, v.y), 1);
-                    _inventory.updateItemList();
-                    _inventory.stackableSettings();
-                    v.x = ((v.x % scriptGen.numberOfColumns) + scriptGen.numberOfColumns) % scriptGen.numberOfColumns;
-                    scriptGen.setMatrix(v.x, v.y, 0);
+                    scriptGen.mapMatrix[v.x, v.y] = 0;
+
+                    scriptGen.mapHeight[v.x] -= 1;
                 }
 			}
 		}

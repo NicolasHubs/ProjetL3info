@@ -6,28 +6,12 @@ using UnityEngine.EventSystems;
 public class SplitItem : MonoBehaviour, IPointerDownHandler
 {     //splitting an Item
 
-    private bool pressingButtonToSplit;             //bool for pressing a item to split it
     public Inventory inv;                          //inventory script  
-    static InputManager inputManagerDatabase = null;
-
-    void Update()
-    {
-        if (Input.GetKeyDown(inputManagerDatabase.SplitItem))                     //if we press right controll the ....
-            pressingButtonToSplit = true;                               //getting changed to true 
-        if (Input.GetKeyUp(inputManagerDatabase.SplitItem))
-            pressingButtonToSplit = false;                              //or false
-
-    }
-
-    void Start()
-    {
-        inputManagerDatabase = (InputManager)Resources.Load("InputManager");
-    }
 
     public void OnPointerDown(PointerEventData data)                    //splitting the item now
     {
         inv = transform.parent.parent.parent.GetComponent<Inventory>();
-        if (transform.parent.parent.parent.GetComponent<Hotbar>() == null && data.button == PointerEventData.InputButton.Left && pressingButtonToSplit && inv.stackable && (inv.ItemsInInventory.Count < (inv.height * inv.width))) //if you press leftclick and and keycode
+        if (transform.parent.parent.parent.GetComponent<Hotbar>() == null && data.button == PointerEventData.InputButton.Right /*&& pressingButtonToSplit*/ && inv.stackable && (inv.ItemsInInventory.Count < (inv.height * inv.width))) //if you press leftclick and keycode
         {
             ItemOnObject itemOnObject = GetComponent<ItemOnObject>();                                                   //we take the ItemOnObject script of the item in the slot
 
@@ -52,3 +36,20 @@ public class SplitItem : MonoBehaviour, IPointerDownHandler
         }
     }
 }
+
+//static InputManager inputManagerDatabase = null;
+//private bool pressingButtonToSplit;             //bool for pressing a item to split it
+
+/*void Update()
+{
+    if (Input.GetKeyDown(inputManagerDatabase.SplitItem))                     //if we press right controll the ....
+        pressingButtonToSplit = true;                               //getting changed to true 
+    if (Input.GetKeyUp(inputManagerDatabase.SplitItem))
+        pressingButtonToSplit = false;                              //or false
+
+}
+
+void Start()
+{
+    inputManagerDatabase = (InputManager)Resources.Load("InputManager");
+}*/

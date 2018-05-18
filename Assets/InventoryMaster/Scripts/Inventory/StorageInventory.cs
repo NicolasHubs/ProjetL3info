@@ -181,9 +181,4 @@ public class StorageInventory : MonoBehaviour
         iV.stackableSettings();
     }
 
-
-
-
-
-
 }

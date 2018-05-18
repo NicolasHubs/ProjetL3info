@@ -13,6 +13,26 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
     public GameObject duplication;
     public static GameObject mainInventory;
 
+    // used to detect a doubleClick
+    private float _minTimeToClick = 0.05f;
+    private float _maxTimeToClick = 0.25f;
+
+    private float _minCurrentTime;
+    private float _maxCurrentTime;
+
+    public bool DoubleClick()
+    {
+        if(Time.time >= _minCurrentTime && Time.time <= _maxCurrentTime)
+        {
+            _minCurrentTime = 0;
+            _maxCurrentTime = 0;
+            return true;
+        }
+        _minCurrentTime = Time.time + _minTimeToClick;
+        _maxCurrentTime = Time.time + _maxTimeToClick;
+        return false;
+    }
+
     void Start()
     {
         item = GetComponent<ItemOnObject>().item;
@@ -35,7 +55,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
             if (eS != null)
                 itemTypeOfSlot = eS.itemTypeOfSlots;
 
-            if (data.button == PointerEventData.InputButton.Right)
+            if (data.button == PointerEventData.InputButton.Left && DoubleClick()) // if we doubleClick with the mouse's left button
             {
                 //item from craft system to inventory
                 if (transform.parent.GetComponent<CraftResultSlot>() != null)
@@ -82,7 +102,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                 }
                             }
                         }
-
 
                         if (!stop)
                         {
@@ -140,7 +159,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                 }
                 if (!gearable && item.itemType != ItemType.UFPS_Ammo && item.itemType != ItemType.UFPS_Grenade)
                 {
-
                     Item itemFromDup = null;
                     if (duplication != null)
                         itemFromDup = duplication.GetComponent<ItemOnObject>().item;
@@ -170,8 +188,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                 }
                 
             }
-            
-
         }
     }    
 
@@ -275,7 +291,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                 itemFromDup = duplication.GetComponent<ItemOnObject>().item;
 
             inventory.ConsumeItem(item);
-
 
             item.itemValue--;
             if (itemFromDup != null)

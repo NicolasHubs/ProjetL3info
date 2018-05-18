@@ -5,6 +5,24 @@ TagManager:
   serializedVersion: 2
   tags:
   - Through
+  - Slot
+  - Slots
+  - Timer
+  - Panel
+  - Canvas
+  - DraggingItem
+  - Tooltip
+  - Hotbar
+  - ResultSlot
+  - CraftSystem
+  - EquipmentSystem
+  - MainInventory
+  - Item
+  - ItemIcon
+  - FrontGround
+  - BackGround
+  - BrokenObject
+  - DroppedObject
   layers:
   - Default
   - TransparentFX

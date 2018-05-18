@@ -184,9 +184,6 @@ public class Inventory : MonoBehaviour
         }
     }
 
-
-
-
     public void ConsumeItem(Item item)
     {
         if (ItemConsumed != null)
@@ -786,8 +783,6 @@ public class Inventory : MonoBehaviour
         return null;
     }
 
-
-
     public void changeInventoryPanelDesign(Image image)
     {
         Image inventoryDesign = transform.GetChild(0).GetChild(0).GetComponent<Image>();
@@ -806,8 +801,6 @@ public class Inventory : MonoBehaviour
                 ItemsInInventory.RemoveAt(item.indexItemInList);
         }
     }
-
-    
 
     public void deleteItemFromInventory(Item item)
     {
@@ -882,9 +875,6 @@ public class Inventory : MonoBehaviour
         stackableSettings();
         updateItemList();
     }
-
-
-
 
     public void updateItemIndex()
     {

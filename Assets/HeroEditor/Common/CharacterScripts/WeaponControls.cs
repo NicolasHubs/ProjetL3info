@@ -23,7 +23,23 @@ namespace Assets.HeroEditor.Common.CharacterScripts
             _locked = !Character.Animator.GetBool("Ready") || Character.Animator.GetInteger("Dead") > 0;
 
             if (_locked) return;
-
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                Character.WeaponType = WeaponType.Melee1H;
+                Character.Animator.SetBool("SwapGK" ,true);
+            }else
+            if (Input.GetKeyUp(KeyCode.F1))
+            {
+                Character.Animator.SetBool("SwapGK", false);
+            }else
+                if (Input.GetKeyDown(KeyCode.F2))
+            {
+                Character.WeaponType = WeaponType.Firearms1H;
+                Character.Animator.SetBool("SwapKG", true);
+            }
+            else if(Input.GetKeyUp(KeyCode.F2)){
+                Character.Animator.SetBool("SwapKG", false);
+            }
             switch (Character.WeaponType)
             {
                 case WeaponType.Melee1H:
@@ -57,7 +73,6 @@ namespace Assets.HeroEditor.Common.CharacterScripts
 
             Transform arm;
             Transform weapon;
-
             switch (Character.WeaponType)
             {
                 case WeaponType.Bow:

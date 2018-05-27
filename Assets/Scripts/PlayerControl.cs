@@ -47,7 +47,8 @@ public class PlayerControl : MonoBehaviour {
         {
             m_Anim.SetBool("Run", false);
         }
-        if (Input.GetAxis("Jump") > 0) //Jump
+     
+            if (Input.GetAxis("Jump") > 0) //Jump
         {
            
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin.transform.position, Vector2.down, rayCheckDistance);

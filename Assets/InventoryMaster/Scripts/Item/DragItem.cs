@@ -600,6 +600,15 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
             }
             else
             {
+                // position of the dropped item (i.e. gameObject)
+                Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mouse.z = 0;
+                Vector3Int temp;
+
+                // position of the player
+                Vector3 characPos = GameObject.FindGameObjectWithTag("Player").transform.localPosition;
+                float distMax = Vector2.Distance(mouse, characPos);
+
                 GroundGenerator scriptGen = GameObject.FindGameObjectWithTag("FrontGround").transform.parent.GetComponent<GroundGenerator>();
                 UnityEngine.Tilemaps.Tilemap world = GameObject.FindGameObjectWithTag("FrontGround").GetComponent<UnityEngine.Tilemaps.Tilemap>();
 
@@ -608,15 +617,22 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                 dropItem.AddComponent<PickUpItem>();
                 dropItem.GetComponent<PickUpItem>().item = this.gameObject.GetComponent<ItemOnObject>().item;
 
-                // position of the dropped item (i.e. gameObject)
-                Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mouse.z = 0;
-                Vector3Int temp;
-
-                if (_database.getItemByID(scriptGen.mapMatrix[world.WorldToCell(mouse).x, world.WorldToCell(mouse).y]).itemID > 0)
+                // max distance to drop an object
+                if (distMax > 3f)
                 {
-                    temp = new Vector3Int(world.WorldToCell(mouse).x, scriptGen.mapHeight[world.WorldToCell(mouse).x], 0);
-                    mouse = world.CellToWorld(temp);
+                    if(mouse.x - characPos.x < 0)
+                    {
+                        mouse.x = characPos.x - 3f;
+                    }
+                    else if(mouse.x - characPos.x > 0)
+                    {
+                        mouse.x = characPos.x + 3f;
+                    }
+                }
+
+                while(_database.getItemByID(scriptGen.mapMatrix[world.WorldToCell(mouse).x, world.WorldToCell(mouse).y]).itemID > 0)
+                {
+                    mouse.y += 1;
                 }
 
                 dropItem.transform.localPosition = mouse;

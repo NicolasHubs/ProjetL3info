@@ -40,16 +40,16 @@ public class InventoryDesign : MonoBehaviour
 
     public void setVariables()
     {
-        inventoryTitlePosX = (int)transform.GetChild(0).GetComponent<RectTransform>().localPosition.x;
-        inventoryTitlePosY = (int)transform.GetChild(0).GetComponent<RectTransform>().localPosition.y;
+        inventoryTitlePosX = (int)transform.GetChild(2).GetComponent<RectTransform>().localPosition.x;
+        inventoryTitlePosY = (int)transform.GetChild(2).GetComponent<RectTransform>().localPosition.y;
         panelSizeX = (int)GetComponent<RectTransform>().sizeDelta.x;
         panelSizeY = (int)GetComponent<RectTransform>().sizeDelta.y;
-        inventoryTitle = transform.GetChild(0).GetComponent<Text>().text;
-        inventoryTitleText = transform.GetChild(0).GetComponent<Text>();
+        inventoryTitle = transform.GetChild(2).GetComponent<Text>().text;
+        inventoryTitleText = transform.GetChild(2).GetComponent<Text>();
         if (GetComponent<Hotbar>() == null)
         {
-            inventoryCrossRectTransform = transform.GetChild(2).GetComponent<RectTransform>();
-            inventoryCrossImage = transform.GetChild(2).GetComponent<Image>();
+            inventoryCrossRectTransform = transform.GetChild(0).GetComponent<RectTransform>();
+            inventoryCrossImage = transform.GetChild(0).GetComponent<Image>();
         }
         inventoryDesign = GetComponent<Image>();
         slotDesign = transform.GetChild(1).GetChild(0).GetComponent<Image>();
@@ -69,7 +69,7 @@ public class InventoryDesign : MonoBehaviour
 
     public void changeCrossSettings()
     {
-        GameObject cross = transform.GetChild(2).gameObject;
+        GameObject cross = transform.GetChild(0).gameObject;
         if (showInventoryCross)
         {
             cross.SetActive(showInventoryCross);

@@ -58,7 +58,6 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     public static bool inventoryOpen;
 
-
     //GUI Settings
     [SerializeField]
     public int slotSize;
@@ -132,7 +131,6 @@ public class Inventory : MonoBehaviour
         updateItemIndex();
     }
 
-
     public void setAsMain()
     {
         if (mainInventory)
@@ -179,8 +177,6 @@ public class Inventory : MonoBehaviour
                 if (AllInventoriesClosed != null)
                     AllInventoriesClosed();
             }
-
-
         }
     }
 
@@ -283,7 +279,6 @@ public class Inventory : MonoBehaviour
                 ItemsInInventory.Add(trans.GetChild(0).GetComponent<ItemOnObject>().item);
             }
         }
-
     }
 
     public bool characterSystem()
@@ -293,7 +288,6 @@ public class Inventory : MonoBehaviour
         else
             return false;
     }
-
 
     public void setDefaultSettings()
     {
@@ -596,7 +590,6 @@ public class Inventory : MonoBehaviour
 
         stackableSettings();
         updateItemList();
-
     }
 
     public GameObject addItemToInventory(int id, int value)
@@ -616,6 +609,9 @@ public class Inventory : MonoBehaviour
                 item.GetComponent<RectTransform>().localPosition = Vector3.zero;
                 item.transform.GetChild(0).GetComponent<Image>().sprite = itemOnObject.item.itemIcon;
                 itemOnObject.item.indexItemInList = ItemsInInventory.Count - 1;
+
+                stackableSettings();
+
                 if (inputManagerDatabase == null)
                     inputManagerDatabase = (InputManager)Resources.Load("InputManager");
                 return item;
@@ -625,12 +621,10 @@ public class Inventory : MonoBehaviour
         stackableSettings();
         updateItemList();
         return null;
-
     }
 
     public void addItemToInventoryStorage(int itemID, int value)
     {
-
         for (int i = 0; i < SlotContainer.transform.childCount; i++)
         {
             if (SlotContainer.transform.GetChild(i).childCount == 0)
@@ -700,7 +694,6 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-
 
     public void deleteAllItems()
     {
@@ -852,7 +845,6 @@ public class Inventory : MonoBehaviour
 
     public void addItemToInventory(int ignoreSlot, int itemID, int itemValue)
     {
-
         for (int i = 0; i < SlotContainer.transform.childCount; i++)
         {
             if (SlotContainer.transform.GetChild(i).childCount == 0 && i != ignoreSlot)

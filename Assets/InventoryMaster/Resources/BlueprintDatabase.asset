@@ -12,25 +12,26 @@ MonoBehaviour:
   m_Name: BlueprintDatabase
   m_EditorClassIdentifier: 
   blueprints:
-  - ingredients: 
-    amount: 
+  - ingredients: 01000000
+    amount: 01000000
     finalItem:
-      itemName: 
-      itemID: 0
-      itemDesc: 
-      itemIcon: {fileID: 21300000, guid: 6dc5762501dd2df4da399f6c16a85907, type: 3}
+      itemName: Red Potion
+      itemID: 10
+      itemDesc: Very good red potion.
+      itemIcon: {fileID: 21300000, guid: 3ac254c0fa6214047a1df59938ba786f, type: 3}
       itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
-      itemValue: 0
-      itemType: 0
+      itemValue: 1
+      itemType: 2
       itemWeight: 0
-      maxStack: 0
-      indexItemInList: 0
+      maxStack: 10
+      indexItemInList: 999
       rarity: 0
+      assetTile: {fileID: 0}
       itemAttributes: []
-    amountOfFinalItem: 0
+    amountOfFinalItem: 1
     timeToCraft: 0
-  - ingredients: 0e000000
-    amount: 010000000000000000000000
+  - ingredients: 02000000
+    amount: 03000000
     finalItem:
       itemName: Cooked Meat
       itemID: 15
@@ -45,13 +46,14 @@ MonoBehaviour:
       maxStack: 5
       indexItemInList: 999
       rarity: 0
+      assetTile: {fileID: 0}
       itemAttributes:
       - attributeName: Health
         attributeValue: 20
     amountOfFinalItem: 1
     timeToCraft: 0
-  - ingredients: 0e00000010000000
-    amount: 0100000001000000
+  - ingredients: 0100000002000000
+    amount: 0500000005000000
     finalItem:
       itemName: Hamburger
       itemID: 17
@@ -68,12 +70,13 @@ MonoBehaviour:
       maxStack: 5
       indexItemInList: 999
       rarity: 0
+      assetTile: {fileID: 0}
       itemAttributes:
       - attributeName: Health
         attributeValue: 20
       - attributeName: Mana
         attributeValue: 20
-    amountOfFinalItem: 2
+    amountOfFinalItem: 1
     timeToCraft: 0
   - ingredients: 0c0000000d000000
     amount: 0100000001000000
@@ -91,6 +94,7 @@ MonoBehaviour:
       maxStack: 5
       indexItemInList: 999
       rarity: 0
+      assetTile: {fileID: 0}
       itemAttributes:
       - attributeName: Health
         attributeValue: 50

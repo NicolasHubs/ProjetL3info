@@ -12,6 +12,7 @@ public class PlayerPlatformerController : PhysicsObject {
     private Animator animator;
     
     private GameObject _player;
+    private GameObject _inventory;
     private ItemDataBaseList _database;
 
     // Use this for initialization
@@ -24,6 +25,7 @@ public class PlayerPlatformerController : PhysicsObject {
      void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
+        _inventory = GameObject.FindGameObjectWithTag("MainInventory");
         if (_player != null)
             _database = (ItemDataBaseList)Resources.Load("ItemDatabase");
     } 
@@ -71,22 +73,17 @@ public class PlayerPlatformerController : PhysicsObject {
 				GroundGenerator scriptGen = frontground.transform.parent.GetComponent<GroundGenerator> ();
 				UnityEngine.Tilemaps.Tilemap world = frontground.GetComponent<UnityEngine.Tilemaps.Tilemap> ();
 				Vector3Int v = world.WorldToCell (mouseWorldPosition);
-                Vector3 theOne = characterPos;
 
                 // if we click on an actual block (i.e. not empty)
-                if (_database.getItemByID(scriptGen.mapMatrix[v.x, v.y]).itemID > 0)
+                if (_database.getItemByID(scriptGen.mapMatrix[v.x, v.y]).itemID > 0 && !_inventory.activeSelf)
                 {
                     // creates a gameObject to be displayed
                     GameObject go = (GameObject)Instantiate(_database.getItemByID(scriptGen.mapMatrix[v.x, v.y]).itemModel);
                     // adds script so it can be picked up
                     go.AddComponent<PickUpItem>();
                     go.GetComponent<PickUpItem>().item = _database.getItemByID(scriptGen.mapMatrix[v.x, v.y]);
-                    // position of the gameObject when the item is destroyed
-                    if (mouseWorldPosition.x - theOne.x < 0)
-                        theOne.x -= 0.5f;
-                    else
-                        theOne.x += 0.5f;
-                    go.transform.localPosition = theOne;
+                    mouseWorldPosition.z = 0;
+                    go.transform.localPosition = mouseWorldPosition;
                     go.tag = "BrokenObject";
 
                     v.x = ((v.x % scriptGen.numberOfColumns) + scriptGen.numberOfColumns) % scriptGen.numberOfColumns;

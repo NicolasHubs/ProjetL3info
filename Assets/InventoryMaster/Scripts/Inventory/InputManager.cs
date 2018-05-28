@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class InputManager : ScriptableObject
 {
-    public bool UFPS;
+    /*public bool UFPS;
     public KeyCode reloadWeapon = KeyCode.R;
-    public KeyCode throwGrenade = KeyCode.G;
+    public KeyCode throwGrenade = KeyCode.G;*/
 
-    public KeyCode SplitItem;
-    public KeyCode InventoryKeyCode;
-    public KeyCode StorageKeyCode;
-    public KeyCode CharacterSystemKeyCode;
-    public KeyCode CraftSystemKeyCode;
+    public KeyCode SplitItemKeyCode = KeyCode.Mouse1;
+    public KeyCode InventoryKeyCode = KeyCode.I;
+    public KeyCode StorageKeyCode = KeyCode.E;
+    public KeyCode CharacterSystemKeyCode = KeyCode.C;
+    public KeyCode CraftSystemKeyCode = KeyCode.K;
+    public KeyCode BuildKeyCode = KeyCode.Mouse1;
 }

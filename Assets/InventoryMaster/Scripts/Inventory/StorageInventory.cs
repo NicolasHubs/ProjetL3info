@@ -98,7 +98,6 @@ public class StorageInventory : MonoBehaviour
 
     void Update()
     {
-
         float distance = Vector3.Distance(this.gameObject.transform.position, player.transform.position);
 
         if (showTimer)
@@ -159,11 +158,7 @@ public class StorageInventory : MonoBehaviour
             inv.deleteAllItems();
             tooltip.deactivateTooltip();
         }
-
-
     }
-
-
 
     void setListofStorage()
     {
@@ -180,5 +175,4 @@ public class StorageInventory : MonoBehaviour
         }
         iV.stackableSettings();
     }
-
 }

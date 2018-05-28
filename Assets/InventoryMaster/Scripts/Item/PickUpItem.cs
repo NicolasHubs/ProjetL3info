@@ -48,7 +48,7 @@ public class PickUpItem : MonoBehaviour
             this.gameObject.transform.position = newPos;
 
             // picking up the item
-            if (_inventory != null && /*distance <= 0.5f*/ Mathf.Abs(this.gameObject.transform.position.x - characPos.x) <= 0.3f
+            if (_inventory != null && Mathf.Abs(this.gameObject.transform.position.x - characPos.x) <= 0.3f
                 && Mathf.Abs(this.gameObject.transform.position.y - characPos.y) <= 0.3f * (0.9f / 0.38f))
             {
                 bool check = _inventory.checkIfItemAllreadyExist(item.itemID, item.itemValue);

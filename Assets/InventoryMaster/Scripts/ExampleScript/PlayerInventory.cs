@@ -16,22 +16,20 @@ public class PlayerInventory : MonoBehaviour
 
     private InputManager inputManagerDatabase;
 
-    public GameObject HPMANACanvas;
-
-    Text hpText;
-    Text manaText;
     Image hpImage;
     Image manaImage;
 
-    float maxHealth = 100;
+    public float maxHealth = 100;
     float maxMana = 100;
     float maxDamage = 0;
     float maxArmor = 0;
 
-    public float currentHealth = 60;
+    public float currentHealth = 100;
     float currentMana = 100;
-    float currentDamage = 0;
-    float currentArmor = 0;
+    public float currentDamage = 0;
+    public float currentArmor = 10;
+
+    public PhysicsObject po;
 
     int normalSize = 3;
 
@@ -157,18 +155,8 @@ public class PlayerInventory : MonoBehaviour
 
     void Start()
     {
-        //if (HPMANACanvas != null)
-        //{
-        //    hpText = HPMANACanvas.transform.GetChild(1).GetChild(0).GetComponent<Text>();
-
-        //    manaText = HPMANACanvas.transform.GetChild(2).GetChild(0).GetComponent<Text>();
-
-        //    hpImage = HPMANACanvas.transform.GetChild(1).GetComponent<Image>();
-        //    manaImage = HPMANACanvas.transform.GetChild(1).GetComponent<Image>();
-
-        //    UpdateHPBar();
-        //    UpdateManaBar();
-        //}
+        hpImage = GameObject.Find("CurrentHp").GetComponent<Image>();
+        po = gameObject.GetComponent<PhysicsObject>();
 
         if (inputManagerDatabase == null)
             inputManagerDatabase = (InputManager)Resources.Load("InputManager");
@@ -186,20 +174,21 @@ public class PlayerInventory : MonoBehaviour
             craftSystemInventory = craftSystem.GetComponent<Inventory>();
     }
 
-    //void UpdateHPBar()
-    //{
-    //    hpText.text = (currentHealth + "/" + maxHealth);
-    //    float fillAmount = currentHealth / maxHealth;
-    //    hpImage.fillAmount = fillAmount;
-    //}
+    public void ApplyDamage(float TheDamage)
+    {
+        currentHealth = currentHealth - (TheDamage - ((currentArmor * TheDamage) / 100));
+        print("current Health : " + currentHealth);
 
-    //void UpdateManaBar()
-    //{
-    //    manaText.text = (currentMana + "/" + maxMana);
-    //    float fillAmount = currentMana / maxMana;
-    //    manaImage.fillAmount = fillAmount;
-    //}
+        if(currentHealth <= 0)
+        {
+            Dead();
+        }
+    }
 
+    public void Dead()
+    {
+        po.isDead = true;
+    }
 
     public void OnConsumeItem(Item item)
     {
@@ -234,11 +223,6 @@ public class PlayerInventory : MonoBehaviour
                     currentDamage += item.itemAttributes[i].attributeValue;
             }
         }
-        //if (HPMANACanvas != null)
-        //{
-        //    UpdateManaBar();
-        //    UpdateHPBar();
-        //}
     }
 
     public void OnGearItem(Item item)
@@ -246,19 +230,14 @@ public class PlayerInventory : MonoBehaviour
         for (int i = 0; i < item.itemAttributes.Count; i++)
         {
             if (item.itemAttributes[i].attributeName == "Health")
-                maxHealth += item.itemAttributes[i].attributeValue;
+                currentHealth += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Mana")
-                maxMana += item.itemAttributes[i].attributeValue;
+                currentMana += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
-                maxArmor += item.itemAttributes[i].attributeValue;
+                currentArmor += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Damage")
-                maxDamage += item.itemAttributes[i].attributeValue;
+                currentDamage += item.itemAttributes[i].attributeValue;
         }
-        //if (HPMANACanvas != null)
-        //{
-        //    UpdateManaBar();
-        //    UpdateHPBar();
-        //}
     }
 
     public void OnUnEquipItem(Item item)
@@ -266,26 +245,26 @@ public class PlayerInventory : MonoBehaviour
         for (int i = 0; i < item.itemAttributes.Count; i++)
         {
             if (item.itemAttributes[i].attributeName == "Health")
-                maxHealth -= item.itemAttributes[i].attributeValue;
+                currentHealth -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Mana")
-                maxMana -= item.itemAttributes[i].attributeValue;
+                currentMana -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
-                maxArmor -= item.itemAttributes[i].attributeValue;
+                currentArmor -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Damage")
-                maxDamage -= item.itemAttributes[i].attributeValue;
+                currentDamage -= item.itemAttributes[i].attributeValue;
         }
-        //if (HPMANACanvas != null)
-        //{
-        //    UpdateManaBar();
-        //    UpdateHPBar();
-        //}
     }
-
-
 
     // Update is called once per frame
     void Update()
     {
+        float percentageHp = ((currentHealth * 100) / maxHealth) / 100;
+        hpImage.fillAmount = percentageHp;
+
+        //Tests damage
+        if (Input.GetKeyDown(KeyCode.L))
+            ApplyDamage(10);
+
         if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))
         {
             if (!characterSystem.activeSelf)
@@ -327,7 +306,5 @@ public class PlayerInventory : MonoBehaviour
                 craftSystemInventory.closeInventory();
             }
         }
-
     }
-
 }

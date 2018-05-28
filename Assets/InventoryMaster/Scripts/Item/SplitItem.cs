@@ -7,11 +7,17 @@ public class SplitItem : MonoBehaviour, IPointerDownHandler
 {     //splitting an Item
 
     public Inventory inv;                          //inventory script  
+    static InputManager inputManagerDatabase = null;
+
+    void Start()
+    {
+        inputManagerDatabase = (InputManager)Resources.Load("InputManager");
+    }
 
     public void OnPointerDown(PointerEventData data)                    //splitting the item now
     {
         inv = transform.parent.parent.parent.GetComponent<Inventory>();
-        if (transform.parent.parent.parent.GetComponent<Hotbar>() == null && data.button == PointerEventData.InputButton.Right /*&& pressingButtonToSplit*/ && inv.stackable && (inv.ItemsInInventory.Count < (inv.height * inv.width))) //if you press leftclick and keycode
+        if (transform.parent.GetComponent<CraftResultSlot>() == null && transform.parent.parent.parent.GetComponent<Hotbar>() == null && Input.GetKeyDown(KeyCode.Mouse1) && inv.stackable && (inv.ItemsInInventory.Count < (inv.height * inv.width))) //if you press rightclick
         {
             ItemOnObject itemOnObject = GetComponent<ItemOnObject>();                                                   //we take the ItemOnObject script of the item in the slot
 
@@ -31,7 +37,6 @@ public class SplitItem : MonoBehaviour, IPointerDownHandler
                     dup.GetComponent<SplitItem>().inv.stackableSettings();
                 }
                 inv.updateItemList();
-
             }
         }
     }

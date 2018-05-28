@@ -83,7 +83,6 @@ public class CraftSystem : MonoBehaviour
         ListWithItem();
     }
 
-
     public void setImages()
     {
         finalSlotImage = transform.GetChild(3).GetComponent<Image>();
@@ -96,7 +95,6 @@ public class CraftSystem : MonoBehaviour
         image.type = arrowImage.type;
         image.fillCenter = arrowImage.fillCenter;
     }
-
 
     public void setArrowSettings()
     {
@@ -139,8 +137,6 @@ public class CraftSystem : MonoBehaviour
         itemInCraftSystemGameObject.Clear();
     }
 
-
-
     public void ListWithItem()
     {
         itemInCraftSystem.Clear();
@@ -179,7 +175,6 @@ public class CraftSystem : MonoBehaviour
                 }
             }
         }
-
     }
 
     public void deleteItems(Item item)
@@ -214,7 +209,4 @@ public class CraftSystem : MonoBehaviour
             }
         }
     }
-
-
-
 }

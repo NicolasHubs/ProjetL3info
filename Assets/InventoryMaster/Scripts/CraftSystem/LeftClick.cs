@@ -16,6 +16,7 @@ public class LeftClick : MonoBehaviour, IPointerDownHandler
             craftSystem = transform.parent.GetComponent<CraftSystem>();
             resultScript = transform.parent.GetChild(3).GetComponent<CraftResultSlot>();
         }
+
         if (craftSystem.possibleItems.Count > 1 && resultScript.temp >= 1)
             resultScript.temp--;
         else

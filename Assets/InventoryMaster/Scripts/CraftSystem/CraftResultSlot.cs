@@ -5,12 +5,9 @@ using UnityEngine.EventSystems;
 
 public class CraftResultSlot : MonoBehaviour
 {
-
     CraftSystem craftSystem;
     public int temp = 0;
     GameObject itemGameObject;
-    //Inventory inventory;
-
 
     // Use this for initialization
     void Start()
@@ -25,7 +22,6 @@ public class CraftResultSlot : MonoBehaviour
         itemGameObject.SetActive(false);
         itemGameObject.transform.GetChild(1).GetComponent<Text>().enabled = true;
         itemGameObject.transform.GetChild(1).GetComponent<RectTransform>().localPosition = new Vector2(GameObject.FindGameObjectWithTag("MainInventory").GetComponent<Inventory>().positionNumberX, GameObject.FindGameObjectWithTag("MainInventory").GetComponent<Inventory>().positionNumberY);
-
     }
 
     // Update is called once per frame
@@ -33,13 +29,12 @@ public class CraftResultSlot : MonoBehaviour
     {
         if (craftSystem.possibleItems.Count != 0)
         {
+            while (craftSystem.possibleItems.Count <= temp)
+                temp--;
             itemGameObject.GetComponent<ItemOnObject>().item = craftSystem.possibleItems[temp];
             itemGameObject.SetActive(true);
         }
         else
             itemGameObject.SetActive(false);
-
     }
-
-
 }

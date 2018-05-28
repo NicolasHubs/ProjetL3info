@@ -15,6 +15,7 @@ public class RightClick : MonoBehaviour, IPointerDownHandler
             craftSystem = transform.parent.GetComponent<CraftSystem>();
             resultScript = transform.parent.GetChild(3).GetComponent<CraftResultSlot>();
         }
+
         if (resultScript.temp < (craftSystem.possibleItems.Count - 1))
             resultScript.temp++;
         else

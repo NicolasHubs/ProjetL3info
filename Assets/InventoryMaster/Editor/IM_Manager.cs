@@ -34,8 +34,6 @@ public class IM_Manager : EditorWindow
             inputManagerDatabase = CreateInputManager.createInputManager();
         else
             inputManagerDatabase = (InputManager)Resources.Load("InputManager");
-
-
     }
 
     static Texture skypeTexture;
@@ -125,8 +123,6 @@ public class IM_Manager : EditorWindow
 
     }
 
-
-
     void InputManager1()
     {
         EditorGUILayout.BeginVertical("Box");
@@ -134,11 +130,12 @@ public class IM_Manager : EditorWindow
 
         EditorUtility.SetDirty(inputManagerDatabase);
 
-        inputManagerDatabase.InventoryKeyCode = (KeyCode)EditorGUILayout.EnumPopup("Inventory", (KeyCode)inputManagerDatabase.InventoryKeyCode);
-        inputManagerDatabase.StorageKeyCode = (KeyCode)EditorGUILayout.EnumPopup("Storage", (KeyCode)inputManagerDatabase.StorageKeyCode);
-        inputManagerDatabase.CharacterSystemKeyCode = (KeyCode)EditorGUILayout.EnumPopup("Charactersystem", (KeyCode)inputManagerDatabase.CharacterSystemKeyCode);
-        inputManagerDatabase.CraftSystemKeyCode = (KeyCode)EditorGUILayout.EnumPopup("Craftsystem", (KeyCode)inputManagerDatabase.CraftSystemKeyCode);
-        inputManagerDatabase.SplitItem = (KeyCode)EditorGUILayout.EnumPopup("Split", (KeyCode)inputManagerDatabase.SplitItem);
+        inputManagerDatabase.InventoryKeyCode = (KeyCode)EditorGUILayout.EnumPopup("Inventory", inputManagerDatabase.InventoryKeyCode);
+        inputManagerDatabase.StorageKeyCode = (KeyCode)EditorGUILayout.EnumPopup("Storage", inputManagerDatabase.StorageKeyCode);
+        inputManagerDatabase.CharacterSystemKeyCode = (KeyCode)EditorGUILayout.EnumPopup("Charactersystem", inputManagerDatabase.CharacterSystemKeyCode);
+        inputManagerDatabase.CraftSystemKeyCode = (KeyCode)EditorGUILayout.EnumPopup("Craftsystem", inputManagerDatabase.CraftSystemKeyCode);
+        inputManagerDatabase.BuildKeyCode = (KeyCode)EditorGUILayout.EnumPopup("Build", inputManagerDatabase.BuildKeyCode);
+        inputManagerDatabase.SplitItemKeyCode = (KeyCode)EditorGUILayout.EnumPopup("Split", inputManagerDatabase.SplitItemKeyCode);
 
         //if(inputManagerDatabase.UFPS)
         //{

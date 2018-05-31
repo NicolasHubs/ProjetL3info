@@ -29,8 +29,9 @@ public class Planet {
 	public int[,] savedMapMatrix = null;
 	public int[] savedMapHeight = null;
 	public List<TileBase> tilesType;
+	public Vector3 playerLastPosition;
 
-	public Planet(string name, float seed, int galaxy, int stellarSystem, int planetID, PlanetType planetType, int horizontalSize, int verticalSize, float smoothness, int heightMultiplier, float seedCave, float caveWidth, float caveQuantity, float gravity, float daySpeedMultiplier, string atmosphere, Color filter, int numberOfChest, List<Ore> oreList, int[,] savedMapMatrix, int[] savedMapHeight, List<TileBase> tilesType) {
+	public Planet(string name, float seed, int galaxy, int stellarSystem, int planetID, PlanetType planetType, int horizontalSize, int verticalSize, float smoothness, int heightMultiplier, float seedCave, float caveWidth, float caveQuantity, float gravity, float daySpeedMultiplier, string atmosphere, Color filter, int numberOfChest, List<Ore> oreList, int[,] savedMapMatrix, int[] savedMapHeight, List<TileBase> tilesType, Vector3 playerLastPosition) {
 		this.name = name;
 		this.seed = seed;
 		this.galaxy = galaxy;
@@ -53,6 +54,7 @@ public class Planet {
 		this.savedMapMatrix = savedMapMatrix;
 		this.savedMapHeight = savedMapHeight;
 		this.tilesType = tilesType;
+		this.playerLastPosition = playerLastPosition;
 	}
 
 	public Planet() {
@@ -78,6 +80,7 @@ public class Planet {
 		savedMapMatrix = null;
 		savedMapHeight = null;
 		tilesType = new List<TileBase> ();
+		playerLastPosition = new Vector3 (0,0,0);
 	}
 
 	public PlanetToJson formatPlanetToJson(){
@@ -156,7 +159,7 @@ public class Planet {
 		mapEncrypted.Add (mapToEncrypt [mapToEncrypt.GetLength (0) - 1]);
 		nbOccurence.Add (nbOcc);
 
-		return new PlanetToJson (mapEncrypted.ToArray(), savedMapHeight,nbOccurence.ToArray(), tilesType);
+		return new PlanetToJson (mapEncrypted.ToArray(), savedMapHeight,nbOccurence.ToArray(), playerLastPosition, tilesType);
 	}
 
 	public void formatPlanetFromJson(PlanetToJson planetFromJson){
@@ -211,9 +214,10 @@ public class Planet {
 
 		savedMapHeight = planetFromJson.savedMapHeight;
 		tilesType = planetFromJson.tilesType;
+		playerLastPosition = planetFromJson.playerLastPosition;
 	}
 
 	public Planet clone(){
-		return new Planet((string)name.Clone(), seed, galaxy, stellarSystem, planetID, planetType.clone(), horizontalSize, verticalSize, smoothness, heightMultiplier,seedCave, caveWidth, caveQuantity, gravity, daySpeedMultiplier, (string)atmosphere.Clone(), filter,numberOfChest, new List<Ore>(oreList), savedMapMatrix, savedMapHeight,tilesType);
+		return new Planet((string)name.Clone(), seed, galaxy, stellarSystem, planetID, planetType.clone(), horizontalSize, verticalSize, smoothness, heightMultiplier,seedCave, caveWidth, caveQuantity, gravity, daySpeedMultiplier, (string)atmosphere.Clone(), filter,numberOfChest, new List<Ore>(oreList), savedMapMatrix, savedMapHeight,tilesType,playerLastPosition);
 	}
 }

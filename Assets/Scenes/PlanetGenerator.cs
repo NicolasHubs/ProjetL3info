@@ -16,12 +16,13 @@ public class PlanetGenerator : MonoBehaviour {
 	[HideInInspector]
 	public Planet planet;
 
+	private Tile.ColliderType savedCollider;
 	//Cette variable il faudra l'enlever quand on aura fait la bdd de tous les blocs du jeu, elle permet de savoir l'id du bloc incassable
 	[HideInInspector]
 	public int unbreakableTileID;
 
 	private GameObject mainCharacter;
-	private Camera mainCamera;
+	//private Camera mainCamera;
 
 	private Vector3Int currentPos;
 
@@ -57,11 +58,13 @@ public class PlanetGenerator : MonoBehaviour {
 			planet.savedMapHeight = new int[planet.horizontalSize + sizeInterpolation];
 			planet.savedMapMatrix = new int[planet.horizontalSize + sizeInterpolation, maximalHeight];
 
+			planet.playerLastPosition = new Vector3 (0,0,0);
+
 			// Generation des vecteurs ainsi que de leur type de tile
 			GenerateTileSettings ();
-		
-			planet.tilesType = new List<TileBase>();
-			planet.tilesType.Insert (0,(TileBase)null);
+
+			planet.tilesType = new List<TileBase> ();
+			planet.tilesType.Insert (0, (TileBase)null);
 			planet.tilesType.Add (planet.planetType.ruleTile);
 			planet.tilesType.Add (planet.planetType.unbreakableTile);
 
@@ -73,8 +76,7 @@ public class PlanetGenerator : MonoBehaviour {
 
 			Vector2[] octaveOffsets = new Vector2[3];
 
-			// TODO : AJOUTER SEED CAVE A PLANET
-			InitVarCaves (ref octaveOffsets, planet.seedCave, 3,  new Vector2(5f,5f));
+			InitVarCaves (ref octaveOffsets, planet.seedCave, 3, new Vector2 (5f, 5f));
 
 			float maxNoiseHeight = float.MinValue;
 			float minNoiseHeight = float.MaxValue;
@@ -83,15 +85,15 @@ public class PlanetGenerator : MonoBehaviour {
 			float halfHeight = 100 / 2f;
 
 			// Ajout des grottes
-			AddPerlinNoiseCave (halfWidth,halfHeight,20f,3,0.289f,3f, octaveOffsets,maxNoiseHeight, minNoiseHeight,0.0f,0.30f, 0, planet.verticalSize/2, Mathf.RoundToInt(planet.verticalSize*0.05f));
-			AddPerlinNoiseCave (halfWidth,halfHeight,planet.caveWidth,3,0.439f,3f, octaveOffsets,maxNoiseHeight, minNoiseHeight,0.23f,planet.caveQuantity, 0,1, planet.verticalSize/2);
+			AddPerlinNoiseCave (halfWidth, halfHeight, 20f, 3, 0.289f, 3f, octaveOffsets, maxNoiseHeight, minNoiseHeight, 0.0f, 0.30f, 0, planet.verticalSize / 2, Mathf.RoundToInt (planet.verticalSize * 0.05f));
+			AddPerlinNoiseCave (halfWidth, halfHeight, planet.caveWidth, 3, 0.439f, 3f, octaveOffsets, maxNoiseHeight, minNoiseHeight, 0.23f, planet.caveQuantity, 0, 1, planet.verticalSize / 2);
 
 			// Ajout des minerais
 			foreach (Ore ore in planet.oreList) {
 				octaveOffsets = new Vector2[3];
-				InitVarCaves (ref octaveOffsets, ore.seedDeposit, 3,  new Vector2(5f,5f));
+				InitVarCaves (ref octaveOffsets, ore.seedDeposit, 3, new Vector2 (5f, 5f));
 				planet.tilesType.Add (ore.tile);
-				AddPerlinNoiseArea (halfWidth,halfHeight,ore.depositWidth,3,0.0f,3f, octaveOffsets,maxNoiseHeight, minNoiseHeight,0.0f,ore.depositRarity/10f, planet.tilesType.Count-1, ore.area);
+				AddPerlinNoiseArea (halfWidth, halfHeight, ore.depositWidth, 3, 0.0f, 3f, octaveOffsets, maxNoiseHeight, minNoiseHeight, 0.0f, ore.depositRarity / 10f, planet.tilesType.Count - 1, ore.area);
 			}
 
 			planet.tilesType.Add (planet.planetType.chestSprite);
@@ -104,16 +106,16 @@ public class PlanetGenerator : MonoBehaviour {
 			// Ajout des coffres
 			int numChest = 0;
 			while (numChest < planet.numberOfChest) {
-				startingPos = Mathf.RoundToInt(UnityEngine.Random.Range (0, planet.savedMapMatrix.GetLength(0)-1));
+				startingPos = Mathf.RoundToInt (UnityEngine.Random.Range (0, planet.savedMapMatrix.GetLength (0) - 1));
 
 				chestPosFounded = false;
 				restart = false;
-				for (int i = startingPos; i < planet.savedMapMatrix.GetLength(0) && !chestPosFounded && !restart; i++) {
-					for (int j = 0; j < planet.savedMapHeight[i] && !chestPosFounded && !restart; j++) {
-						if (planet.savedMapMatrix [i, j] == planet.tilesType.Count-1) {
+				for (int i = startingPos; i < planet.savedMapMatrix.GetLength (0) && !chestPosFounded && !restart; i++) {
+					for (int j = 0; j < planet.savedMapHeight [i] && !chestPosFounded && !restart; j++) {
+						if (planet.savedMapMatrix [i, j] == planet.tilesType.Count - 1) {
 							restart = true;
 						} else if (planet.savedMapMatrix [i, j] == 0) {
-							planet.savedMapMatrix [i, j] = planet.tilesType.Count-1;
+							planet.savedMapMatrix [i, j] = planet.tilesType.Count - 1;
 							chestPosFounded = true;
 							//print ("Chest placed !, [x,y] = ["+i+","+j+"]");
 						}
@@ -123,24 +125,48 @@ public class PlanetGenerator : MonoBehaviour {
 				if (!restart)
 					numChest++;
 			}
-
+			float xPos = (planet.savedMapMatrix.GetLength (0) * frontGround.cellSize.x) / 2;
+			int numeroXdanslaliste = frontGround.WorldToCell (new Vector3 (xPos, 0f, 0f)).x;
+			int numeroYdanslaliste = planet.savedMapHeight [numeroXdanslaliste];
+			float yPos = numeroYdanslaliste * frontGround.cellSize.y;
+			mainCharacter.transform.position = new Vector3 (xPos, yPos + 0.9f, 0f);
+		} else {
+			mainCharacter.transform.position = new Vector3(planet.playerLastPosition.x, planet.playerLastPosition.y + 0.9f, planet.playerLastPosition.z);
 		}
 
-		float xPos = (planet.savedMapMatrix.GetLength(0) * frontGround.cellSize.x) / 2;
-		int numeroXdanslaliste = frontGround.WorldToCell (new Vector3 (xPos, 0f, 0f)).x;
-		int numeroYdanslaliste = planet.savedMapHeight[numeroXdanslaliste];
-		float yPos = numeroYdanslaliste * frontGround.cellSize.y;
-
-		mainCharacter.transform.position = new Vector3 (xPos,yPos, 0f);
-
 		/*
-		for (int i = 0; i < planet.savedMapMatrix.GetLength (0); i++)
-			for (int j = planet.savedMapHeight [i] - 1; j >= planet.savedMapHeight [i] - fieldOfRender.y; j--) {
+		for (int i = Mathf.RoundToInt(planet.savedMapMatrix.GetLength (0)/2 - 300); i < Mathf.RoundToInt(planet.savedMapMatrix.GetLength (0)/2 + 300); i++)
+			for (int j = planet.savedMapHeight [i] - 1; j >= planet.savedMapHeight [i] - fieldOfRender.y - 15; j--) {
 				frontGround.SetTile (new Vector3Int (i, j, 0), planet.tilesType [planet.savedMapMatrix [i, j]]);
+				frontGround.SetColliderType (new Vector3Int (i, j, 0), new Tile.ColliderType());
 				if (j < planet.savedMapHeight [i] - 1)
 					backGround.SetTile (new Vector3Int (i, j, 0), planet.planetType.backgroundTile);
 			}
-			*/
+		*/
+		currentPos = frontGround.WorldToCell(mainCharacter.transform.position);
+
+		int x, y;
+		bool test = false;
+		for (int i = currentPos.x - fieldOfRender.x; i < currentPos.x + fieldOfRender.x; i++) {
+			if (i < 0) {
+				x = Mathf.Abs (i) - 1;
+				int quotient = x / planet.savedMapMatrix.GetLength (0);
+				x = (planet.savedMapMatrix.GetLength (0) - 1) - (x - planet.savedMapMatrix.GetLength (0) * quotient);
+			} else {
+				int quotient = i / planet.savedMapMatrix.GetLength (0);
+				x = i - planet.savedMapMatrix.GetLength (0) * quotient;
+			}
+			for (int j = currentPos.y - fieldOfRender.y; j < currentPos.y + fieldOfRender.y; j++) {
+				if (j >= 0 && j < planet.savedMapHeight [x]) {
+					y = (int)Mathf.Clamp ((float)j, 0.0f, (float)(maximalHeight - 1));
+					frontGround.SetTile (new Vector3Int (i, j, 0), planet.tilesType [planet.savedMapMatrix [x, y]]);
+					if (!test && planet.savedMapMatrix [x, y] != 0) {
+						savedCollider = frontGround.GetColliderType (new Vector3Int (i, j, 0));
+						test = true;
+					}
+				}
+			}
+		}
 
 	}
 
@@ -153,9 +179,9 @@ public class PlanetGenerator : MonoBehaviour {
 		backGround = GameObject.FindGameObjectsWithTag ("BackGround") [0].gameObject.GetComponent<Tilemap>();
 		//backGround.color = Color.black;
 		mainCharacter = GameObject.FindGameObjectsWithTag("Player")[0];
-		mainCamera = GameObject.FindGameObjectsWithTag("MainCamera")[0].GetComponent<Camera>();
+		//mainCamera = GameObject.FindGameObjectsWithTag("MainCamera")[0].GetComponent<Camera>();
 
-		currentPos = frontGround.WorldToCell(mainCamera.transform.position);
+		currentPos = frontGround.WorldToCell(mainCharacter.transform.position);
 
 		maximalHeight = planet.verticalSize + planet.heightMultiplier*2;
 
@@ -205,12 +231,13 @@ public class PlanetGenerator : MonoBehaviour {
 	}
 
 	void Update (){
-		currentPos = frontGround.WorldToCell(mainCamera.transform.position);
+		planet.playerLastPosition = mainCharacter.transform.position;
+		currentPos = frontGround.WorldToCell(planet.playerLastPosition);
 
 		int x = 0;
 		int y = 0;
-
-		for(int i = currentPos.x - fieldOfRender.x-5; i < currentPos.x + fieldOfRender.x+5; i++){
+		/*
+		for(int i = currentPos.x - fieldOfRender.x; i < currentPos.x + fieldOfRender.x; i++){
 			if(i < 0) {
 				x = Mathf.Abs(i) - 1;
 				int quotient = x / planet.savedMapMatrix.GetLength(0);
@@ -219,41 +246,53 @@ public class PlanetGenerator : MonoBehaviour {
 				int quotient = i / planet.savedMapMatrix.GetLength(0);
 				x = i - planet.savedMapMatrix.GetLength(0) * quotient;
 			}
+			for(int j = currentPos.y - fieldOfRender.y; j < currentPos.y + fieldOfRender.y; j++){
+				if (j >= 0 && j < planet.savedMapHeight [x]) {
+					y = (int) Mathf.Clamp((float)j, 0.0f, (float)(maximalHeight-1));
+					frontGround.SetTile (new Vector3Int (i, j, 0), planet.tilesType [planet.savedMapMatrix [x, y]]);
+					if (j < planet.savedMapHeight [x] - 1) 
+						backGround.SetTile (new Vector3Int (i, j, 0), planet.planetType.backgroundTile);
+				}
+			}
+		}
+		*/
+
+		for(int i = currentPos.x - fieldOfRender.x-15; i < currentPos.x + fieldOfRender.x+15; i++){
+			if(i < 0) {
+				x = Mathf.Abs(i) - 1;
+				int quotient = x / planet.savedMapMatrix.GetLength(0);
+				x = (planet.savedMapMatrix.GetLength(0) - 1) - (x - planet.savedMapMatrix.GetLength(0) * quotient);
+			} else {
+				int quotient = i / planet.savedMapMatrix.GetLength(0);
+				x = i - planet.savedMapMatrix.GetLength(0) * quotient;
+			}
+
 			if (i >= currentPos.x - fieldOfRender.x && i < currentPos.x + fieldOfRender.x) {
-				
 				for(int j = currentPos.y - fieldOfRender.y; j < currentPos.y + fieldOfRender.y; j++){
 					if (j >= 0 && j < planet.savedMapHeight [x]) {
 						y = (int) Mathf.Clamp((float)j, 0.0f, (float)(maximalHeight-1));
+						frontGround.SetColliderType (new Vector3Int (i, j, 0), savedCollider);
 						frontGround.SetTile (new Vector3Int (i, j, 0), planet.tilesType [planet.savedMapMatrix [x, y]]);
 						if (j < planet.savedMapHeight [x] - 1) 
 							backGround.SetTile (new Vector3Int (i, j, 0), planet.planetType.backgroundTile);
 					}
-
 				}
 
-				for (int j = currentPos.y - fieldOfRender.y - 15; j < currentPos.y - fieldOfRender.y; j++) {
-					if (j >= 0 && j < planet.savedMapHeight [x]) {
-						frontGround.SetTile (new Vector3Int (i, j, 0), null);
-						frontGround.SetTile (new Vector3Int (i, j, 0), null);
-						if (j < planet.savedMapHeight [x] - 1)
-							backGround.SetTile (new Vector3Int (i, j, 0), null);
-					}
-
-				}
+				for (int j = currentPos.y - fieldOfRender.y - 15; j < currentPos.y - fieldOfRender.y; j++) 
+					if (j >= 0 && j < planet.savedMapHeight [x]) 
+						frontGround.SetColliderType (new Vector3Int (i, j, 0), new Tile.ColliderType());
+					
+				if (currentPos.y + fieldOfRender.y < planet.savedMapHeight [x]) 
+					for (int j = currentPos.y + fieldOfRender.y; j < Mathf.Min(currentPos.y + fieldOfRender.y + 15, planet.savedMapHeight [x]); j++) 
+						if (j >= 0) 
+							frontGround.SetColliderType (new Vector3Int (i, j, 0), new Tile.ColliderType ());
+				
 			} else {
-				for (int j = currentPos.y - fieldOfRender.y - 15; j < currentPos.y + fieldOfRender.y + 15; j++) {
-					if (j >= 0 && j < planet.savedMapHeight [x]) {
-						frontGround.SetTile (new Vector3Int (i, j, 0), null);
-						frontGround.SetTile (new Vector3Int (i, j, 0), null);
-						if (j < planet.savedMapHeight [x] - 1)
-							backGround.SetTile (new Vector3Int (i, j, 0), null);
-					}
-
-				}
+				for (int j = currentPos.y - fieldOfRender.y - 15; j < currentPos.y + fieldOfRender.y + 15; j++) 
+					if (j >= 0 && j < planet.savedMapHeight [x]) 
+						frontGround.SetColliderType (new Vector3Int (i, j, 0), new Tile.ColliderType());
 			}
 		}
-
-	
 	}
 
 	public void clearWorld(){

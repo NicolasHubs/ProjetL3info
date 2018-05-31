@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba35d2869a5ca3488b4d1458c69246d, type: 3}
+  m_Name: OreDatabase
+  m_EditorClassIdentifier: 
+  oreList:
+  - name: Rublis
+    tile: {fileID: 11400000, guid: 3a2ef2935f06e41ecb2fbe9810fed057, type: 2}
+    galaxyRange: {x: 0, y: 50}
+    area: 0
+    depositRarity: 0
+    depositWidth: 0
+    seedDeposit: 0
+  - name: Emeraude
+    tile: {fileID: 11400000, guid: 9c9f6e223a0324d8581fdc834ddf6ed5, type: 2}
+    galaxyRange: {x: 0, y: 50}
+    area: 0
+    depositRarity: 0
+    depositWidth: 0
+    seedDeposit: 0
+  - name: Jaune
+    tile: {fileID: 11400000, guid: ce606dc3f4d34464084e697e3787069d, type: 2}
+    galaxyRange: {x: 0, y: 50}
+    area: 0
+    depositRarity: 0
+    depositWidth: 0
+    seedDeposit: 0
+  - name: Bleu
+    tile: {fileID: 11400000, guid: a7101db57d2b44d579c34861dda7160a, type: 2}
+    galaxyRange: {x: 0, y: 50}
+    area: 0
+    depositRarity: 0
+    depositWidth: 0
+    seedDeposit: 0

@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655f8f215981e024ab314bc73f7aa582, type: 3}
+  m_Name: PlanetTypeDatabase
+  m_EditorClassIdentifier: 
+  planetTypeList:
+  - type: Sand
+    ruleTile: {fileID: 11400000, guid: 06f8cdb9ab08a6a4a81dd0f43455247d, type: 2}
+    backgroundTile: {fileID: 11400000, guid: 59e3ce2a5e2385a4d8e60f34fc1589cb, type: 2}
+    chestSprite: {fileID: 11400000, guid: cbbc15c3f9920164daec7d5a42f2586c, type: 2}
+    unbreakableTile: {fileID: 11400000, guid: 0987abee04d2598438615664a584b617, type: 2}
+  - type: Volcanic
+    ruleTile: {fileID: 11400000, guid: 81bbd7cd5c479524a888189ae7fa38fd, type: 2}
+    backgroundTile: {fileID: 11400000, guid: 59e3ce2a5e2385a4d8e60f34fc1589cb, type: 2}
+    chestSprite: {fileID: 11400000, guid: cbbc15c3f9920164daec7d5a42f2586c, type: 2}
+    unbreakableTile: {fileID: 11400000, guid: 0987abee04d2598438615664a584b617, type: 2}
+  - type: Tropical
+    ruleTile: {fileID: 11400000, guid: 90543af3c5790224fa9428f765bde2a3, type: 2}
+    backgroundTile: {fileID: 11400000, guid: 59e3ce2a5e2385a4d8e60f34fc1589cb, type: 2}
+    chestSprite: {fileID: 11400000, guid: cbbc15c3f9920164daec7d5a42f2586c, type: 2}
+    unbreakableTile: {fileID: 11400000, guid: 0987abee04d2598438615664a584b617, type: 2}
+  - type: Toxic
+    ruleTile: {fileID: 11400000, guid: 2db92aa5fc891cb48912ffed7129794c, type: 2}
+    backgroundTile: {fileID: 11400000, guid: 59e3ce2a5e2385a4d8e60f34fc1589cb, type: 2}
+    chestSprite: {fileID: 11400000, guid: cbbc15c3f9920164daec7d5a42f2586c, type: 2}
+    unbreakableTile: {fileID: 11400000, guid: 0987abee04d2598438615664a584b617, type: 2}
+  - type: Temperate
+    ruleTile: {fileID: 11400000, guid: 90543af3c5790224fa9428f765bde2a3, type: 2}
+    backgroundTile: {fileID: 11400000, guid: 59e3ce2a5e2385a4d8e60f34fc1589cb, type: 2}
+    chestSprite: {fileID: 11400000, guid: cbbc15c3f9920164daec7d5a42f2586c, type: 2}
+    unbreakableTile: {fileID: 11400000, guid: 0987abee04d2598438615664a584b617, type: 2}
+  - type: Snow
+    ruleTile: {fileID: 11400000, guid: 2890a9e6b5ce1034cbbf4cff187ee89d, type: 2}
+    backgroundTile: {fileID: 11400000, guid: 59e3ce2a5e2385a4d8e60f34fc1589cb, type: 2}
+    chestSprite: {fileID: 11400000, guid: cbbc15c3f9920164daec7d5a42f2586c, type: 2}
+    unbreakableTile: {fileID: 11400000, guid: 0987abee04d2598438615664a584b617, type: 2}

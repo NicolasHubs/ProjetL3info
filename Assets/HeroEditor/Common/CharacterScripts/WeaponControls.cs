@@ -26,19 +26,31 @@ namespace Assets.HeroEditor.Common.CharacterScripts
             if (Input.GetKeyDown(KeyCode.F1))
             {
                 Character.WeaponType = WeaponType.Melee1H;
-                Character.Animator.SetBool("SwapGK" ,true);
+                Character.Animator.SetBool("SwapToKnife" ,true);
             }else
             if (Input.GetKeyUp(KeyCode.F1))
             {
-                Character.Animator.SetBool("SwapGK", false);
+                Character.Animator.SetBool("SwapToKnife", false);
             }else
                 if (Input.GetKeyDown(KeyCode.F2))
             {
                 Character.WeaponType = WeaponType.Firearms1H;
-                Character.Animator.SetBool("SwapKG", true);
+                Character.Firearm = Character.Firearm3;
+                Character.Animator.SetBool("SwapToGun", true);
             }
             else if(Input.GetKeyUp(KeyCode.F2)){
-                Character.Animator.SetBool("SwapKG", false);
+                Character.Animator.SetBool("SwapToGun", false);
+            }
+            else if (Input.GetKeyDown(KeyCode.F3))
+            {
+                Character.WeaponType = WeaponType.Firearms2H;
+                Character.Firearm= Character.Firearm2;
+                Character.Animator.SetBool("SwapToSub", true);
+
+            }
+            else if (Input.GetKeyUp(KeyCode.F3))
+            {
+                Character.Animator.SetBool("SwapToSub", false);
             }
             switch (Character.WeaponType)
             {

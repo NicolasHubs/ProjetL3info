@@ -17,6 +17,8 @@ namespace Assets.HeroEditor.Common.CharacterScripts
         [Header("Weapons")]
         public MeleeWeapon MeleeWeapon;
         public Firearm Firearm;
+        public Firearm Firearm2;
+        public Firearm Firearm3;
         public BowShooting BowShooting;
 
         /// <summary>

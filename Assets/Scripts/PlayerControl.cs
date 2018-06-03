@@ -31,14 +31,14 @@ public class PlayerControl : MonoBehaviour {
             {
                 m_FacingRight = false;
                 Vector3 theScale = transform.localScale;
-                theScale.x *= -1;
+                //theScale.x *= -1;
                 transform.localScale = theScale;
             }
             if(x > 0 && !m_FacingRight)
             {
                 m_FacingRight = true;
                 Vector3 theScale = transform.localScale;
-                theScale.x *= -1;
+                //theScale.x *= -1;
                 transform.localScale = theScale;
             }
             m_Anim.SetBool("Run", true);

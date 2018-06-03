@@ -3447,6 +3447,8 @@ MonoBehaviour:
   WeaponType: 5
   MeleeWeapon: {fileID: 114941328265059164}
   Firearm: {fileID: 114506840512310626}
+  Firearm2: {fileID: 0}
+  Firearm3: {fileID: 0}
   BowShooting: {fileID: 114637728138811092}
 --- !u!114 &114780099477631726
 MonoBehaviour:

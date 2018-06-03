@@ -3288,6 +3288,8 @@ MonoBehaviour:
   WeaponType: 0
   MeleeWeapon: {fileID: 114134489406211870}
   Firearm: {fileID: 114657382780688300}
+  Firearm2: {fileID: 0}
+  Firearm3: {fileID: 0}
   BowShooting: {fileID: 114377767957813596}
 --- !u!114 &114134489406211870
 MonoBehaviour:

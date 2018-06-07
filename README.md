@@ -1,6 +1,6 @@
 # Planet Raider
 
-	You play a treasure hunter also called "Planet Raiders" who is looking for a treasure: the legendary "Stone of the Soul". His journey will take him to different planets where he will follow the directions left by his father while escaping the muchachos on his heels. Throughout his adventure, he will learn more about his father's past, the stone of the soul and the real intentions of the muchachos.
+	You play a treasure hunter also called "Planet Raiders" who is looking for a treasure: the legendary "Stone of the Soul". His journey will take him to different planets where he will follow the directions left by his father while escaping the muchachos on his heels. Throughout his adventure, he will learn more about his father's past, the stone of the soul and the real intentions of the [ennemi].
 
 ## Getting Started
 

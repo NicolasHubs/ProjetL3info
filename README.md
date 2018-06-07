@@ -64,7 +64,4 @@ Demo ?
 
 ## Acknowledgments
 
-* My whole family, especially my little brother Timmy who programmed the entire game
-* Ronaldinho my Malaysian stick insect which was totally useless
-
 

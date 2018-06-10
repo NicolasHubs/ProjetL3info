@@ -36,6 +36,20 @@ TextureImporter:
     21300062: VolcanoRock_31
     21300064: VolcanoRock_32
     21300066: VolcanoRock_33
+    21300068: VolcanoRock_34
+    21300070: VolcanoRock_35
+    21300072: VolcanoRock_36
+    21300074: VolcanoRock_37
+    21300076: VolcanoRock_38
+    21300078: VolcanoRock_39
+    21300080: VolcanoRock_40
+    21300082: VolcanoRock_41
+    21300084: VolcanoRock_42
+    21300086: VolcanoRock_43
+    21300088: VolcanoRock_44
+    21300090: VolcanoRock_45
+    21300092: VolcanoRock_46
+    21300094: VolcanoRock_47
   externalObjects: {}
   serializedVersion: 6
   mipmaps:
@@ -155,22 +169,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
+        y: 960
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -29, y: 32}
-        - {x: -32, y: 30}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01eed3c4a0b0a0240a5ba78094b5bbbc
+      spriteID: 9010830e75e1234439bc8d4590d7c560
       vertices: []
       indices: 
       edges: []
@@ -180,21 +189,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 384
+        y: 960
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46e95eace738a9c49bb7e3daa77e5262
+      spriteID: a635e6a4034cd9944ae89451f9438b00
       vertices: []
       indices: 
       edges: []
@@ -204,22 +209,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 384
+        y: 960
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 30}
-        - {x: 29, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 052e8b0f9131ade4985ced3999b9acf0
+      spriteID: 6cec225c550066143a4dd6cb4935e615
       vertices: []
       indices: 
       edges: []
@@ -229,20 +229,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 384
+        y: 960
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26323c5fc5696ed419a6de441ebe0af8
+      spriteID: 113a4e04eaf7cdc4cabcd1bad33781f3
       vertices: []
       indices: 
       edges: []
@@ -252,20 +249,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 384
+        y: 960
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7882d25c7ae1190498775df76cd519eb
+      spriteID: 2f8e71020df869645bd0d21d0250b7aa
       vertices: []
       indices: 
       edges: []
@@ -274,22 +268,18 @@ TextureImporter:
       name: VolcanoRock_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 320
+        x: 320
+        y: 960
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eff630f58b8e9904ea181241b6550ff1
+      spriteID: ae43ac0f2b5ca99498fcf01bfbe3f792
       vertices: []
       indices: 
       edges: []
@@ -298,22 +288,18 @@ TextureImporter:
       name: VolcanoRock_6
       rect:
         serializedVersion: 2
-        x: 64
-        y: 320
+        x: 384
+        y: 960
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc590263ea4ed9e409ff1a96ad4f25e3
+      spriteID: cc480983b0cc1b642a4f6d0ef600fe11
       vertices: []
       indices: 
       edges: []
@@ -322,22 +308,18 @@ TextureImporter:
       name: VolcanoRock_7
       rect:
         serializedVersion: 2
-        x: 128
-        y: 320
+        x: 0
+        y: 896
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49d622c1118b04a4ebfbe14cd52a2d90
+      spriteID: cf3bbcaa5ae13e84fb056fada3d9cd63
       vertices: []
       indices: 
       edges: []
@@ -346,22 +328,18 @@ TextureImporter:
       name: VolcanoRock_8
       rect:
         serializedVersion: 2
-        x: 192
-        y: 320
+        x: 64
+        y: 896
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e0404758fbd2754b9f112b443bd1110
+      spriteID: 2315c980ce3e4ca478e355b5210aaf77
       vertices: []
       indices: 
       edges: []
@@ -370,22 +348,18 @@ TextureImporter:
       name: VolcanoRock_9
       rect:
         serializedVersion: 2
-        x: 256
-        y: 320
+        x: 128
+        y: 896
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af66e7a6f01e5444b83c718681144657
+      spriteID: ccfc8dba24dd9cb44b8427392ecffb06
       vertices: []
       indices: 
       edges: []
@@ -395,22 +369,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
+        y: 832
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -22}
-        - {x: -17, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6cb7a08e1a60c94fbcc6be6f7a1051e
+      spriteID: 13ac84ff83e605c4bb851f536239e738
       vertices: []
       indices: 
       edges: []
@@ -420,21 +389,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 256
+        y: 832
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 32, y: 32}
-        - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ece7b0a64ec7212419716a6f90f74e81
+      spriteID: 59af6ea68dbe8c54587a80544a848d98
       vertices: []
       indices: 
       edges: []
@@ -444,22 +409,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 256
+        y: 832
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 29, y: -32}
-        - {x: 32, y: -28}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 608d75cb0588c8c4ea9ac327b6dbd650
+      spriteID: d73b5b19c513a4a4fb0f66611d72bff7
       vertices: []
       indices: 
       edges: []
@@ -468,22 +428,18 @@ TextureImporter:
       name: VolcanoRock_13
       rect:
         serializedVersion: 2
-        x: 192
-        y: 256
+        x: 0
+        y: 768
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e2ef8ffe49d3874b93c1a283409b279
+      spriteID: 4a6860eeaeaa434479e331122e67a4ca
       vertices: []
       indices: 
       edges: []
@@ -492,22 +448,18 @@ TextureImporter:
       name: VolcanoRock_14
       rect:
         serializedVersion: 2
-        x: 256
-        y: 256
+        x: 64
+        y: 768
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5051ae73d6b29044b81ba2bc77336089
+      spriteID: 444c2d3e544138243afbb0e97f9e72d7
       vertices: []
       indices: 
       edges: []
@@ -516,22 +468,18 @@ TextureImporter:
       name: VolcanoRock_15
       rect:
         serializedVersion: 2
-        x: 0
-        y: 192
+        x: 128
+        y: 768
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d0a06fd482451b47947b1da41168967
+      spriteID: 2c0805f8d024e3e4789dce4db22362a6
       vertices: []
       indices: 
       edges: []
@@ -540,22 +488,18 @@ TextureImporter:
       name: VolcanoRock_16
       rect:
         serializedVersion: 2
-        x: 64
-        y: 192
+        x: 0
+        y: 704
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e6baa70c7b1ab24ba1296f9a8d98a8b
+      spriteID: 659f5b137fb75134c9ce93b655a18cda
       vertices: []
       indices: 
       edges: []
@@ -564,22 +508,18 @@ TextureImporter:
       name: VolcanoRock_17
       rect:
         serializedVersion: 2
-        x: 128
-        y: 192
+        x: 64
+        y: 704
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2c27a71ec2d7e14f98f77a30af5514a
+      spriteID: 46f62fbcae0379247a4521be69690934
       vertices: []
       indices: 
       edges: []
@@ -588,21 +528,18 @@ TextureImporter:
       name: VolcanoRock_18
       rect:
         serializedVersion: 2
-        x: 192
-        y: 192
+        x: 128
+        y: 704
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 32, y: 32}
-        - {x: -32, y: 32}
-        - {x: -32, y: -32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ce5c368cedb77d4fa59b4d0c8da9555
+      spriteID: e9b5fda900873b148a425db6ab0b8125
       vertices: []
       indices: 
       edges: []
@@ -611,21 +548,18 @@ TextureImporter:
       name: VolcanoRock_19
       rect:
         serializedVersion: 2
-        x: 256
-        y: 192
+        x: 192
+        y: 704
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b48c3ae29defedf46b24fdc6b5e7838d
+      spriteID: 4ae18f529886f69459084df8a143ae09
       vertices: []
       indices: 
       edges: []
@@ -634,22 +568,18 @@ TextureImporter:
       name: VolcanoRock_20
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
+        x: 256
+        y: 704
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3820cd5523292994996012032c26d08c
+      spriteID: b58b74333b15d0643b4028050001658f
       vertices: []
       indices: 
       edges: []
@@ -658,22 +588,18 @@ TextureImporter:
       name: VolcanoRock_21
       rect:
         serializedVersion: 2
-        x: 64
-        y: 128
+        x: 0
+        y: 640
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fde63279e1b0d6489a08c97c78f2ced
+      spriteID: 5d7dcde445585534baf826eeed42c4f0
       vertices: []
       indices: 
       edges: []
@@ -682,22 +608,18 @@ TextureImporter:
       name: VolcanoRock_22
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
+        x: 64
+        y: 640
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9606a1d9c9ffcb489f94584620ed7c0
+      spriteID: 2ed34f2b8c70cb9488f612bd3f4af717
       vertices: []
       indices: 
       edges: []
@@ -706,22 +628,18 @@ TextureImporter:
       name: VolcanoRock_23
       rect:
         serializedVersion: 2
-        x: 192
-        y: 128
+        x: 128
+        y: 640
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d09b0f053795f8479e373afa1a0357d
+      spriteID: dda4fc5d59d08574fac3ba680dfb68a2
       vertices: []
       indices: 
       edges: []
@@ -730,22 +648,18 @@ TextureImporter:
       name: VolcanoRock_24
       rect:
         serializedVersion: 2
-        x: 256
-        y: 128
+        x: 192
+        y: 640
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0646cc34b4270f5478dcd1df2f2bda60
+      spriteID: 631de272e337472468dc990627f75895
       vertices: []
       indices: 
       edges: []
@@ -754,23 +668,18 @@ TextureImporter:
       name: VolcanoRock_25
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 256
+        y: 640
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -20}
-        - {x: -17, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eaa33bea4142771408c996e5f804309d
+      spriteID: 3848aa0a3afda6243957151db48bebc0
       vertices: []
       indices: 
       edges: []
@@ -779,23 +688,18 @@ TextureImporter:
       name: VolcanoRock_26
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
+        x: 0
+        y: 576
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 26, y: -32}
-        - {x: 32, y: -27}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8739d62055a6e44694d9cbe37d361e3
+      spriteID: 9e5bafc74c5837b448da8d2061a0f669
       vertices: []
       indices: 
       edges: []
@@ -804,22 +708,18 @@ TextureImporter:
       name: VolcanoRock_27
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
+        x: 64
+        y: 576
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8592f59058e93f478acb89e542a47bb
+      spriteID: 5392da7df49a1044f948ea6a029f329d
       vertices: []
       indices: 
       edges: []
@@ -828,22 +728,18 @@ TextureImporter:
       name: VolcanoRock_28
       rect:
         serializedVersion: 2
-        x: 192
-        y: 64
+        x: 128
+        y: 576
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc257342cacb7d74987ed228b84b4fc9
+      spriteID: 6e3fdf6b2e6887b43b64358732991b6f
       vertices: []
       indices: 
       edges: []
@@ -852,23 +748,18 @@ TextureImporter:
       name: VolcanoRock_29
       rect:
         serializedVersion: 2
-        x: 256
-        y: 64
+        x: 192
+        y: 576
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -29, y: 32}
-        - {x: -32, y: 30}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3c1c05e1a9d0a64baf308da9de1416a
+      spriteID: 243e51a249a78bc48aa38bd3b2258a3f
       vertices: []
       indices: 
       edges: []
@@ -877,22 +768,18 @@ TextureImporter:
       name: VolcanoRock_30
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 256
+        y: 576
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 612d2acfff6163a458dda8b617162bd7
+      spriteID: 8fbf680efda1add4a9c8004f11e01ff0
       vertices: []
       indices: 
       edges: []
@@ -901,22 +788,18 @@ TextureImporter:
       name: VolcanoRock_31
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 320
+        y: 576
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8802ec771e5772448bd84800b7e1610
+      spriteID: dc1cfc5f03d34e1418b413d5ca06147c
       vertices: []
       indices: 
       edges: []
@@ -925,22 +808,18 @@ TextureImporter:
       name: VolcanoRock_32
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
+        x: 384
+        y: 576
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e28bcedf41765f439f2fb75168d72f2
+      spriteID: 889c0a07884ede34a80e197ef7a3a2f7
       vertices: []
       indices: 
       edges: []
@@ -949,22 +828,298 @@ TextureImporter:
       name: VolcanoRock_33
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
+        x: 448
+        y: 576
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -32, y: 32}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
-        - {x: 32, y: 32}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20647f4522f576443a3dacf2973db921
+      spriteID: 0265639fc822f7f4eb1c6cfebb59d8ed
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VolcanoRock_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6fdd5050a3a895439993043083d3ef5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VolcanoRock_35
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d2012f8ad79cb449b6fb6d6ae9d6b9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VolcanoRock_36
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f2f9d4e9dca70f4ea43ebddd794dbfb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VolcanoRock_37
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01bfc49879a682b468245341dace379b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VolcanoRock_38
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0114aedc962c4b4280887a4e19faaee
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VolcanoRock_39
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adba6108fc6ee0c4d9c5bccd0c032f6b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VolcanoRock_40
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c72f60c8095dd3543b0697f7d9eb6075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VolcanoRock_41
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d727cb1583b3eb34cbd3b6ca920d4f89
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VolcanoRock_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f4081a6e1a752e44930fd8ef2a44842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VolcanoRock_43
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f2737841da9aee44bcbb7d5a5c49faa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VolcanoRock_44
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60a05d8fb5691684380a1b445b26c7af
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VolcanoRock_45
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe2420685e8da8c409908c0f2063ebf0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VolcanoRock_46
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c6f424a7684a4a4ab4753d4add0756d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VolcanoRock_47
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6915531a3a5580a4abcb02983dcf720b
       vertices: []
       indices: 
       edges: []
@@ -972,7 +1127,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: be2bc95f1e39d264783b1365d7ab2407
+    spriteID: f9b5b157f28b3784aa634a60c091bb10
     vertices: []
     indices: 
     edges: []

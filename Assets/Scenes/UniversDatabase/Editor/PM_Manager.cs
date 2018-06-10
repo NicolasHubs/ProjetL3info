@@ -85,11 +85,12 @@ public class PM_Manager : EditorWindow {
 			showFaunaDataBase = !showFaunaDataBase;
 		}*/
 
-
 		EditorGUILayout.BeginHorizontal();
 		if (GUILayout.Button("TestLaunch")) {
-
-			Scenes.Load("TilemapStart", loadFromJson ((globalGalaxyList.galaxyList[1].stellarSystemList[1].planetList[0])));
+			if (globalGalaxyList == null)
+				globalGalaxyList = (GalaxyList)Resources.Load("GalaxyDatabase");
+			
+			Scenes.Load("TilemapStart", loadFromJson (globalGalaxyList.galaxyList[1].stellarSystemList[1].planetList[0]));
 		}
 		EditorGUILayout.EndHorizontal();
 
@@ -126,10 +127,6 @@ public class PM_Manager : EditorWindow {
 			showPlanetTypeDataBase = false;
 			showGalaxyDataBase = false;
 			showWeatherDataBase = !showWeatherDataBase;
-
-			saveToJson (globalGalaxyList.galaxyList[0].stellarSystemList[0].planetList[0]);
-			loadFromJson (globalGalaxyList.galaxyList[0].stellarSystemList[0].planetList[0]);
-
 		}
 		EditorGUILayout.EndHorizontal();
 
@@ -230,9 +227,6 @@ public class PM_Manager : EditorWindow {
 				GUILayout.EndVertical();
 			}
 		}
-
-		if (globalWeatherList == null)
-			globalWeatherList = (WeatherList)Resources.Load("WeatherDatabase");
 
 		EditorGUILayout.EndScrollView();
 
@@ -338,9 +332,6 @@ public class PM_Manager : EditorWindow {
 			}
 		}
 
-		if (globalPlanetTypeList == null)
-			globalPlanetTypeList = (PlanetTypeList)Resources.Load("PlanetTypeDatabase");
-
 		EditorGUILayout.EndScrollView();
 	
 		EditorGUILayout.EndVertical();
@@ -436,9 +427,6 @@ public class PM_Manager : EditorWindow {
 				GUILayout.EndVertical();
 			}
 		}
-
-		if (globalOreList == null)
-			globalOreList = (OreList)Resources.Load("OreDatabase");
 
 		EditorGUILayout.EndScrollView();
 
@@ -576,13 +564,13 @@ public class PM_Manager : EditorWindow {
 										GUI.color = Color.white;
 										if (GUILayout.Button("Load this planet")) {
 											if ("TilemapStart".Equals(SceneManager.GetActiveScene().name)){
-												Debug.Log("Sauvegarde de " + GameObject.FindGameObjectWithTag("grid").GetComponent<PlanetGenerator>().planet.name + "...");
+												Debug.Log("Sauvegarde de la planète " + GameObject.FindGameObjectWithTag("grid").GetComponent<PlanetGenerator>().planet.name + "...");
 												savePlanet(GameObject.FindGameObjectWithTag("grid").GetComponent<PlanetGenerator>().planet);
-												Debug.Log("...Monde sauvegardé !");
+												Debug.Log("La planète " + GameObject.FindGameObjectWithTag("grid").GetComponent<PlanetGenerator>().planet.name + " a été sauvegardée avec succès !");
 												SceneManager.LoadScene("TilemapDemoComplete");
 											}
 
-											Scenes.Load("TilemapStart", loadFromJson ((globalGalaxyList.galaxyList[i].stellarSystemList[j-1].planetList[k-1])));
+											Scenes.Load("TilemapStart", loadFromJson (globalGalaxyList.galaxyList[i].stellarSystemList[j-1].planetList[k-1]));
 										}
 
 										GUI.color = Color.red;
@@ -622,13 +610,11 @@ public class PM_Manager : EditorWindow {
 			GUILayout.EndVertical();
 		}
 
-		if (globalGalaxyList == null)
-			globalGalaxyList = (GalaxyList)Resources.Load("GalaxyDatabase");
-
 		EditorGUILayout.EndScrollView();
 
 		EditorGUILayout.EndVertical();
 	}
+
 	void saveToJson(Planet planet){
 		PlanetToJson ptj = new PlanetToJson ();
 		ptj = planet.formatPlanetToJson ();
@@ -638,6 +624,9 @@ public class PM_Manager : EditorWindow {
 	}
 
 	Planet loadFromJson(Planet planet){
+		if (globalGalaxyList == null)
+			globalGalaxyList = (GalaxyList)Resources.Load("GalaxyDatabase");
+		
 		string filePath = Application.dataPath + "/Scenes/PlanetSaves/planetDataG" + planet.galaxy + "S" + planet.stellarSystem + "P" + planet.planetID + ".json";
 		if (File.Exists (filePath)) {
 			string dataAsJson = File.ReadAllText (filePath);
@@ -648,6 +637,9 @@ public class PM_Manager : EditorWindow {
 	}
 
 	void savePlanet(Planet planetToSave){
+		if (globalGalaxyList == null)
+			globalGalaxyList = (GalaxyList)Resources.Load("GalaxyDatabase");
+		
 		if (globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID].savedMapHeight.GetLength (0) == 0) 
 			globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID].savedMapHeight = new int[planetToSave.savedMapHeight.GetLength (0)];
 		
@@ -664,17 +656,32 @@ public class PM_Manager : EditorWindow {
 
 		globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID].tilesType = planetToSave.tilesType;
 
+		globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID].playerLastPosition = new Vector3 (0, 0, 0);
+
+		globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID].playerLastPosition = planetToSave.playerLastPosition;
+	
 		saveToJson (globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID]);
 	}
 
-
 	void clearGalaxy(){
+		if (globalGalaxyList == null)
+			globalGalaxyList = (GalaxyList)Resources.Load("GalaxyDatabase");
+		
 		EditorUtility.SetDirty (globalGalaxyList);
 		globalGalaxyList.galaxyList.Clear ();
 		EditorUtility.SetDirty(globalGalaxyList);
 	}
 
 	void generateGalaxy(int nbGalaxyToGenerate){
+		if (globalGalaxyList == null)
+			globalGalaxyList = (GalaxyList)Resources.Load("GalaxyDatabase");
+		
+		string filePath = Application.dataPath + "/Scenes/PlanetSaves";
+
+		string[] filenames = Directory.GetFiles(filePath, "planetDataG*S*P*.json", SearchOption.TopDirectoryOnly);
+		foreach (string fName in filenames)
+			File.Delete(fName);
+		
 		for (int i = 0; i <nbGalaxyToGenerate; i++){
 			Galaxy newGalaxy = new Galaxy();
 
@@ -728,6 +735,13 @@ public class PM_Manager : EditorWindow {
 
 	// TODO : Changer la couleur des blocs de glace en bleu, et le sol en blanc, ça rend vraiment mieux
 	Planet generatePlanet(int galaxy, int stellarSystem, int planetID){
+		if (globalPlanetTypeList == null)
+			globalPlanetTypeList = (PlanetTypeList)Resources.Load("PlanetTypeDatabase");
+
+		if (globalOreList == null)
+			globalOreList = (OreList)Resources.Load("OreDatabase");
+
+
 		int rdmIntValue;
 
 		Planet newPlanet = new Planet();
@@ -748,7 +762,7 @@ public class PM_Manager : EditorWindow {
 		newPlanet.planetID = planetID;
 
 		// Planet type
-		rdmIntValue = Random.Range (0, globalPlanetTypeList.planetTypeList.Count-1);
+		rdmIntValue = Random.Range (0, globalPlanetTypeList.planetTypeList.Count);
 		newPlanet.planetType = globalPlanetTypeList.planetTypeList [rdmIntValue].clone ();
 
 		// Horizontal size
@@ -784,7 +798,7 @@ public class PM_Manager : EditorWindow {
 
 		// Atmosphere
 		if (atmosphereTab.Length != 0) {
-			rdmIntValue = Random.Range (0, atmosphereTab.Length - 1);
+			rdmIntValue = Random.Range (0, atmosphereTab.Length);
 			newPlanet.atmosphere = (string)atmosphereTab [rdmIntValue].Clone ();
 		} else 
 			newPlanet.atmosphere = "Normal";
@@ -792,7 +806,7 @@ public class PM_Manager : EditorWindow {
 		// Color filter
 		if (filterList.Length != 0) {
 			if (Random.Range (0, 9) >= 6) {
-				rdmIntValue = Random.Range (0, filterList.Length - 1);
+				rdmIntValue = Random.Range (0, filterList.Length);
 				ColorUtility.TryParseHtmlString ((string)filterList [rdmIntValue].Clone (), out newPlanet.filter);
 			} else
 				ColorUtility.TryParseHtmlString ("#FFFFFF", out newPlanet.filter);
@@ -818,6 +832,9 @@ public class PM_Manager : EditorWindow {
 	}
 
 	void addPlanet(Planet newPlanet) {
+		if (globalPlanetList == null)
+			globalPlanetList = (PlanetList)Resources.Load("PlanetDatabase");
+		
 		EditorUtility.SetDirty (globalPlanetList);
 		globalPlanetList.planetList.Add(newPlanet);
 		EditorUtility.SetDirty(globalPlanetList);
@@ -829,6 +846,9 @@ public class PM_Manager : EditorWindow {
 
 
 	bool oreValid() {
+		if (globalOreList == null)
+			globalOreList = (OreList)Resources.Load("OreDatabase");
+		
 		if ("".Equals (newOre.name.Trim ()))
 			return false;
 
@@ -854,6 +874,9 @@ public class PM_Manager : EditorWindow {
 	}
 
 	void addOre(Ore newOre) {
+		if (globalOreList == null)
+			globalOreList = (OreList)Resources.Load("OreDatabase");
+		
 		EditorUtility.SetDirty (globalOreList);
 		globalOreList.oreList.Add(newOre);
 		EditorUtility.SetDirty(globalOreList);
@@ -861,6 +884,9 @@ public class PM_Manager : EditorWindow {
 
 
 	bool planetTypeValid() {
+		if (globalPlanetTypeList == null)
+			globalPlanetTypeList = (PlanetTypeList)Resources.Load("PlanetTypeDatabase");
+		
 		if ("".Equals (newPlanetType.type.Trim ()))
 			return false;
 
@@ -888,12 +914,18 @@ public class PM_Manager : EditorWindow {
 	}
 
 	void addPlanetType(PlanetType newPlanetType) {
+		if (globalPlanetTypeList == null)
+			globalPlanetTypeList = (PlanetTypeList)Resources.Load("PlanetTypeDatabase");
+		
 		EditorUtility.SetDirty (globalPlanetTypeList);
 		globalPlanetTypeList.planetTypeList.Add(newPlanetType);
 		EditorUtility.SetDirty(globalPlanetTypeList);
 	}
 
 	int getPlanetTypeIndex(string type){
+		if (globalPlanetTypeList == null)
+			globalPlanetTypeList = (PlanetTypeList)Resources.Load("PlanetTypeDatabase");
+
 		int num = 0;
 		foreach (PlanetType planetType in globalPlanetTypeList.planetTypeList) {
 			if (planetType.type.Equals (type)) {
@@ -927,6 +959,9 @@ public class PM_Manager : EditorWindow {
 	}
 
 	void addWeather(string weatherTextField) {
+		if (globalWeatherList == null)
+			globalWeatherList = (WeatherList)Resources.Load("WeatherDatabase");
+
 		EditorUtility.SetDirty (globalWeatherList);
 		Weather newWeather = new Weather();
 		newWeather.name = weatherTextField;
@@ -935,6 +970,9 @@ public class PM_Manager : EditorWindow {
 	}
 
 	bool weatherAlreadyCreated(string weatherTextField){
+		if (globalWeatherList == null)
+			globalWeatherList = (WeatherList)Resources.Load("WeatherDatabase");
+		
 		bool result = false;
 		foreach (Weather weather in globalWeatherList.weatherList) {
 			if (weather.name.ToLower().Equals (weatherTextField.ToLower ())) {

@@ -315,7 +315,7 @@ namespace Cinemachine
                 {
                     if (components[i].Stage == stage)
                     {
-                        DestroyObject(components[i] as MonoBehaviour);
+                        Destroy(components[i] as MonoBehaviour);
                         components[i] = null;
                     }
                 }
@@ -334,7 +334,7 @@ namespace Cinemachine
                 {
                     if (c is T)
                     {
-                        DestroyObject(c);
+                        Destroy(c);
                         InvalidateComponentPipeline();
                     }
                 }

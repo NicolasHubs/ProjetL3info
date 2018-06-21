@@ -66,15 +66,24 @@ TagManager:
   - name: Background
     uniqueID: 131982245
     locked: 0
+  - name: Foreground
+    uniqueID: 1632157909
+    locked: 0
+  - name: Mid
+    uniqueID: 3843229683
+    locked: 0
   - name: Main
     uniqueID: 1907945055
+    locked: 0
+  - name: Flora
+    uniqueID: 3752928933
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Foreground
-    uniqueID: 1632157909
+  - name: Effects
+    uniqueID: 1646391297
     locked: 0
-  - name: Flora
-    uniqueID: 3752928933
+  - name: HUL
+    uniqueID: 320888269
     locked: 0

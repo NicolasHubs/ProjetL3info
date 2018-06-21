@@ -50,12 +50,11 @@ public class PlayerPlatformerController : PhysicsObject {
 
         targetVelocity = move * maxSpeed;
 
-		if (Input.GetButton("Fire1") || Input.GetMouseButtonDown (0)) {
+		if (!("Hub".Equals(SceneManager.GetActiveScene().name)) && (Input.GetButton("Fire1") || Input.GetMouseButtonDown (0))) {
 			Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Vector3 characterPos = this.transform.position;
 			characterPos.y += this.transform.localScale.y/2;
 			float distMax = Vector2.Distance (mouseWorldPosition, characterPos);
-			//GroundGenerator scriptGen = frontground.transform.parent.GetComponent<GroundGenerator> ();
 			GameObject frontground = GameObject.FindGameObjectWithTag("FrontGround").gameObject;
 			PlanetGenerator scriptGen = frontground.transform.parent.GetComponent<PlanetGenerator> ();
 			UnityEngine.Tilemaps.Tilemap world = frontground.GetComponent<UnityEngine.Tilemaps.Tilemap> ();

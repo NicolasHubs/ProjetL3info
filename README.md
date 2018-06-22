@@ -7,7 +7,7 @@
 
 	Before dying from his wounds, your father revealed the existence of an almighty treasure : "The Stone of the Soul". 
 	The legend says that whoever would possess it would be granted an infinite power. 
-	With his dying breath, your father gave you a map, revealing the location of the stone, and instructions to reach it.
+	With his dying breath, your father gave you a map, showing the location of the stone, and instructions to reach it.
 	
 	Your journey will take you to different planets where you will follow the directions left by your father, 
 	while escaping the ennemies on your heels. Throughout your adventure, you will learn more about your father's past, 

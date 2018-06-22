@@ -10,8 +10,8 @@
 	With his dying breath, your father gave you a map, showing the location of the stone, and instructions to reach it.
 	
 	Your journey will take you to different planets where you will follow the directions left by your father, 
-	while escaping the ennemies on your heels. Throughout your adventure, you will learn more about your father's past, 
-	"The Stone of the Soul" and the real intentions of your pursuers.
+	while escaping the ennemies on your heels. 
+	Throughout your adventure, you will learn more about your father's past, "The Stone of the Soul" and the real intentions of your pursuers.
 
 ## Getting Started
 

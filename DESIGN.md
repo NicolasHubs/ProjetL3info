@@ -1,7 +1,7 @@
 # Architecture of our project
 
 ## Development tools and Editors
-In order to develop our game, we used the Game Development Platform <img src="https://zupimages.net/up/18/25/0rhh.png" width="70" height="53">, on the 2017.3.1 version.
+In order to develop our game, we used the Game Development Platform <img src="https://zupimages.net/up/18/25/0rhh.png" width="70" height="53">, on the 2018.2.0b6 version.
 
 In terms of editors, for the code, we chose both <img src="https://zupimages.net/up/18/25/ljh9.png" width="150" height="26"> and <img src="https://zupimages.net/up/18/25/c637.png" width="150" height="42">
 

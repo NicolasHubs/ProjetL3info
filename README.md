@@ -30,8 +30,8 @@ You only need **Unity** in order to run our project :
 
 ## Some pictures of our project
 
-![Altext](http://zupimages.net/viewer.php?id=18/25/xb1g.png)
-![Altext](http://zupimages.net/viewer.php?id=18/25/6pf3.png)
+![Altext]("http://zupimages.net/viewer.php?id=18/25/xb1g.png")
+![Altext]("http://zupimages.net/viewer.php?id=18/25/6pf3.png")
 
 ## Built With
 

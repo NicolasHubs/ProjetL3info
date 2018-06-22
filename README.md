@@ -1,6 +1,11 @@
 # Planet Raider
 
-	You play a treasure hunter also called "Planet Raiders" who is looking for a treasure: the legendary "Stone of the Soul". His journey will take him to different planets where he will follow the directions left by his father while escaping the muchachos on his heels. Throughout his adventure, he will learn more about his father's past, the stone of the soul and the real intentions of the [ennemi].
+	You play a treasure hunter also called "Planet Raider". The game starts on your native planet of your characte, during the funeral of your dad (a "Planet Raider" as well), deceased in front of you a few days ago, murdered by a group of bloodthirsty "Planet Raiders".
+	These treasure hunters, feared by all, have nothing but one goal : Establishing chaos in the Universe.
+
+	Before succumbing to his wounds, your father revealed the existence of an almighty treasure : "The Stone of the Soul". 
+	The legend says that whoever would possess it would be granted an infinite power. With his dying breath, your father gave you a map, revealing the location of the stone, and instructions to reach it.
+	Your journey will take you to different planets where you will follow the directions left by your father, while escaping the ennemies on your heels. Throughout your adventure, you will learn more about your father's past, "The Stone of the Soul" and the real intentions of your pursuers.
 
 ## Getting Started
 

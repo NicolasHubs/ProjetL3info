@@ -28,30 +28,10 @@ You only need **Unity** in order to run our project :
 
 * [**Download Unity**](https://store.unity.com/)
 
-### Installing
-
-A step by step series of examples that tell you have to get a development env running :
-
-First step
-
-```
-blablabla
-```
-
-Next step
-
-```
-blablabla 
-Finished !
-```
-
-Demo ?
-
 ## Some pictures of our project
 
-![Alt text](https://i.ytimg.com/vi/2ErqCaqouTg/maxresdefault.jpg "Its not our game")
-
-*Insert pictures here*
+(http://zupimages.net/viewer.php?id=18/25/xb1g.png)
+(http://zupimages.net/viewer.php?id=18/25/6pf3.png)
 
 ## Built With
 
@@ -73,7 +53,5 @@ Demo ?
 * **Boury Arthur** - *Initial work* -
 * **Al Hussein Ryan** - *Initial work* -
 * **Varis Florian** - *Initial work* -
-
-## Acknowledgments
 
 

@@ -30,7 +30,7 @@ You only need **Unity** in order to run our project :
 
 ## Some pictures of our project
 
-![Alt text](http://zupimages.net/viewer.php?id=18/25/xb1g.png "")
+![Alt text](https://zupimages.net/up/18/25/xb1g.png "")
 ![Alt text](http://zupimages.net/viewer.php?id=18/25/6pf3.png "")
 
 ## Built With

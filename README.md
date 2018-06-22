@@ -11,7 +11,8 @@
 	
 	Your journey will take you to different planets where you will follow the directions left by your father, 
 	while escaping the ennemies on your heels. 
-	Throughout your adventure, you will learn more about your father's past, "The Stone of the Soul" and the real intentions of your pursuers.
+	Throughout your adventure, you will learn more about your father's past, "The Stone of the Soul",
+	and the real intentions of your pursuers.
 
 ## Getting Started
 

@@ -2,7 +2,7 @@
 If you want to build our project, just download it there : https://github.com/NicolasHubs/ProjetL3info.git, launch **Unity** and you're ready to go !
 
 ## Tests
-All of our tests were realized in the game at runtime. We play like a "normal" player would and see what's missing/doesn't work.
+All of our tests were realized in the game at runtime. We played like a "normal" player would and looked for what was missing/didn't work.
 
 ## What's left
 Several functionnalities or aspects have yet to be implemented.

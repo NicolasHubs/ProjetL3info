@@ -104,13 +104,13 @@ Last but not least, we added a hotbar, in order to allow the player to quickly s
     <td align="center">Generation of a cursor associated with the Hotbar</td>
   </tr>
   <tr>
-    <td align="center">Drag & drop an item from the mainInventory towars the Hotbar</td>
+    <td align="center">Drag & drop an item from the main inventory towards the Hotbar</td>
   </tr>
   <tr>
-    <td align="center">Build the item selected by cursor (this item need to be a texture) </td>
+    <td align="center">Build the item selected by the cursor (this item needs to be a texture) </td>
   </tr>
   <tr>
-    <td rowspan="1" align="center">5</td>
+    <td align="center">5</td>
     <td align="center">Equip itself with weapons thanks to the cursor</td>
   </tr>
 </table>

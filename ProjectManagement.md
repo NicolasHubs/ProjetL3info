@@ -96,7 +96,7 @@ Note: The state of the planet is saved when the player decides to leave it.
   </tr>
 </table>
 
-- **HUB creation (spaceship)** - *VARIS Florian*
+  - **HUB creation (spaceship)** - *VARIS Florian*
 
        **_Find below a non-detailed & non-exhaustive list of tasks_**
 	   

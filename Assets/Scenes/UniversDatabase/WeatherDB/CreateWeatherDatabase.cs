@@ -13,7 +13,7 @@ public class CreateWeatherDatabase : MonoBehaviour {
 	public static WeatherList createWeatherDatabase() {
 		asset = ScriptableObject.CreateInstance<WeatherList>();                    
 
-		AssetDatabase.CreateAsset (asset, "Assets/Scenes/UniversDatabase/Resources/WeatherDatabase.asset");
+		AssetDatabase.CreateAsset (asset, "Assets/Resources/Databases/WeatherDatabase.asset");
 		AssetDatabase.SaveAssets();     
 		return asset;
 	}

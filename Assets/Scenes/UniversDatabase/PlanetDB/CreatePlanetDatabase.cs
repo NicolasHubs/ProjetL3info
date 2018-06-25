@@ -13,7 +13,7 @@ public class CreatePlanetDatabase : MonoBehaviour {
 	public static PlanetList createPlanetDatabase() {
 		asset = ScriptableObject.CreateInstance<PlanetList>();                    
 
-		AssetDatabase.CreateAsset (asset, "Assets/Scenes/UniversDatabase/Resources/PlanetDatabase.asset");
+		AssetDatabase.CreateAsset (asset, "Assets/Resources/Databases/PlanetDatabase.asset");
 		AssetDatabase.SaveAssets();     
 		return asset;
 	}

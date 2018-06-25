@@ -11,6 +11,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class PM_Manager : EditorWindow {
 
+	static FloraList globalFloraList = null;
 	static PlanetTypeList globalPlanetTypeList = null;
 	static WeatherList globalWeatherList = null;
 	static OreList globalOreList = null;
@@ -22,46 +23,55 @@ public class PM_Manager : EditorWindow {
 	{
 		EditorWindow.GetWindow(typeof(PM_Manager));
 
-		Object planetTypeDatabase = Resources.Load("PlanetTypeDatabase");
+		Object floraDatabase = Resources.Load("Databases/FloraDatabase");
+		if (floraDatabase == null)
+			globalFloraList = CreateFloraDatabase.createFloraDatabase ();
+		else
+			globalFloraList = (FloraList)Resources.Load("Databases/FloraDatabase");
+
+		Object planetTypeDatabase = Resources.Load("Databases/PlanetTypeDatabase");
 		if (planetTypeDatabase == null)
 			globalPlanetTypeList = CreatePlanetTypeDatabase.createPlanetTypeDatabase ();
 		else
-			globalPlanetTypeList = (PlanetTypeList)Resources.Load("PlanetTypeDatabase");
+			globalPlanetTypeList = (PlanetTypeList)Resources.Load("Databases/PlanetTypeDatabase");
 	
-		Object weatherDatabase = Resources.Load("WeatherDatabase");
+		Object weatherDatabase = Resources.Load("Databases/WeatherDatabase");
 		if (weatherDatabase == null)
 			globalWeatherList = CreateWeatherDatabase.createWeatherDatabase ();
 		else
-			globalWeatherList = (WeatherList)Resources.Load("WeatherDatabase");
+			globalWeatherList = (WeatherList)Resources.Load("Databases/WeatherDatabase");
 
-		Object oreDatabase = Resources.Load("OreDatabase");
+		Object oreDatabase = Resources.Load("Databases/OreDatabase");
 		if (oreDatabase == null)
 			globalOreList = CreateOreDatabase.createOreDatabase ();
 		else
-			globalOreList = (OreList)Resources.Load("OreDatabase");
+			globalOreList = (OreList)Resources.Load("Databases/OreDatabase");
 
-		Object planetDatabase = Resources.Load("PlanetDatabase");
+		Object planetDatabase = Resources.Load("Databases/PlanetDatabase");
 		if (planetDatabase == null)
 			globalPlanetList = CreatePlanetDatabase.createPlanetDatabase ();
 		else
-			globalPlanetList = (PlanetList)Resources.Load("PlanetDatabase");
+			globalPlanetList = (PlanetList)Resources.Load("Databases/PlanetDatabase");
 
-		Object galaxyDatabase = Resources.Load("GalaxyDatabase");
+		Object galaxyDatabase = Resources.Load("Databases/GalaxyDatabase");
 		if (galaxyDatabase == null)
 			globalGalaxyList = CreateGalaxyDatabase.createGalaxyDatabase ();
 		else
-			globalGalaxyList = (GalaxyList)Resources.Load("GalaxyDatabase");
+			globalGalaxyList = (GalaxyList)Resources.Load("Databases/GalaxyDatabase");
+		
 	}
 
 	//bool showFaunaDataBase = false;
 	bool showOreDataBase = false;
 	//bool showItemsDataBase = false;
+	bool showFloraDataBase = false;
 	bool showPlanetTypeDataBase = false;
 	bool showWeatherDataBase = false;
 	bool showGalaxyDataBase = false;
 
 	Vector2 scrollPosition;
 
+	List<List<bool>> manageFlora = new List<List<bool>>();
 	List<bool> managePlanetType = new List<bool>();
 	List<bool> manageWeather = new List<bool>();
 	List<bool> manageOre = new List<bool>();
@@ -73,24 +83,28 @@ public class PM_Manager : EditorWindow {
 		//showFaunaDataBase = false;
 		showOreDataBase = false;
 		//showItemsDataBase = false;
+		showFloraDataBase = false;
 		showPlanetTypeDataBase = false;
 		showWeatherDataBase = false;
 		showGalaxyDataBase = false;
 	}
 
 	void OnGUI() {
-		/*
-		if (GUILayout.Button("Fauna")) {
-			allDatabaseBoolFalse ();
-			showFaunaDataBase = !showFaunaDataBase;
-		}*/
+		EditorGUILayout.BeginHorizontal();
+		if (GUILayout.Button("Quick launch")) {
+			Scenes.Load("Planet", loadFromJson (globalGalaxyList.galaxyList[0].stellarSystemList[0].planetList[0]));
+		}
+		EditorGUILayout.EndHorizontal();
 
 		EditorGUILayout.BeginHorizontal();
-		if (GUILayout.Button("TestLaunch")) {
-			if (globalGalaxyList == null)
-				globalGalaxyList = (GalaxyList)Resources.Load("GalaxyDatabase");
-			
-			Scenes.Load("TilemapStart", loadFromJson (globalGalaxyList.galaxyList[1].stellarSystemList[1].planetList[0]));
+
+		if (GUILayout.Button("Flora")) {
+			//allDatabaseBoolFalse ();
+			showPlanetTypeDataBase = false;
+			showWeatherDataBase = false;
+			showGalaxyDataBase = false;
+			showOreDataBase = false;
+			showFloraDataBase = !showFloraDataBase;
 		}
 		EditorGUILayout.EndHorizontal();
 
@@ -101,6 +115,7 @@ public class PM_Manager : EditorWindow {
 			showPlanetTypeDataBase = false;
 			showWeatherDataBase = false;
 			showGalaxyDataBase = false;
+			showFloraDataBase = false;
 			showOreDataBase = !showOreDataBase;
 		}
 		EditorGUILayout.EndHorizontal();
@@ -116,6 +131,7 @@ public class PM_Manager : EditorWindow {
 			showWeatherDataBase = false;
 			showOreDataBase = false;
 			showGalaxyDataBase = false;
+			showFloraDataBase = false;
 			showPlanetTypeDataBase = !showPlanetTypeDataBase;
 		}
 		EditorGUILayout.EndHorizontal();
@@ -126,6 +142,7 @@ public class PM_Manager : EditorWindow {
 			showOreDataBase = false;
 			showPlanetTypeDataBase = false;
 			showGalaxyDataBase = false;
+			showFloraDataBase = false;
 			showWeatherDataBase = !showWeatherDataBase;
 		}
 		EditorGUILayout.EndHorizontal();
@@ -135,11 +152,15 @@ public class PM_Manager : EditorWindow {
 			//allDatabaseBoolFalse ();
 			showPlanetTypeDataBase = false;
 			showWeatherDataBase = false;
+			showFloraDataBase = false;
 			showGalaxyDataBase = !showGalaxyDataBase;
 			showOreDataBase = false;
 		}
 		EditorGUILayout.EndHorizontal();
 
+		if (showFloraDataBase)
+			FloraDatabase ();
+		
 		if (showPlanetTypeDataBase)
 			PlanetTypeDataBase();
 
@@ -161,7 +182,7 @@ public class PM_Manager : EditorWindow {
 
 		GUILayout.BeginHorizontal();
 		GUILayout.FlexibleSpace();
-		toolbarInt = GUILayout.Toolbar(toolbarInt, toolbarWeatherStrings, GUILayout.Width(position.width - 18));                                                    //creating a toolbar(tabs) to navigate what you wanna do
+		toolbarInt = GUILayout.Toolbar(toolbarInt, toolbarWeatherStrings, GUILayout.Width(position.width - 18));
 		GUILayout.EndHorizontal();
 
 		scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
@@ -193,7 +214,7 @@ public class PM_Manager : EditorWindow {
 			}
 		} else if (toolbarInt == 1) {
 			if (globalWeatherList == null)
-				globalWeatherList = (WeatherList)Resources.Load("WeatherDatabase");
+				globalWeatherList = (WeatherList)Resources.Load("Databases/WeatherDatabase");
 			if (globalWeatherList.weatherList.Count == 0) {
 				GUILayout.Label("There is no Weather in the Database!");
 			} else {
@@ -234,20 +255,16 @@ public class PM_Manager : EditorWindow {
 
 	}
 
-	public int toolbarInt = 0;
-	public string[] toolbarPlanetTypeStrings = new string[] { "Create Planet type", "Planet type list" };
-	//private string typeTextField = "";
-	private PlanetType newPlanetType = new PlanetType();
+	public string[] toolbarFloraStrings = new string[] { "Create Flora", "Flora list" };
+	private Flora newFlora = new Flora();
 
-	public int index = 0;
-
-	void PlanetTypeDataBase()
+	void FloraDatabase()
 	{
 		EditorGUILayout.BeginVertical("Box");
 
 		GUILayout.BeginHorizontal();
 		GUILayout.FlexibleSpace();
-		toolbarInt = GUILayout.Toolbar(toolbarInt, toolbarPlanetTypeStrings, GUILayout.Width(position.width - 18));                                                    //creating a toolbar(tabs) to navigate what you wanna do
+		toolbarInt = GUILayout.Toolbar(toolbarInt, toolbarFloraStrings, GUILayout.Width(position.width - 18));
 		GUILayout.EndHorizontal();
 
 		scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
@@ -256,15 +273,149 @@ public class PM_Manager : EditorWindow {
 
 		if (toolbarInt == 0) {
 			GUI.color = Color.white;
-
 			GUILayout.BeginVertical("Box", GUILayout.Width(position.width - 23));
 			try {
-				newPlanetType.type = EditorGUILayout.TextField("Planet type", newPlanetType.type , GUILayout.Width(position.width - 30));
+				newFlora.name = EditorGUILayout.TextField("Flora name", newFlora.name, GUILayout.Width(position.width - 30));
+				newFlora.sizeX = EditorGUILayout.IntSlider("Flora X axis size", newFlora.sizeX, 1, 10, GUILayout.Width(position.width - 30));
+				newFlora.sizeY = EditorGUILayout.IntSlider("Flora Y axis size", newFlora.sizeY, 1, 10, GUILayout.Width(position.width - 30));
+				EditorGUILayout.LabelField("Trees' folder path : " + newFlora.treePath, GUILayout.Width (position.width - 30));
+				if (GUILayout.Button("Choose your tree", GUILayout.Width(position.width - 23))) {
+					newFlora.treePath = EditorUtility.OpenFilePanel("Overwrite with asset", Application.dataPath + "/Resources/TilePalette", "asset");
+				}
+			} catch { }
+			GUILayout.EndVertical();
+
+			GUI.color = Color.green;
+			GUI.SetNextControlName("Add Flora");
+			if (GUILayout.Button("Add Flora", GUILayout.Width(position.width - 23))) {
+				if (floraValid()) {
+					addFlora (newFlora.clone());
+					clearFlora ();
+				} else {
+					GUILayout.Label("The Flora is not valid");
+				}
+				GUI.FocusControl ("Add Flora"); 
+			}
+		} else if (toolbarInt == 1) {
+			if (globalFloraList == null)
+				globalFloraList = (FloraList)Resources.Load("Databases/FloraDatabase");
+			if (globalFloraList.floraList.Count == 0) {
+				GUI.color = Color.white;
+				GUILayout.Label("There is no Flora in the Database!");
+			} else {
+				GUI.color = Color.green;
+				GUI.SetNextControlName("Reload assets");
+				if (GUILayout.Button("Reload assets", GUILayout.Width(position.width - 23))) {
+					reloadFloraTreeAssets ();
+					GUI.FocusControl ("Reload assets");
+				}
+
+				GUILayout.Space (10);
+
+				GUILayout.BeginVertical();
+				List<string> floraType = new List<string> ();
+
+				for (int i = 0; i < globalFloraList.floraList.Count; i++) {
+					string treeType = globalFloraList.floraList [i].treeType;
+					if (!floraType.Contains(treeType)){
+						floraType.Add (treeType);
+					}
+				}
+
+				for (int i = 0; i < floraType.Count; i++) {
+					try {
+						manageFlora.Add(new List<bool>());
+						manageFlora[i].Add(false);
+						GUI.color = Color.cyan;
+						GUILayout.BeginVertical("Box");
+						manageFlora[i][0] = EditorGUILayout.Foldout(manageFlora[i][0], "" + floraType[i]);
+
+						if (manageFlora[i][0]) {
+
+							for (int j = 1; j <= globalFloraList.floraList.Count; j++) {
+								try {
+									if (globalFloraList.floraList[j-1].treeType.Equals(floraType[i])){
+										manageFlora[i].Add(false);
+										GUI.color = Color.white;
+										GUILayout.BeginVertical("Box");
+										manageFlora[i][j] = EditorGUILayout.Foldout(manageFlora[i][j], "" + globalFloraList.floraList[j-1].name);
+
+										if (manageFlora[i][j]) {
+											EditorUtility.SetDirty(globalFloraList); 
+
+											globalFloraList.floraList[j-1].name =  EditorGUILayout.TextField("Flora name", globalFloraList.floraList[j-1].name , GUILayout.Width(position.width - 30));
+
+											EditorGUILayout.LabelField("Tree type : " + globalFloraList.floraList[i].treeType, GUILayout.Width (position.width - 30));
+
+											globalFloraList.floraList[j-1].sizeX = EditorGUILayout.IntSlider("Flora X axis size", globalFloraList.floraList[j-1].sizeX, 1, 10, GUILayout.Width(position.width - 30));
+
+											globalFloraList.floraList[j-1].sizeY = EditorGUILayout.IntSlider("Flora Y axis size", globalFloraList.floraList[j-1].sizeY, 1, 10, GUILayout.Width(position.width - 30));
+
+											globalFloraList.floraList[j-1].tree = (TileBase)EditorGUILayout.ObjectField("Tree tile", globalFloraList.floraList[j-1].tree, typeof(TileBase), false, GUILayout.Width(position.width - 30)); 
+
+											EditorGUILayout.LabelField("Tree path : " + globalFloraList.floraList[j-1].treePath, GUILayout.Width (position.width - 30));
+
+											EditorUtility.SetDirty(globalFloraList);
+
+											GUI.color = Color.red;
+											if (GUILayout.Button("Delete Flora"))
+											{
+												globalFloraList.floraList.RemoveAt(j-1);
+												EditorUtility.SetDirty(globalFloraList);
+											}
+										}
+										GUILayout.EndVertical();
+									}
+								}
+								catch { }
+							}
+						}
+						GUILayout.EndVertical();
+					}
+					catch { }
+
+				}
+				GUILayout.EndVertical();
+			}
+		}
+
+		EditorGUILayout.EndScrollView();
+
+		EditorGUILayout.EndVertical();
+	}
+
+	public int toolbarInt = 0;
+	public string[] toolbarPlanetTypeStrings = new string[] { "Create Planet type", "Planet type list" };
+	private PlanetType newPlanetType = new PlanetType();
+	public int index = 0;
+
+	void PlanetTypeDataBase()
+	{
+		EditorGUILayout.BeginVertical("Box");
+
+		GUILayout.BeginHorizontal();
+		GUILayout.FlexibleSpace();
+		toolbarInt = GUILayout.Toolbar(toolbarInt, toolbarPlanetTypeStrings, GUILayout.Width(position.width - 18));
+		GUILayout.EndHorizontal();
+
+		scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
+
+		GUILayout.Space(10);
+
+		if (toolbarInt == 0) {
+			GUI.color = Color.white;
+			GUILayout.BeginVertical("Box", GUILayout.Width(position.width - 23));
+			try {
+				newPlanetType.type = EditorGUILayout.TextField("Planet type", newPlanetType.type , GUILayout.Width(position.width - 33));
 				newPlanetType.ruleTile = (TileBase)EditorGUILayout.ObjectField("Rule tile", newPlanetType.ruleTile, typeof(TileBase), false, GUILayout.Width(position.width - 33)); 
 				newPlanetType.backgroundTile = (TileBase)EditorGUILayout.ObjectField("Background tile", newPlanetType.backgroundTile, typeof(TileBase), false, GUILayout.Width(position.width - 33)); 
 				newPlanetType.chestSprite = (TileBase)EditorGUILayout.ObjectField("Chest sprite", newPlanetType.chestSprite, typeof(TileBase), false, GUILayout.Width(position.width - 33)); 
 				newPlanetType.unbreakableTile = (TileBase)EditorGUILayout.ObjectField("Unbreakable tile", newPlanetType.unbreakableTile, typeof(TileBase), false, GUILayout.Width(position.width - 33)); 
+				EditorGUILayout.LabelField("Trees' folder path : " + newPlanetType.treeAssetsPath, GUILayout.Width (position.width - 33));
 
+				if (GUILayout.Button("Choose tree's assets folder path", GUILayout.Width(position.width - 33))) {
+					newPlanetType.treeAssetsPath = EditorUtility.OpenFolderPanel("Double clic on the folder which contains the assets", Application.dataPath + "/Resources/TilePalette", "");
+				}
 			} catch { }
 			GUILayout.EndVertical();
 
@@ -281,11 +432,21 @@ public class PM_Manager : EditorWindow {
 			}
 		} else if (toolbarInt == 1) {
 			if (globalPlanetTypeList == null)
-				globalPlanetTypeList = (PlanetTypeList)Resources.Load("PlanetTypeDatabase");
+				globalPlanetTypeList = (PlanetTypeList)Resources.Load("Databases/PlanetTypeDatabase");
 			if (globalPlanetTypeList.planetTypeList.Count == 0) {
 				GUI.color = Color.white;
 				GUILayout.Label("There is no Planet type in the Database!");
 			} else {
+
+				GUI.color = Color.green;
+				GUI.SetNextControlName("Reload assets");
+				if (GUILayout.Button("Reload assets", GUILayout.Width(position.width - 23))) {
+					reloadPlanetTypeTreeAssets ();
+					GUI.FocusControl ("Reload assets");
+				}
+
+				GUILayout.Space (10);
+
 				GUILayout.BeginVertical();
 			
 				for (int i = 0; i < globalPlanetTypeList.planetTypeList.Count; i++) {
@@ -309,10 +470,8 @@ public class PM_Manager : EditorWindow {
 
 							globalPlanetTypeList.planetTypeList[i].unbreakableTile = (TileBase)EditorGUILayout.ObjectField("Unbreakable tile", globalPlanetTypeList.planetTypeList[i].unbreakableTile, typeof(TileBase), false, GUILayout.Width(position.width - 33)); 
 
-							/*
-							for(int j = 0; j < globalWeatherList.weatherList.Count; j++)
-								globalPlanetTypeList.planetTypeList[i].isOnPlanet[j] = EditorGUILayout.Toggle(globalWeatherList.weatherList[j].name, globalPlanetTypeList.planetTypeList[i].isOnPlanet[j]);
-							*/
+							EditorGUILayout.LabelField("Trees' folder path :" + globalPlanetTypeList.planetTypeList[i].treeAssetsPath, GUILayout.Width (position.width - 33));
+
 							EditorUtility.SetDirty(globalPlanetTypeList);
 
 							GUI.color = Color.red;
@@ -338,7 +497,6 @@ public class PM_Manager : EditorWindow {
 	}
 
 	public string[] toolbarOreStrings = new string[] { "Create Ore", "Ore list" };
-	//private string typeTextField = "";
 	private Ore newOre = new Ore();
 
 	void OreDataBase() {
@@ -346,7 +504,7 @@ public class PM_Manager : EditorWindow {
 
 		GUILayout.BeginHorizontal();
 		GUILayout.FlexibleSpace();
-		toolbarInt = GUILayout.Toolbar(toolbarInt, toolbarOreStrings, GUILayout.Width(position.width - 18));                                                    //creating a toolbar(tabs) to navigate what you wanna do
+		toolbarInt = GUILayout.Toolbar(toolbarInt, toolbarOreStrings, GUILayout.Width(position.width - 18));
 		GUILayout.EndHorizontal();
 
 		scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
@@ -385,7 +543,7 @@ public class PM_Manager : EditorWindow {
 			}
 		} else if (toolbarInt == 1) {
 			if (globalOreList == null)
-				globalOreList = (OreList)Resources.Load("OreDatabase");
+				globalOreList = (OreList)Resources.Load("Databases/OreDatabase");
 			if (globalOreList.oreList.Count == 0) {
 				GUI.color = Color.white;
 				GUILayout.Label("There is no Ore in the Database!");
@@ -439,7 +597,7 @@ public class PM_Manager : EditorWindow {
 		scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
 
 		if (globalGalaxyList == null)
-			globalGalaxyList = (GalaxyList)Resources.Load("GalaxyDatabase");
+			globalGalaxyList = (GalaxyList)Resources.Load("Databases/GalaxyDatabase");
 
 		GUI.color = Color.green;
 		GUI.SetNextControlName("Regenerate Galaxy");
@@ -510,6 +668,9 @@ public class PM_Manager : EditorWindow {
 										// Planet type
 										EditorGUILayout.LabelField("Planet Type : " + globalGalaxyList.galaxyList[i].stellarSystemList[j-1].planetList[k-1].planetType.type, GUILayout.Width (position.width - 45));
 
+										// Planet tree folder path
+										EditorGUILayout.LabelField("Trees' folder path : " + globalGalaxyList.galaxyList[i].stellarSystemList[j-1].planetList[k-1].planetType.treeAssetsPath, GUILayout.Width (position.width - 45));
+
 										// Horizontal size
 										EditorGUILayout.LabelField("Horizontal size : " + globalGalaxyList.galaxyList[i].stellarSystemList[j-1].planetList[k-1].horizontalSize, GUILayout.Width (position.width - 45));
 
@@ -563,14 +724,14 @@ public class PM_Manager : EditorWindow {
 
 										GUI.color = Color.white;
 										if (GUILayout.Button("Load this planet")) {
-											if ("TilemapStart".Equals(SceneManager.GetActiveScene().name)){
+											if ("Planet".Equals(SceneManager.GetActiveScene().name)){
 												Debug.Log("Sauvegarde de la planète " + GameObject.FindGameObjectWithTag("grid").GetComponent<PlanetGenerator>().planet.name + "...");
 												savePlanet(GameObject.FindGameObjectWithTag("grid").GetComponent<PlanetGenerator>().planet);
 												Debug.Log("La planète " + GameObject.FindGameObjectWithTag("grid").GetComponent<PlanetGenerator>().planet.name + " a été sauvegardée avec succès !");
-												SceneManager.LoadScene("TilemapDemoComplete");
+												SceneManager.LoadScene("Hub");
 											}
 
-											Scenes.Load("TilemapStart", loadFromJson (globalGalaxyList.galaxyList[i].stellarSystemList[j-1].planetList[k-1]));
+											Scenes.Load("Planet", loadFromJson (globalGalaxyList.galaxyList[i].stellarSystemList[j-1].planetList[k-1]));
 										}
 
 										GUI.color = Color.red;
@@ -625,7 +786,7 @@ public class PM_Manager : EditorWindow {
 
 	Planet loadFromJson(Planet planet){
 		if (globalGalaxyList == null)
-			globalGalaxyList = (GalaxyList)Resources.Load("GalaxyDatabase");
+			globalGalaxyList = (GalaxyList)Resources.Load("Databases/GalaxyDatabase");
 		
 		string filePath = Application.dataPath + "/Scenes/PlanetSaves/planetDataG" + planet.galaxy + "S" + planet.stellarSystem + "P" + planet.planetID + ".json";
 		if (File.Exists (filePath)) {
@@ -638,7 +799,7 @@ public class PM_Manager : EditorWindow {
 
 	void savePlanet(Planet planetToSave){
 		if (globalGalaxyList == null)
-			globalGalaxyList = (GalaxyList)Resources.Load("GalaxyDatabase");
+			globalGalaxyList = (GalaxyList)Resources.Load("Databases/GalaxyDatabase");
 		
 		if (globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID].savedMapHeight.GetLength (0) == 0) 
 			globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID].savedMapHeight = new int[planetToSave.savedMapHeight.GetLength (0)];
@@ -665,7 +826,7 @@ public class PM_Manager : EditorWindow {
 
 	void clearGalaxy(){
 		if (globalGalaxyList == null)
-			globalGalaxyList = (GalaxyList)Resources.Load("GalaxyDatabase");
+			globalGalaxyList = (GalaxyList)Resources.Load("Databases/GalaxyDatabase");
 		
 		EditorUtility.SetDirty (globalGalaxyList);
 		globalGalaxyList.galaxyList.Clear ();
@@ -674,7 +835,7 @@ public class PM_Manager : EditorWindow {
 
 	void generateGalaxy(int nbGalaxyToGenerate){
 		if (globalGalaxyList == null)
-			globalGalaxyList = (GalaxyList)Resources.Load("GalaxyDatabase");
+			globalGalaxyList = (GalaxyList)Resources.Load("Databases/GalaxyDatabase");
 		
 		string filePath = Application.dataPath + "/Scenes/PlanetSaves";
 
@@ -733,14 +894,12 @@ public class PM_Manager : EditorWindow {
 		"#FF7E7E"
 	};
 
-	// TODO : Changer la couleur des blocs de glace en bleu, et le sol en blanc, ça rend vraiment mieux
 	Planet generatePlanet(int galaxy, int stellarSystem, int planetID){
 		if (globalPlanetTypeList == null)
-			globalPlanetTypeList = (PlanetTypeList)Resources.Load("PlanetTypeDatabase");
+			globalPlanetTypeList = (PlanetTypeList)Resources.Load("Databases/PlanetTypeDatabase");
 
 		if (globalOreList == null)
-			globalOreList = (OreList)Resources.Load("OreDatabase");
-
+			globalOreList = (OreList)Resources.Load("Databases/OreDatabase");
 
 		int rdmIntValue;
 
@@ -831,9 +990,58 @@ public class PM_Manager : EditorWindow {
 		return newPlanet;
 	}
 
+	void reloadPlanetTypeTreeAssets(){
+		if (globalPlanetTypeList == null)
+			globalPlanetTypeList = (PlanetTypeList)Resources.Load("Databases/PlanetTypeDatabase");
+
+		for (int i = 0; i < globalPlanetTypeList.planetTypeList.Count;i++){
+			if (!"".Equals (globalPlanetTypeList.planetTypeList[i].treeAssetsPath) && Directory.Exists (globalPlanetTypeList.planetTypeList[i].treeAssetsPath)) {
+				if (globalFloraList == null)
+					globalFloraList = (FloraList)Resources.Load("Databases/FloraDatabase");
+
+				globalPlanetTypeList.planetTypeList[i].treeList = new List<Flora> ();
+				string pathInResources = globalPlanetTypeList.planetTypeList[i].treeAssetsPath.Split(new string[] {"Resources/"}, System.StringSplitOptions.None)[1];
+				string floraTypeSelected = pathInResources.Split(new string[] {"/"}, System.StringSplitOptions.None)[1];
+
+				for (int j = 0; j < globalFloraList.floraList.Count; j++) {
+					Flora flora = globalFloraList.floraList [j];
+					if (flora.treeType.Equals (floraTypeSelected)) {
+						//globalFloraList.floraList [j].treePath = globalPlanetTypeList.planetTypeList [i].treeAssetsPath + "/" + globalFloraList.floraList [j].name;
+						globalPlanetTypeList.planetTypeList[i].treeList.Add (flora);
+					}
+				}
+			}
+		}
+	}
+
+	void reloadFloraTreeAssets(){
+		if (globalFloraList == null)
+			globalFloraList = (FloraList)Resources.Load ("Databases/FloraDatabase");
+
+		for (int i = 0; i < globalFloraList.floraList.Count; i++) {
+			if (!"".Equals (globalFloraList.floraList[i].treePath) && File.Exists (globalFloraList.floraList[i].treePath)) {
+				newFlora.tree = Resources.Load<TileBase> (globalFloraList.floraList[i].treePath);
+			}
+
+			/*
+			if (globalFloraList.floraList [i].sizeX == 3 && globalFloraList.floraList [i].sizeY == 7) {
+				globalFloraList.floraList [i].sizeX = 4;
+				globalFloraList.floraList [i].sizeY = 8;
+			} else if (globalFloraList.floraList [i].sizeX == 3 && globalFloraList.floraList [i].sizeY == 3) {
+				globalFloraList.floraList [i].sizeX = 4;
+				globalFloraList.floraList [i].sizeY = 4;
+
+			} else if (globalFloraList.floraList [i].sizeX == 7 && globalFloraList.floraList [i].sizeY == 7) {
+				globalFloraList.floraList [i].sizeX = 8;
+				globalFloraList.floraList [i].sizeY = 8;
+			}*/
+
+		}
+	}
+
 	void addPlanet(Planet newPlanet) {
 		if (globalPlanetList == null)
-			globalPlanetList = (PlanetList)Resources.Load("PlanetDatabase");
+			globalPlanetList = (PlanetList)Resources.Load("Databases/PlanetDatabase");
 		
 		EditorUtility.SetDirty (globalPlanetList);
 		globalPlanetList.planetList.Add(newPlanet);
@@ -847,7 +1055,7 @@ public class PM_Manager : EditorWindow {
 
 	bool oreValid() {
 		if (globalOreList == null)
-			globalOreList = (OreList)Resources.Load("OreDatabase");
+			globalOreList = (OreList)Resources.Load("Databases/OreDatabase");
 		
 		if ("".Equals (newOre.name.Trim ()))
 			return false;
@@ -875,17 +1083,68 @@ public class PM_Manager : EditorWindow {
 
 	void addOre(Ore newOre) {
 		if (globalOreList == null)
-			globalOreList = (OreList)Resources.Load("OreDatabase");
+			globalOreList = (OreList)Resources.Load("Databases/OreDatabase");
 		
 		EditorUtility.SetDirty (globalOreList);
 		globalOreList.oreList.Add(newOre);
 		EditorUtility.SetDirty(globalOreList);
 	}
 
+	bool floraValid() {
+		if (globalFloraList == null)
+			globalFloraList = (FloraList)Resources.Load("Databases/FloraDatabase");
+
+		if (newFlora.sizeX <= 0 || newFlora.sizeY <= 0)
+			return false;
+
+		if ("".Equals (newFlora.treeType))
+			return false;
+
+		if (!BuildTreeAsset ())
+			return false;
+
+		return true;
+	}
+
+	bool BuildTreeAsset(){
+		bool res = false;
+		if (!"".Equals (newFlora.treePath) && File.Exists (newFlora.treePath)) {
+			string pathInResources = newFlora.treePath.Split (new string[] { "Resources/" }, System.StringSplitOptions.None) [1];
+			newFlora.treeType = pathInResources.Split (new string[] { "/" }, System.StringSplitOptions.None) [1];
+			newFlora.treePath = newFlora.treePath.Split(new string[] { "." }, System.StringSplitOptions.None) [0];
+			pathInResources = pathInResources.Split (new string[] { "." }, System.StringSplitOptions.None) [0];
+
+			if ("".Equals (newFlora.name.Trim ()))
+				newFlora.name = pathInResources.Split (new string[] { "/" }, System.StringSplitOptions.None) [2];
+					
+			newFlora.tree = Resources.Load<TileBase> (pathInResources);
+
+			if (newFlora.tree != null)
+				res = true;
+		}
+		return res;
+	}
+		
+	void clearFlora() {
+		newFlora.name = "";
+		newFlora.treeType = "";
+		newFlora.sizeX = 0;
+		newFlora.sizeY = 0;
+		newFlora.tree = null;
+	}
+
+	void addFlora(Flora newFlora) {
+		if (globalFloraList == null)
+			globalFloraList = (FloraList)Resources.Load("Databases/FloraDatabase");
+
+		EditorUtility.SetDirty (globalFloraList);
+		globalFloraList.floraList.Add(newFlora);
+		EditorUtility.SetDirty(globalFloraList);
+	}
 
 	bool planetTypeValid() {
 		if (globalPlanetTypeList == null)
-			globalPlanetTypeList = (PlanetTypeList)Resources.Load("PlanetTypeDatabase");
+			globalPlanetTypeList = (PlanetTypeList)Resources.Load("Databases/PlanetTypeDatabase");
 		
 		if ("".Equals (newPlanetType.type.Trim ()))
 			return false;
@@ -898,8 +1157,37 @@ public class PM_Manager : EditorWindow {
 		
 		if (newPlanetType.ruleTile == null || newPlanetType.chestSprite == null || newPlanetType.backgroundTile == null || newPlanetType.unbreakableTile == null)
 			return false;
+		
+		if ("".Equals (newPlanetType.treeAssetsPath))
+			return false;
 
+		if (!BuildTreeAssetsList ())
+			return false;
+		
 		return true;
+	}
+
+	bool BuildTreeAssetsList() {
+		bool res = false;
+		if (!"".Equals (newPlanetType.treeAssetsPath) && Directory.Exists (newPlanetType.treeAssetsPath)) {
+			if (globalFloraList == null)
+				globalFloraList = (FloraList)Resources.Load("Databases/FloraDatabase");
+			
+			newPlanetType.treeList = new List<Flora> ();
+			string pathInResources = newPlanetType.treeAssetsPath.Split(new string[] {"Resources/"}, System.StringSplitOptions.None)[1];
+			string floraTypeSelected = pathInResources.Split(new string[] {"/"}, System.StringSplitOptions.None)[1];
+
+			for (int i = 0; i < globalFloraList.floraList.Count; i++) {
+				Flora flora = globalFloraList.floraList [i];
+				if (flora.treeType.Equals (floraTypeSelected)) {
+					newPlanetType.treeList.Add (flora);
+				}
+			}
+
+			if (newPlanetType.treeList.Count > 0)
+				res = true;
+		}
+		return res;
 	}
 
 	void clearPlanetType() {
@@ -908,6 +1196,8 @@ public class PM_Manager : EditorWindow {
 		newPlanetType.chestSprite = null;
 		newPlanetType.backgroundTile = null;
 		newPlanetType.unbreakableTile = null;
+		newPlanetType.treeList = new List<Flora> ();
+		newPlanetType.treeAssetsPath = "";
 		/*
 		for (int i = 0; i < newPlanetType.weatherList.Count; i++)
 			newPlanetType.isOnPlanet [i] = false;*/
@@ -915,7 +1205,7 @@ public class PM_Manager : EditorWindow {
 
 	void addPlanetType(PlanetType newPlanetType) {
 		if (globalPlanetTypeList == null)
-			globalPlanetTypeList = (PlanetTypeList)Resources.Load("PlanetTypeDatabase");
+			globalPlanetTypeList = (PlanetTypeList)Resources.Load("Databases/PlanetTypeDatabase");
 		
 		EditorUtility.SetDirty (globalPlanetTypeList);
 		globalPlanetTypeList.planetTypeList.Add(newPlanetType);
@@ -924,7 +1214,7 @@ public class PM_Manager : EditorWindow {
 
 	int getPlanetTypeIndex(string type){
 		if (globalPlanetTypeList == null)
-			globalPlanetTypeList = (PlanetTypeList)Resources.Load("PlanetTypeDatabase");
+			globalPlanetTypeList = (PlanetTypeList)Resources.Load("Databases/PlanetTypeDatabase");
 
 		int num = 0;
 		foreach (PlanetType planetType in globalPlanetTypeList.planetTypeList) {
@@ -960,7 +1250,7 @@ public class PM_Manager : EditorWindow {
 
 	void addWeather(string weatherTextField) {
 		if (globalWeatherList == null)
-			globalWeatherList = (WeatherList)Resources.Load("WeatherDatabase");
+			globalWeatherList = (WeatherList)Resources.Load("Databases/WeatherDatabase");
 
 		EditorUtility.SetDirty (globalWeatherList);
 		Weather newWeather = new Weather();
@@ -971,7 +1261,7 @@ public class PM_Manager : EditorWindow {
 
 	bool weatherAlreadyCreated(string weatherTextField){
 		if (globalWeatherList == null)
-			globalWeatherList = (WeatherList)Resources.Load("WeatherDatabase");
+			globalWeatherList = (WeatherList)Resources.Load("Databases/WeatherDatabase");
 		
 		bool result = false;
 		foreach (Weather weather in globalWeatherList.weatherList) {

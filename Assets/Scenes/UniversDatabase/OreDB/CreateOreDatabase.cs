@@ -13,7 +13,7 @@ public class CreateOreDatabase : MonoBehaviour {
 	public static OreList createOreDatabase() {
 		asset = ScriptableObject.CreateInstance<OreList>();                    
 
-		AssetDatabase.CreateAsset (asset, "Assets/Scenes/UniversDatabase/Resources/OreDatabase.asset");
+		AssetDatabase.CreateAsset (asset, "Assets/Resources/Databases/OreDatabase.asset");
 		AssetDatabase.SaveAssets();     
 		return asset;
 	}

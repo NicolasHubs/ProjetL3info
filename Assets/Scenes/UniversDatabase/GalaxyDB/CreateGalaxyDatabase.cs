@@ -13,7 +13,7 @@ public class CreateGalaxyDatabase : MonoBehaviour {
 	public static GalaxyList createGalaxyDatabase() {
 		asset = ScriptableObject.CreateInstance<GalaxyList>();                    
 
-		AssetDatabase.CreateAsset (asset, "Assets/Scenes/UniversDatabase/Resources/GalaxyDatabase.asset");
+		AssetDatabase.CreateAsset (asset, "Assets/Resources/Databases/GalaxyDatabase.asset");
 		AssetDatabase.SaveAssets();     
 		return asset;
 	}

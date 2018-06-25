@@ -47,19 +47,67 @@ One of the most essential features in a 2D role-playing based adventure game is 
   <tr>
     <td align="center">Adding FullInventory function</td>
   </tr>
-  <tr>
-    <td rowspan="2" align="center">3</td>
-    <td align="center">Importing assets - Inventory Master</td>
-  </tr>
 </table>
   
 On another part, we found interesting to implement a craft system, where the player can create new items, thanks to many recipes.
     
   - **Craft System** - *MERRIEN Maxime*
+  
+  **_Find below a non-detailed & non-exhaustive list of tasks_**
+
+<table>
+  <th align="center"> Sprint Number </th>
+  <th align="center"> Functionalities added </th>
+  <tr>
+    <td rowspan="2" align="center">1</td>
+    <td align="center">Fixing minor bug - ResultSlot always coming back to 1st item</td>
+  </tr>
+  <tr>
+    <td align="center">Prohibiting consumming items in the Craft System</td>
+  </tr>
+  <tr>
+    <td rowspan="2" align="center">2</td>
+    <td align="center">Allowing the player to craft the amount of item he wants thanks to a spiner</td>
+  </tr>
+  <tr>
+    <td align="center">Adding input field to facilitate number selection</td>
+  </tr>
+  tr>
+    <td rowspan="2" align="center">3</td>
+    <td align="center">Calculating the max amount of item the player can craft at a certain point in time</td>
+  </tr>
+  <tr>
+    <td align="center">Managing the creation / addition of the item in the main inventory</td>
+  </tr>
+</table>
    
 Last but not least, we added a hotbar, in order to allow the player to quickly select the item he wants to use.
     
   - **Hotbar** - *SAMMANI Axel*
+  
+  **_Find below a non-detailed & non-exhaustive list of tasks_**
+
+<table>
+  <th align="center"> Sprint Number </th>
+  <th align="center"> Functionalities added </th>
+  <tr>
+    <td rowspan="2" align="center">1</td>
+    <td align="center">Importing assets - Inventory Master</td>
+  </tr>
+  <tr>
+    <td align="center">Allowing player to destroy resources and collect them afterwards</td>
+  </tr>
+  <tr>
+    <td rowspan="3" align="center">2</td>
+    <td align="center">Allowing split in main inventory</td>
+  </tr>
+  <tr>
+    <td align="center">Allowing drag and drop of items from main inventory to world</td>
+  </tr>
+  <tr>
+    <td align="center">Adding FullInventory function</td>
+  </tr>
+</table>
    
 ### 4. Character Stats
 

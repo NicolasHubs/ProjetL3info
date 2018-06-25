@@ -52,6 +52,10 @@ One of the most essential features in a 2D role-playing based adventure game is 
   <tr>
     <td align="center">Adding FullInventory function</td>
   </tr>
+  <tr>
+    <td rowspan="1" align="center">4</td>
+    <td align="center">Display of different recipes linked to the item and the recipe to create it</td>
+  </tr>
 </table>
   
 On another part, we found interesting to implement a craft system, where the player can create new items, thanks to many recipes.
@@ -96,21 +100,18 @@ Last but not least, we added a hotbar, in order to allow the player to quickly s
   <th align="center"> Sprint Number </th>
   <th align="center"> Functionalities added </th>
   <tr>
-    <td rowspan="2" align="center">1</td>
-    <td align="center">Importing assets - Inventory Master</td>
+    <td rowspan="3" align="center">3</td>
+    <td align="center">Generation of a cursor associated with the Hotbar</td>
   </tr>
   <tr>
-    <td align="center">Allowing player to destroy resources and collect them afterwards</td>
+    <td align="center">Drag & drop an item from the mainInventory towars the Hotbar</td>
   </tr>
   <tr>
-    <td rowspan="3" align="center">2</td>
-    <td align="center">Allowing split in main inventory</td>
+    <td align="center">Build the item selected by cursor (this item need to be a texture) </td>
   </tr>
   <tr>
-    <td align="center">Allowing drag and drop of items from main inventory to world</td>
-  </tr>
-  <tr>
-    <td align="center">Adding FullInventory function</td>
+    <td rowspan="1" align="center">5</td>
+    <td align="center">Equip itself with weapons thanks to the cursor</td>
   </tr>
 </table>
    

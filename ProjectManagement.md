@@ -7,6 +7,11 @@
 * BOURY Arthur
 * ESNAULT Alexis
 
+# Project Management
+During this project, our 7-member group worked using SCRUM agil method, thanks to the utilization of Trello.
+
+We also planified weekly meetings, each Monday, to discuss about what has been done the week before, and also what will be done the current week.
+
 # Main Supported Features
 * World Generation
 * Character's Actions - *running, jumping, picking up items, fighting*

@@ -25,7 +25,7 @@ For the **Game Interfaces**, the player can move between galaxies and planets in
 He can see information about those there.
 
 #### 3. Character Design and Animation
-Moving on to the **Character Design and Animation**. Here is how the character looks like : ![Penny](https://zupimages.net/up/18/25/4jlm.png)
+Moving on to the **Character Design and Animation**. Here is how the character looks like : ![Raider](https://zupimages.net/up/18/26/dno6.png)
 The character can make several actions, like :
 * Running
 * Jumping

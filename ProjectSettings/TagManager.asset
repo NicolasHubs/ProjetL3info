@@ -4,8 +4,34 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - TileStone
-  - FirstChunk
+  - FrontGround
+  - BackGround
+  - onlyTrigger
+  - vehicle
+  - gun
+  - ghost
+  - 2ddl
+  - deadTrigger
+  - Canvas
+  - EquipmentSystem
+  - Tooltip
+  - MainInventory
+  - Timer
+  - CraftSystem
+  - DraggingItem
+  - Hotbar
+  - Panel
+  - Slots
+  - ResultSlot
+  - Slot
+  - Item
+  - ItemIcon
+  - WeatherSystem
+  - grid
+  - BackgroundHandler
+  - Squirrel
+  - AIgroup
+  - Flora
   layers:
   - Default
   - TransparentFX
@@ -15,12 +41,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Ground
+  - Flora
+  - Enemy
+  - BackGround
+  - Obstacle
   - 
   - 
   - 
@@ -40,6 +66,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 131982245
+    locked: 0
+  - name: Foreground
+    uniqueID: 1632157909
+    locked: 0
+  - name: Mid
+    uniqueID: 3843229683
+    locked: 0
+  - name: Main
+    uniqueID: 1907945055
+    locked: 0
+  - name: Flora
+    uniqueID: 3752928933
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Effects
+    uniqueID: 1646391297
+    locked: 0
+  - name: HUL
+    uniqueID: 320888269
     locked: 0

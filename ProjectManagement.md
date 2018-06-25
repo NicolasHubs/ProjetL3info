@@ -72,7 +72,7 @@ On another part, we found interesting to implement a craft system, where the pla
   <tr>
     <td align="center">Adding input field to facilitate number selection</td>
   </tr>
-  tr>
+  <tr>
     <td rowspan="2" align="center">3</td>
     <td align="center">Calculating the max amount of item the player can craft at a certain point in time</td>
   </tr>

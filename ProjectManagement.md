@@ -17,8 +17,102 @@ We also planified weekly meetings, each Monday, to discuss about what has been d
 * Character's Actions - *running, jumping, picking up items, fighting*
 * Inventories Management - *consuming items, crafting items, equip items, split items*
 
-### 1. World Generation
+### 1. World Generation - *CROQ Nicolas & VARIS Florian*
 
+First we wanted the player to travel on a large number of planets. Generating the planets one by one would have taken too much time,
+that's why we decided to generate them in a procedural way, that means in a large scale (huge quantity of planets),
+completely automatic and following a set of rules defined by algorithm.
+
+Advantages of procedural generation include smaller file sizes, larger amounts of content, and randomness for less predictable gameplay.
+
+The generation process works in two steps :
+
+Step 1 : an algorithm will define the main parameters of the planets (horizontal and vertical size, available resources, climate...)
+Then the player can choose which planet to visit if the characteristics of the planet suit him.
+
+Step 2 : When the player chooses to go on a planet, this one will generated according to the parameters assigned to it.
+
+Note: The state of the planet is saved when the player decides to leave it.
+
+  - **Main Generation** - *CROQ Nicolas & VARIS Florian*
+
+       **_Find below a non-detailed & non-exhaustive list of tasks_**
+	   
+<table>
+  <th align="center"> Sprint Number </th>
+  <th align="center"> Functionalities added </th>
+  <tr>
+    <td rowspan="1" align="left">1</td>
+    <td align="center">Chunk based Generation</td>
+  </tr>
+  <tr>
+    <td rowspan="1" align="left">2</td>
+    <td align="center">Tilemap based Generation including caves, ore and seamless map</td>
+  </tr>
+   <tr>
+    <td rowspan="1" align="left">3</td>
+    <td align="center">Background, sun light, day / night cycle, weather system</td>
+  </tr>
+  <tr>
+    <td rowspan="1" align="left">4</td>
+    <td align="center">Ruletiles / sprites, Planet loading / saving</td>
+  </tr>
+   <tr>
+    <td rowspan="1" align="left">6</td>
+    <td align="center">Fauna / Flora generation</td>
+  </tr>
+</table>
+
+  - **Nicolas’ world generation functionalities** - *CROQ Nicolas*
+
+       **_Find below a non-detailed & non-exhaustive list of tasks_**
+
+<table>
+  <th align="center"> Sprint Number </th>
+  <th align="center"> Functionalities added </th>
+  <tr>
+    <td rowspan="1" align="left">1</td>
+    <td align="center">Non optimized generation with chunks</td>
+  </tr>
+  <tr>
+    <td rowspan="1" align="left">2</td>
+    <td align="center">Tilemap based, ore deposit and cave generation</td>
+  </tr>
+   <tr>
+    <td rowspan="1" align="left">3</td>
+    <td align="center">Game data managing tool, weather system (rain, snow, fog, lighting, stars), world light</td>
+  </tr>
+  <tr>
+    <td rowspan="1" align="left">4</td>
+    <td align="center">Optimized planet loading / saving</td>
+  </tr>
+  <tr>
+    <td rowspan="1" align="left">5</td>
+    <td align="center">Dumb (Move towards the player) and Smart (A* pathfinding) Artificial Intelligence</td>
+  </tr>
+   <tr>
+    <td rowspan="1" align="left">6</td>
+    <td align="center">Fauna generation with spawner depending on the time, flora generation</td>
+  </tr>
+</table>
+
+- **HUB creation (spaceship)** - *VARIS Florian*
+
+       **_Find below a non-detailed & non-exhaustive list of tasks_**
+	   
+<table>
+  <th align="center"> Sprint Number </th>
+  <th align="center"> Functionalities added </th>
+  <tr>
+    <td rowspan="1" align="left">5</td>
+    <td align="center">Creation of the sprites</td>
+  </tr>
+   <tr>
+    <td rowspan="1" align="left">6</td>
+    <td align="center">Creation of the scene and dynamique objects (doors, dashboard and teleportation pad)</td>
+  </tr>
+</table>
+	   
 ### 2. Character's Actions
 
 ### 3. Inventories Management - *SAMMANI Axel & MERRIEN Maxime*

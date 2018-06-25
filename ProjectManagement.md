@@ -42,24 +42,24 @@ Note: The state of the planet is saved when the player decides to leave it.
   <th align="center"> Sprint Number </th>
   <th align="center"> Functionalities added </th>
   <tr>
-    <td rowspan="1" align="left">1</td>
-    <td align="center">Chunk based Generation</td>
+    <td rowspan="1" align="center">1</td>
+    <td align="left">Chunk based Generation</td>
   </tr>
   <tr>
-    <td rowspan="1" align="left">2</td>
-    <td align="center">Tilemap based Generation including caves, ore and seamless map</td>
+    <td rowspan="1" align="center">2</td>
+    <td align="left">Tilemap based Generation including caves, ore and seamless map</td>
   </tr>
    <tr>
-    <td rowspan="1" align="left">3</td>
-    <td align="center">Background, sun light, day / night cycle, weather system</td>
+    <td rowspan="1" align="center">3</td>
+    <td align="left">Background, sun light, day / night cycle, weather system</td>
   </tr>
   <tr>
-    <td rowspan="1" align="left">4</td>
-    <td align="center">Ruletiles / sprites, Planet loading / saving</td>
+    <td rowspan="1" align="center">4</td>
+    <td align="left">Ruletiles / sprites, Planet loading / saving</td>
   </tr>
    <tr>
-    <td rowspan="1" align="left">6</td>
-    <td align="center">Fauna / Flora generation</td>
+    <td rowspan="1" align="center">6</td>
+    <td align="left">Fauna / Flora generation</td>
   </tr>
 </table>
 
@@ -71,28 +71,28 @@ Note: The state of the planet is saved when the player decides to leave it.
   <th align="center"> Sprint Number </th>
   <th align="center"> Functionalities added </th>
   <tr>
-    <td rowspan="1" align="left">1</td>
-    <td align="center">Non optimized generation with chunks</td>
+    <td rowspan="1" align="center">1</td>
+    <td align="left">Non optimized generation with chunks</td>
   </tr>
   <tr>
-    <td rowspan="1" align="left">2</td>
-    <td align="center">Tilemap based, ore deposit and cave generation</td>
+    <td rowspan="1" align="center">2</td>
+    <td align="left">Tilemap based, ore deposit and cave generation</td>
   </tr>
    <tr>
-    <td rowspan="1" align="left">3</td>
-    <td align="center">Game data managing tool, weather system (rain, snow, fog, lighting, stars), world light</td>
+    <td rowspan="1" align="center">3</td>
+    <td align="left">Game data managing tool, weather system (rain, snow, fog, lighting, stars), world light</td>
   </tr>
   <tr>
-    <td rowspan="1" align="left">4</td>
-    <td align="center">Optimized planet loading / saving</td>
+    <td rowspan="1" align="center">4</td>
+    <td align="left">Optimized planet loading / saving</td>
   </tr>
   <tr>
-    <td rowspan="1" align="left">5</td>
-    <td align="center">Dumb (Move towards the player) and Smart (A* pathfinding) Artificial Intelligence</td>
+    <td rowspan="1" align="center">5</td>
+    <td align="left">Dumb (Move towards the player) and Smart (A* pathfinding) Artificial Intelligence</td>
   </tr>
    <tr>
-    <td rowspan="1" align="left">6</td>
-    <td align="center">Fauna generation with spawner depending on the time, flora generation</td>
+    <td rowspan="1" align="center">6</td>
+    <td align="left">Fauna generation with spawner depending on the time, flora generation</td>
   </tr>
 </table>
 
@@ -104,12 +104,12 @@ Note: The state of the planet is saved when the player decides to leave it.
   <th align="center"> Sprint Number </th>
   <th align="center"> Functionalities added </th>
   <tr>
-    <td rowspan="1" align="left">5</td>
-    <td align="center">Creation of the sprites</td>
+    <td rowspan="1" align="center">5</td>
+    <td align="left">Creation of the sprites</td>
   </tr>
    <tr>
-    <td rowspan="1" align="left">6</td>
-    <td align="center">Creation of the scene and dynamique objects (doors, dashboard and teleportation pad)</td>
+    <td rowspan="1" align="center">6</td>
+    <td align="left">Creation of the scene and dynamique objects (doors, dashboard and teleportation pad)</td>
   </tr>
 </table>
 	   

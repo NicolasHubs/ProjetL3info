@@ -30,6 +30,7 @@ You only need **Unity** in order to run our project :
 
 ## Some pictures of our project
 
+![Alt text](https://zupimages.net/up/18/26/sd48.png "Starting screen")
 ![Alt text](https://zupimages.net/up/18/25/6pf3.png "Crafting items")
 
 ## Built With

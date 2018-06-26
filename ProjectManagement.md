@@ -113,7 +113,7 @@ Note: The state of the planet is saved when the player decides to leave it.
   </tr>
 </table>
 	   
-### 2. Character's Actions
+### 2. Character Actions
 
 ### 3. Inventories Management - *SAMMANI Axel & MERRIEN Maxime*
   

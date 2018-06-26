@@ -21,7 +21,7 @@ We also planified weekly meetings, each Monday, to discuss about what has been d
 
 First we wanted the player to travel on a large number of planets. Generating the planets one by one would have taken too much time,
 that's why we decided to generate them in a procedural way, that means in a large scale (huge quantity of planets),
-completely automatic and following a set of rules defined by algorithm.
+completely automatic and following a set of rules defined by an algorithm.
 
 Advantages of procedural generation include smaller file sizes, larger amounts of content, and randomness for less predictable gameplay.
 
@@ -30,7 +30,7 @@ The generation process works in two steps :
 Step 1 : an algorithm will define the main parameters of the planets (horizontal and vertical size, available resources, climate...)
 Then the player can choose which planet to visit if the characteristics of the planet suit him.
 
-Step 2 : When the player chooses to go on a planet, this one will generated according to the parameters assigned to it.
+Step 2 : When the player chooses to go on a planet, this one will be generated according to the parameters assigned to it.
 
 Note: The state of the planet is saved when the player decides to leave it.
 
@@ -47,7 +47,7 @@ Note: The state of the planet is saved when the player decides to leave it.
   </tr>
   <tr>
     <td rowspan="1" align="center">2</td>
-    <td align="left">Tilemap based Generation including caves, ore and seamless map</td>
+    <td align="left">Tilemap based Generation including caves, ores and seamless map</td>
   </tr>
    <tr>
     <td rowspan="1" align="center">3</td>
@@ -109,7 +109,7 @@ Note: The state of the planet is saved when the player decides to leave it.
   </tr>
    <tr>
     <td rowspan="1" align="center">6</td>
-    <td align="left">Creation of the scene and dynamique objects (doors, dashboard and teleportation pad)</td>
+    <td align="left">Creation of the scene and dynamic objects (doors, dashboard and teleportation pad)</td>
   </tr>
 </table>
 	   

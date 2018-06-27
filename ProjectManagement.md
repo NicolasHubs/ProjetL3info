@@ -256,7 +256,7 @@ Last but not least, we added a hotbar, in order to allow the player to quickly s
    
 ### 4. Character Stats
 
-### 5. Creating the Character *AL HUSSEIN Ryan*
+### 5. Creating the Character - *AL HUSSEIN Ryan*
 
 Before animating a character and giving him equipments and stats, we actually have to create it. 
 In order to do so, we used a character generator named Hero Editor. It gives you access to a variety of sprites, that you can mix up in order to create the character. The game camera will be stuck to that character, so it has to look great!

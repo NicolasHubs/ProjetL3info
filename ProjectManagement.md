@@ -71,27 +71,27 @@ Note: The state of the planet is saved when the player decides to leave it.
   <th align="center"> Sprint Number </th>
   <th align="center"> Functionalities added </th>
   <tr>
-    <td rowspan="1" align="center">1</td>
+    <td align="center">1</td>
     <td align="left">Non optimized generation with chunks</td>
   </tr>
   <tr>
-    <td rowspan="1" align="center">2</td>
+    <td align="center">2</td>
     <td align="left">Tilemap based, ore deposit and cave generation</td>
   </tr>
    <tr>
-    <td rowspan="1" align="center">3</td>
+    <td align="center">3</td>
     <td align="left">Game data managing tool, weather system (rain, snow, fog, lighting, stars), world light</td>
   </tr>
   <tr>
-    <td rowspan="1" align="center">4</td>
+    <td align="center">4</td>
     <td align="left">Optimized planet loading / saving</td>
   </tr>
   <tr>
-    <td rowspan="1" align="center">5</td>
+    <td align="center">5</td>
     <td align="left">Dumb (Move towards the player) and Smart (A* pathfinding) Artificial Intelligence</td>
   </tr>
    <tr>
-    <td rowspan="1" align="center">6</td>
+    <td align="center">6</td>
     <td align="left">Fauna generation with spawner depending on the time, flora generation</td>
   </tr>
 </table>
@@ -104,11 +104,11 @@ Note: The state of the planet is saved when the player decides to leave it.
   <th align="center"> Sprint Number </th>
   <th align="center"> Functionalities added </th>
   <tr>
-    <td rowspan="1" align="center">5</td>
+    <td align="center">5</td>
     <td align="left">Creation of the sprites</td>
   </tr>
    <tr>
-    <td rowspan="1" align="center">6</td>
+    <td align="center">6</td>
     <td align="left">Creation of the scene and dynamic objects (doors, dashboard and teleportation pad)</td>
   </tr>
 </table>
@@ -126,34 +126,34 @@ An animation is actually a row of images of the character, that are moving frame
  <th align="center"> Details </th>
   <tr>
 	<td align="center">Standing still</td>
-	<td align="center">When the character is idle, it has to "breathe". His torso goes up and down and his arms are slightly moving.</td>
+	<td align="left">When the character is idle, it has to "breathe". His torso goes up and down and his arms are slightly moving.</td>
    <tr>
 	<td align="center">Moving</td>
-	<td align="center">Moving the character to the left or right implies that his legs are moving, that his arms are tightly swinging and that his torso goes a little bit up and down. It is activated when the player presses left or right key (can be "q" or the left arrow).</td>
+	<td align="left">Moving the character to the left or right implies that his legs are moving, that his arms are tightly swinging and that his torso goes a little bit up and down. It is activated when the player presses left or right key (can be "q" or the left arrow).</td>
    </tr>
    <tr>
 		<td lign="center">Jumping</td>
-		<td align="center">Making the character jump implies that his legs are moving. It is activated when the player presses the space bar.</td>
+		<td align="left">Making the character jump implies that his legs are moving. It is activated when the player presses the space bar.</td>
 	</tr>
 	<tr>
 		<td align="center">Melee attacks</td>
-		<td align="center">Attacking with a melee weapon implies that the character moves the arm that holds it. We made it randomly choose between a slash (weapon goes up to down) and a jab (weapon goes pointing forward). It has to be a single click attack that is activated when the player presses the mouse button and while holding a melee weapon.</td>
+		<td align="left">Attacking with a melee weapon implies that the character moves the arm that holds it. We made it randomly choose between a slash (weapon goes up to down) and a jab (weapon goes pointing forward). It has to be a single click attack that is activated when the player presses the mouse button and while holding a melee weapon.</td>
 	</tr>
 	<tr>
 		<td align="center">Firing a gun</td>
-		<td align="center">When firing a gun, the character changes face (to look angry), it has to be a single click attack that is activated if there is enough ammunition left, when the player presses the mouse button and while holding a gun.</td>
+		<td align="left">When firing a gun, the character changes face (to look angry), it has to be a single click attack that is activated if there is enough ammunition left, when the player presses the mouse button and while holding a gun.</td>
 	</tr>
 	<tr>
 		<td align="center">Firing an SMG</td>
-		<td align="center">When firing an SMG, the character changes face (to look angry), it has to be an attack that is activated if there is enough ammunition left, for as long as the the player presses the mouse button and while holding a submachinegun.</td>
+		<td align="left">When firing an SMG, the character changes face (to look angry), it has to be an attack that is activated if there is enough ammunition left, for as long as the the player presses the mouse button and while holding a submachinegun.</td>
 	</tr>
 	<tr> 
 		<td align="center">Dying</td>
-		<td align="center">When the character dies, his face changes (crying), he falls on the ground (on the front or the back depending on where the attack that killed him came from). It is activated when there is no more life in the life bar.</td>
+		<td align="left">When the character dies, his face changes (crying), he falls on the ground (on the front or the back depending on where the attack that killed him came from). It is activated when there is no more life in the life bar.</td>
 	</tr>
 	<tr>
 		<td align="center">Reloading</td>
-		<td align="center">The character moves his hand to the magazine, removes it, throws it to the ground, and places another one instead. It can be activated when having a gun or submachinegun, by pressing "R" when the magazine is not full.</td>
+		<td align="left">The character moves his hand to the magazine, removes it, throws it to the ground, and places another one instead. It can be activated when having a gun or submachinegun, by pressing "R" when the magazine is not full.</td>
 	</tr>
 		
 </table>

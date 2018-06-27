@@ -192,7 +192,7 @@ One of the most essential features in a 2D role-playing based adventure game is 
     <td align="left">Adding FullInventory function</td>
   </tr>
   <tr>
-    <td rowspan="1" align="center">4</td>
+    <td align="center">4</td>
     <td align="left">Display of different recipes linked to the item and the recipe to create it</td>
   </tr>
 </table>

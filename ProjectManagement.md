@@ -113,8 +113,53 @@ Note: The state of the planet is saved when the player decides to leave it.
   </tr>
 </table>
 	   
-### 2. Character Actions
+### 2. Character Actions - *AL HUSSEIN Ryan*
 
+Basically, we want to assign an input to each of the character's actions. For instance, if the player presses the "q" key (or "a" for qwerty keyboards), then the character goes left. Not only does it move the character to the left or right, but the character has to constantly move every single part, in order for it to look "alive" rather than just static as a rock.
+
+An animation is actually a row of images of the characters, that are moving frame after frame. 
+ Take note that games are generally running with 30 frames per seconds. Which means that if you want to have an animation that lasts for 1 second, there will be 30 different images shown, ones after the others.
+
+ - **List of Actions** 
+<table>
+ <th align="center"> Action </th>
+ <th align="center"> Details </th>
+  <tr>
+	<td rowspan="1" align="center">Standing still</td>
+	<td align="left">When the character is idle, it has to "breathe". His torso goes up and down and his arms are slightly moving.</td>
+   <tr>
+	<td rowspan="1" align="center">Moving</td>
+	<td align="left">Moving the character to the left or right implies that his legs are moving, that his arms are tightly swinging and that his torso goes a little bit up and down. It is activated when the player presses left or right key (can be "q" or the left arrow).</td>
+   </tr>
+   <tr>
+		<td rowspan="1" align="center">Jumping</td>
+		<td align="left">Making the character jump implies that his legs are moving. It is activated when the player presses the space bar.</td>
+	</tr>
+	<tr>
+		<td rowspan="1" align="center">Melee attacks</td>
+		<td align="left">Attacking with a melee weapon implies that the character moves the arm that holds the knife. We made it randomly choose between a slash (weapon goes up to down) and a jab (weapon goes pointing forward). It has to be a single click attack that is activated when the player presses the mouse button and while holding a knife.</td>
+	</tr>
+	<tr>
+		<td rowspan="1" align="center">Firing a gun</td>
+		<td align="left">When firing a gun, the character changes face (to look angry) it has to be a single click attack that is activated if there is enough ammunition left, when the player presses the mouse button and while holding a gun.</td>
+	</tr>
+	<tr>
+		<td rowspan="1" align="center">Firing an SMG</td>
+		<td align="left">When firing an SMG, the character changes face (to look angry) it has to be an attack that is activated if there is enough ammunition left, for as long as the the player presses the mouse button and while holding a submachinegun.</td>
+	</tr>
+	<tr> 
+		<td rowspan="1" align="center">Dying</td>
+		<td align="left">When the character dies, his face changes (crying), he falls on the ground (on the front or the back depending on where the attack that killed him came from). It is activated when there is no more life in the life bar.</td>
+	</tr>
+	<tr>
+		<td rowspan="1" align="center">Reloading</td>
+		<td align="left">The character moves his hand to the magazine, removes it, throws it to the ground, and places another one instead. It can be activated when having a gun or submachinegun, by pressing "R" when the magazine is not full.</td>
+	</tr>
+		
+</table>
+                                               Note: SMG stands for SubMachineGun.
+			
+			
 ### 3. Inventories Management - *SAMMANI Axel & MERRIEN Maxime*
   
 One of the most essential features in a 2D role-playing based adventure game is indeed the managment of several items, weather it is equipments, consumables, quest rewards, and so on.
@@ -210,6 +255,19 @@ Last but not least, we added a hotbar, in order to allow the player to quickly s
 </table>
    
 ### 4. Character Stats
+
+### 5. Creating the Character *AL HUSSEIN Ryan*
+
+Before animating a character and giving him equipments and stats, we actually have to create it. 
+In order to do so, we used a character generator named Hero Editor. It gives you access to a variety of sprites, that you can mix up in order to create the character. The game camera will be stuck to that character, so it has to look great!
+
+Sprites are image files (like .PNG or .JPG, etc... ) representing separated parts of the character's body. (Here is an [exemple of sprite](https://ibb.co/eEQqpo) ).
+ Separating parts of the character's body allows us to animate them in Unity (See the [Character Actions](https://github.com/NicolasHubs/ProjetL3info/blob/master/ProjectManagement.md#2-character-actions) part).
+ In order to create these sprites, we also used Photoshop (reducing the size of some parts etc..).
+Check the [DESIGN](DESIGN.md) file to see what the character looks like.
+
+Every weapon is animated the same way, it has a sprite, making distinctions between each part of the weapon. It allows us, for instance to separate the magazine from the rest of the gun when reloading.
+
 
 # Time and Context of the project
 This project has been realized for the validation of the **_L3 Informatique_** of the **ISTIC**, on the *Campus de Beaulieu, Université de Rennes 1*.

@@ -286,8 +286,8 @@ Before loading a world and a level, the player has to choose it on the interface
         <td align="left"> Planet buttons are used to load a new level. Each button name have a new </td>
     </tr>
     <tr>
-        <td align="center">Melee attacks</td>
-        <td align="left">Attacking with a melee weapon implies that the character moves the arm that holds it. We made it randomly choose between a slash (weapon goes up to down) and a jab (weapon goes pointing forward). It has to be a single click attack that is activated when the player presses the mouse button and while holding a melee weapon.</td>
+        <td align="center"></td>
+        <td align="left"></td>
     </tr>
 </table>
 

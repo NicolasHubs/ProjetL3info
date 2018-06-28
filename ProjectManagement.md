@@ -2,7 +2,7 @@
 * CROQ Nicolas
 * SAMMANI Axel
 * MERRIEN Maxime
-* VARIS Florian
+* VARIS Millie (Florian)
 * AL HUSSEIN Ryan
 * BOURY Arthur
 * ESNAULT Alexis

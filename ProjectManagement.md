@@ -296,6 +296,10 @@ Before loading a world and a level, the player has to choose it on the interface
         <td align="center"> Representation of the interface : Menu Planet </td>
         <td align="left"> A menu with all the planet button which are representated in the list. When the player click on a planet button, it load the level of the current planet. </td>	    
     </tr>
+     <tr>
+        <td align="center">  </td>
+        <td align="left">  </td>	    
+    </tr>
 </table>
 
 # Time and Context of the project

@@ -42,7 +42,7 @@ You only need **Unity** in order to run our project :
 ### Organizational Tools
 
 * [Trello](https://trello.com/) - Especially good for tracking and visualizing the progress of our ideas
-* [GoogleDoc](https://unity3d.com/fr) - Mainly used to write in detail our game concept
+* [GoogleDoc](https://www.google.fr/intl/fr/docs/about/) - Mainly used to write in detail our game concept
 
 ## Authors
 

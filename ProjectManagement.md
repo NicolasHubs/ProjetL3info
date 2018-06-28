@@ -281,16 +281,20 @@ Before loading a world and a level, the player has to choose it on the interface
     <td align="left"> Move correctly a menu when we push a button. We create animations as Move-in, Move-out for each menu in the Unity Animation. Unity animator help us to link each animation. </td>
    </tr>
    <tr>
-        <td lign="center"> Procedural creation of Planet buttons </td>
-        <td align="left"> Planet buttons are used to load a new level. Each button name have a new </td>
+        <td lign="center"> Creation of buttons </td>
+        <td align="left"> All the button are clone on a exemple button. The procedural planet, system and galaxy name or links to all the button. We use a list of list of list to reprensetente the Galaxy -> System -> Planete. </td>
     </tr>
     <tr>
         <td align="center"> Representation of the interface : Menu Galaxy </td>
-        <td align="left"> A menu with all the galaxy button which are representated in a list. When the player click on a galaxy button this menu move out and the Menu with the system Button come in</td>
+        <td align="left"> A menu with all the galaxy button which are representated in the list. When the player click on a galaxy button this menu move out and the menu with the system button come in. Its loads all the system of the current galaxy.</td>
     </tr>
     <tr>
-        <td align="center"> Representation of the interface : Menu Galaxy </td>
-        <td align="left"> A menu with all the galaxy button which are representated in a list. When the player click on a galaxy button this menu move out and the Menu with the system Button come in</td>
+        <td align="center"> Representation of the interface : Menu System </td>
+        <td align="left"> A menu with all the system button which are representated in the list. When the player click on a system button this menu move out and the menu with the planet button come in. Its loads all the planet of the current system.</td>
+    </tr>
+    <tr>
+        <td align="center"> Representation of the interface : Menu Planet </td>
+        <td align="left"> A menu with all the planet button which are representated in the list. When the player click on a planet button, it load the level of the current planet. </td>	    
     </tr>
 </table>
 

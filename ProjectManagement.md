@@ -16,8 +16,9 @@ We also planified weekly meetings, each Monday, to discuss about what has been d
 * World Generation
 * Character's Actions - *running, jumping, picking up items, fighting*
 * Inventories Management - *consuming items, crafting items, equip items, split items*
+* Interfaces
 
-### 1. World Generation - *CROQ Nicolas & VARIS Florian*
+### 1. World Generation - *CROQ Nicolas & VARIS Millie*
 
 First we wanted the player to travel on a large number of planets. Generating the planets one by one would have taken too much time,
 that's why we decided to generate them in a procedural way, that means in a large scale (huge quantity of planets),
@@ -34,7 +35,7 @@ Step 2 : When the player chooses to go on a planet, this one will be generated a
 
 Note: The state of the planet is saved when the player decides to leave it.
 
-  - **Main Generation** - *CROQ Nicolas & VARIS Florian*
+  - **Main Generation** - *CROQ Nicolas & VARIS Millie*
 
        **_Find below a non-detailed & non-exhaustive list of tasks_**
 	   
@@ -96,7 +97,7 @@ Note: The state of the planet is saved when the player decides to leave it.
   </tr>
 </table>
 
-  - **HUB creation (spaceship)** - *VARIS Florian*
+  - **HUB creation (spaceship)** - *VARIS Millie*
 
        **_Find below a non-detailed & non-exhaustive list of tasks_**
 	   
@@ -253,10 +254,8 @@ Last but not least, we added a hotbar, in order to allow the player to quickly s
     <td align="left">Equip itself with weapons thanks to the cursor</td>
   </tr>
 </table>
-   
-### 4. Character Stats
 
-### 5. Creating the Character - *AL HUSSEIN Ryan*
+### 4. Creating the Character - *AL HUSSEIN Ryan*
 
 Before animating a character and giving him equipments and stats, we actually have to create it. 
 In order to do so, we used a character generator named Hero Editor. It gives you access to a variety of sprites, that you can mix up in order to create the character. The game camera will be stuck to that character, so it has to look great!
@@ -268,6 +267,7 @@ Check the [DESIGN](DESIGN.md) file to see what the character looks like.
 
 Every weapon is animated the same way, it has a sprite, making distinctions between each part of the weapon. It allows us, for instance to separate the magazine from the rest of the gun when reloading.
 
+### 5. Interfaces - *BOURY Arthur & ESNAULT Alexis*
 
 # Time and Context of the project
 This project has been realized for the validation of the **_L3 Informatique_** of the **ISTIC**, on the *Campus de Beaulieu, Université de Rennes 1*.

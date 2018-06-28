@@ -269,7 +269,7 @@ Every weapon is animated the same way, it has a sprite, making distinctions betw
 
 ### 5. Interfaces - *BOURY Arthur & ESNAULT Alexis*
 
-Before loading a world and a level, the player has to choose it on the interface. This interface is like a menu which allow the player to load the level he want. The interface is constitute of buttons which are links with every world of the game. The interface is composed by 3 menu like in the same way of our representation of the levels. 
+Before loading a world and a level, the player has to choose it on the interface. This interface is like a menu which allow the player to load the level he want. The interface is constitute of buttons which are linked with every world of the game. The interface is composed by 3 menus just like our representation of the levels. 
 <table>
  <th align="center"> Action </th>
  <th align="center"> Details </th>

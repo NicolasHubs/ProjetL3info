@@ -269,6 +269,28 @@ Every weapon is animated the same way, it has a sprite, making distinctions betw
 
 ### 5. Interfaces - *BOURY Arthur & ESNAULT Alexis*
 
+Before loading a world and a level, the player has to choose it on the interface. This interface is like a menu which allow the player to load the level he want. The interface is constitute of buttons which are links with every world of the game. The interface is composed by 3 menu like in the same way of our representation of the levels. 
+
+<table>
+ <th align="center"> Action </th>
+ <th align="center"> Details </th>
+  <tr>
+    <td align="center"> editing pictures we use in interface menu </td>
+    <td align="left"> We use photoshop to design menu borders, buttons, texts </td>
+   <tr>
+    <td align="center"> Menu animation </td>
+    <td align="left"> Move correctly a menu when we push a button. We create animations as Move-in, Move-out for each menu in the Unity Animation. Unity animator help us to link each animation. </td>
+   </tr>
+   <tr>
+        <td lign="center"> Procedural creation of Planet buttons </td>
+        <td align="left"> Planet buttons are used to load a new level. Each button name have a new </td>
+    </tr>
+    <tr>
+        <td align="center">Melee attacks</td>
+        <td align="left">Attacking with a melee weapon implies that the character moves the arm that holds it. We made it randomly choose between a slash (weapon goes up to down) and a jab (weapon goes pointing forward). It has to be a single click attack that is activated when the player presses the mouse button and while holding a melee weapon.</td>
+    </tr>
+</table>
+
 # Time and Context of the project
 This project has been realized for the validation of the **_L3 Informatique_** of the **ISTIC**, on the *Campus de Beaulieu, Université de Rennes 1*.
 Starting on Monday, 14th of May, it lasted 6 weeks.

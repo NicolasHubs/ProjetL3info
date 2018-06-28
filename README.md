@@ -52,7 +52,7 @@ You only need **Unity** in order to run our project :
 * **Esnault Alexis** - *Initial work* -
 * **Boury Arthur** - *Initial work* -
 * **Al Hussein Ryan** - *Initial work* -
-* **Varis Florian** - *Initial work* -
+* **Varis Millie (Florian)** - *Initial work* -
 
 
 

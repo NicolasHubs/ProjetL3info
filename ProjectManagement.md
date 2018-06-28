@@ -270,12 +270,11 @@ Every weapon is animated the same way, it has a sprite, making distinctions betw
 ### 5. Interfaces - *BOURY Arthur & ESNAULT Alexis*
 
 Before loading a world and a level, the player has to choose it on the interface. This interface is like a menu which allow the player to load the level he want. The interface is constitute of buttons which are links with every world of the game. The interface is composed by 3 menu like in the same way of our representation of the levels. 
-
 <table>
  <th align="center"> Action </th>
  <th align="center"> Details </th>
   <tr>
-    <td align="center"> editing pictures we use in interface menu </td>
+    <td align="center"> Editing pictures we use in interface menu </td>
     <td align="left"> We use photoshop to design menu borders, buttons, texts </td>
    <tr>
     <td align="center"> Menu animation </td>
@@ -286,8 +285,12 @@ Before loading a world and a level, the player has to choose it on the interface
         <td align="left"> Planet buttons are used to load a new level. Each button name have a new </td>
     </tr>
     <tr>
-        <td align="center"></td>
-        <td align="left"></td>
+        <td align="center"> Representation of the interface : Menu Galaxy </td>
+        <td align="left"> A menu with all the galaxy button which are representated in a list. When the player click on a galaxy button this menu move out and the Menu with the system Button come in</td>
+    </tr>
+    <tr>
+        <td align="center"> Representation of the interface : Menu Galaxy </td>
+        <td align="left"> A menu with all the galaxy button which are representated in a list. When the player click on a galaxy button this menu move out and the Menu with the system Button come in</td>
     </tr>
 </table>
 

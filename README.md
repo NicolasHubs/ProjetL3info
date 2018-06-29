@@ -30,7 +30,7 @@ You only need **Unity** in order to run our project :
 
 ## Some pictures of our project
 
-![Alt text](https://zupimages.net/up/18/26/tdfp.png "Main Menu")
+![Alt text](https://www.zupimages.net/up/18/26/tdfp.png "ffzfzfzfz details")
 ![Alt text](https://zupimages.net/up/18/26/c1z3.jpg "Planet details")
 ![Alt text](https://zupimages.net/up/18/26/7kl8.png "Inventory Panel")
 ![Alt text](https://zupimages.net/up/18/26/arzc.jpg "Weather")

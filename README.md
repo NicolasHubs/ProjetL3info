@@ -30,8 +30,12 @@ You only need **Unity** in order to run our project :
 
 ## Some pictures of our project
 
-![Alt text](https://zupimages.net/up/18/26/sd48.png "Starting screen")
-![Alt text](https://zupimages.net/up/18/25/6pf3.png "Crafting items")
+![Alt text](https://zupimages.net/up/18/26/tdfp.png "Main Menu")
+![Alt text](https://zupimages.net/up/18/26/c1z3.jpg "Planet details")
+![Alt text](https://zupimages.net/up/18/26/7kl8.png "Inventory Panel")
+![Alt text](https://zupimages.net/up/18/26/arzc.jpg "Weather")
+![Alt text](https://zupimages.net/up/18/26/er1c.png "Our spaceship")
+![Alt text](https://zupimages.net/up/18/26/o5ml.png "Night cycle")
 
 ## Built With
 

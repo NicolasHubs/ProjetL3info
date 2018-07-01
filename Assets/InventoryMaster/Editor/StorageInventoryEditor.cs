@@ -4,7 +4,8 @@ using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-[CustomEditor(typeof(StorageInventory))]
+
+    [CustomEditor(typeof(StorageInventory))]
 public class StorageInventoryEditor : Editor
 {
 

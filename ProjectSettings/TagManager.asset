@@ -32,6 +32,14 @@ TagManager:
   - Squirrel
   - AIgroup
   - Flora
+  - Slider
+  - BoutonsRecettes
+  - CraftItemNumber
+  - Raider
+  - RecettePanelCanvas
+  - PanelAccueil
+  - RecettePanel
+  - scrollBar
   layers:
   - Default
   - TransparentFX
@@ -47,7 +55,7 @@ TagManager:
   - Enemy
   - BackGround
   - Obstacle
-  - 
+  - premierPlan
   - 
   - 
   - 

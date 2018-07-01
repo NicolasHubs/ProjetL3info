@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
 using System.Collections.Generic;
 
+#if UNITY_EDITOR
 public class CreateGalaxyDatabase : MonoBehaviour {
 
 	public static GalaxyList asset;
 
-	#if UNITY_EDITOR
 	public static GalaxyList createGalaxyDatabase() {
 		asset = ScriptableObject.CreateInstance<GalaxyList>();                    
 
@@ -17,5 +15,6 @@ public class CreateGalaxyDatabase : MonoBehaviour {
 		AssetDatabase.SaveAssets();     
 		return asset;
 	}
-	#endif
 }
+
+#endif

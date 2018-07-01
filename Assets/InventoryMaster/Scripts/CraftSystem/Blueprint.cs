@@ -20,5 +20,4 @@ public class Blueprint
     }
 
     public Blueprint() { }
-
 }

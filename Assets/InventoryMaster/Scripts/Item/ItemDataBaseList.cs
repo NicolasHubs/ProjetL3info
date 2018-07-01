@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Tilemaps;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -23,6 +24,16 @@ public class ItemDataBaseList : ScriptableObject
         for (int i = 0; i < itemList.Count; i++)
         {
             if (itemList[i].itemName.ToLower().Equals(name.ToLower()))
+                return itemList[i].getCopy();
+        }
+        return null;
+    }
+
+    public Item getItemByTileBase(TileBase tb)
+    {
+        for (int i = 0; i < itemList.Count; i++)
+        {
+            if (tb.Equals(itemList[i].assetTile))
                 return itemList[i].getCopy();
         }
         return null;

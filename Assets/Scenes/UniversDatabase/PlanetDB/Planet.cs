@@ -30,8 +30,9 @@ public class Planet {
 	public int[] savedMapHeight = null;
 	public List<TileBase> tilesType;
 	public Vector3 playerLastPosition;
+	public Material planetMaterial;
 
-	public Planet(string name, float seed, int galaxy, int stellarSystem, int planetID, PlanetType planetType, int horizontalSize, int verticalSize, float smoothness, int heightMultiplier, float seedCave, float caveWidth, float caveQuantity, float gravity, float daySpeedMultiplier, string atmosphere, Color filter, int numberOfChest, List<Ore> oreList, int[,] savedMapMatrix, int[] savedMapHeight, List<TileBase> tilesType, Vector3 playerLastPosition) {
+	public Planet(string name, float seed, int galaxy, int stellarSystem, int planetID, PlanetType planetType, int horizontalSize, int verticalSize, float smoothness, int heightMultiplier, float seedCave, float caveWidth, float caveQuantity, float gravity, float daySpeedMultiplier, string atmosphere, Color filter, int numberOfChest, List<Ore> oreList, int[,] savedMapMatrix, int[] savedMapHeight, List<TileBase> tilesType, Vector3 playerLastPosition, Material planetMaterial) {
 		this.name = name;
 		this.seed = seed;
 		this.galaxy = galaxy;
@@ -55,6 +56,7 @@ public class Planet {
 		this.savedMapHeight = savedMapHeight;
 		this.tilesType = tilesType;
 		this.playerLastPosition = playerLastPosition;
+		this.planetMaterial = planetMaterial;
 	}
 
 	public Planet() {
@@ -81,6 +83,7 @@ public class Planet {
 		savedMapHeight = null;
 		tilesType = new List<TileBase> ();
 		playerLastPosition = new Vector3 (0,0,0);
+		planetMaterial = null;
 	}
 
 	public PlanetToJson formatPlanetToJson(){
@@ -88,18 +91,18 @@ public class Planet {
 		int tailleMatrix = 0;
 
 		for (int i = 0; i < savedMapMatrix.GetLength (0); i++) 
-			tailleMatrix += (savedMapHeight [i] - 1);
+			tailleMatrix += (savedMapHeight [i]);
 
 		int[] mapToEncrypt = new int[tailleMatrix];
 
 		// Déconstruction du tableau complet à deux dimensions en un tableau a 1 Dimension
 		int depth = 0;
-		for (int j = 1; j < savedMapHeight [0]; j++)
+		for (int j = 1; j <= savedMapHeight [0]; j++)
 			mapToEncrypt [j-1] = savedMapMatrix [0, j];
 		
 		for (int i = 1; i < savedMapMatrix.GetLength (0); i++) {
-			depth += savedMapHeight [i-1] - 1;
-			for (int j = 1; j < savedMapHeight [i]; j++) 
+			depth += savedMapHeight [i-1];
+			for (int j = 1; j <= savedMapHeight [i]; j++) 
 				mapToEncrypt [j - 1 + depth] = savedMapMatrix [i, j];
 		}
 		/*
@@ -173,7 +176,7 @@ public class Planet {
 		int tailleMatrix = 0;
 
 		for (int i = 0; i < savedMapMatrix.GetLength (0); i++)
-			tailleMatrix += (planetFromJson.savedMapHeight [i] - 1);
+			tailleMatrix += (planetFromJson.savedMapHeight [i]);
 
 		int[] mapDecrypted = new int[tailleMatrix];
 
@@ -189,10 +192,10 @@ public class Planet {
 
 		// Reconstruction du tableau complet à deux dimensions
 		int depth = 0;
-		for (int j = 0; j < savedMapHeight [0]; j++) {
+		for (int j = 0; j <= savedMapHeight [0]; j++) {
 			if (j == 0) {
 				savedMapMatrix [0, j] = 2;
-			} else if (j < planetFromJson.savedMapHeight[0]){
+			} else if (j <= planetFromJson.savedMapHeight[0]){
 				savedMapMatrix [0, j] = mapDecrypted [j];
 			} else {
 				savedMapMatrix [0, j] = 0;
@@ -200,11 +203,11 @@ public class Planet {
 		}
 			
 		for (int i = 1; i < savedMapMatrix.GetLength (0); i++){
-			depth += planetFromJson.savedMapHeight [i-1] - 1;
+			depth += planetFromJson.savedMapHeight [i-1];
 			for (int j = 0; j < savedMapMatrix.GetLength (1); j++) {
 				if (j == 0) {
 					savedMapMatrix [i, j] = 2;
-				} else if (j < planetFromJson.savedMapHeight[i]){
+				} else if (j <= planetFromJson.savedMapHeight[i]){
 					savedMapMatrix [i, j] = mapDecrypted [j + (depth-1)];
 				} else {
 					savedMapMatrix [i, j] = 0;
@@ -218,6 +221,6 @@ public class Planet {
 	}
 
 	public Planet clone(){
-		return new Planet((string)name.Clone(), seed, galaxy, stellarSystem, planetID, planetType.clone(), horizontalSize, verticalSize, smoothness, heightMultiplier,seedCave, caveWidth, caveQuantity, gravity, daySpeedMultiplier, (string)atmosphere.Clone(), filter,numberOfChest, new List<Ore>(oreList), savedMapMatrix, savedMapHeight,tilesType,playerLastPosition);
+		return new Planet((string)name.Clone(), seed, galaxy, stellarSystem, planetID, planetType.clone(), horizontalSize, verticalSize, smoothness, heightMultiplier,seedCave, caveWidth, caveQuantity, gravity, daySpeedMultiplier, (string)atmosphere.Clone(), filter,numberOfChest, new List<Ore>(oreList), savedMapMatrix, savedMapHeight,tilesType,playerLastPosition, planetMaterial);
 	}
 }

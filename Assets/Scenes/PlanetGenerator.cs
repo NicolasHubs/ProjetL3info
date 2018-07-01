@@ -4,12 +4,14 @@ using UnityEngine;
 using System.Threading;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System;
 using UnityEngine.Tilemaps;
+using System.IO;
 
 public class PlanetGenerator : MonoBehaviour {  
 
 	/*____________ VARIABLES' LIST ____________*/
+	static GalaxyList globalGalaxyList = null;
+    public GameObject Menu;
 
 	[HideInInspector]
 	public Planet planet;
@@ -60,13 +62,16 @@ public class PlanetGenerator : MonoBehaviour {
 	}
 
 	public void GenerateWorld (){
-		// Initialisation des variables et de la grid
-		Initialisation ();
+        
+			globalGalaxyList = (GalaxyList)Resources.Load("Databases/GalaxyDatabase");
+
+
+        // Initialisation des variables et de la grid
+        Initialisation ();
 
 		if (planet.savedMapHeight.GetLength (0) == 0 || planet.savedMapMatrix == null) {
 			planet.savedMapHeight = new int[planet.horizontalSize + sizeInterpolation];
 			planet.savedMapMatrix = new int[planet.horizontalSize + sizeInterpolation, maximalHeight];
-
 			planet.playerLastPosition = new Vector3 (0,0,0);
 
 			// Generation des vecteurs ainsi que de leur type de tile
@@ -295,8 +300,61 @@ public class PlanetGenerator : MonoBehaviour {
 		}
 	}
 
-	void Update (){
-		planet.playerLastPosition = mainCharacter.transform.position;
+	void saveToJson(Planet planet){
+		PlanetToJson ptj = new PlanetToJson ();
+		ptj = planet.formatPlanetToJson ();
+		string dataAsJson = JsonUtility.ToJson (ptj);
+		string filePath = Application.persistentDataPath + "/planetDataG" + planet.galaxy + "S" + planet.stellarSystem + "P" + planet.planetID + ".json";
+		File.WriteAllText (filePath, dataAsJson);
+	}
+
+	public void savePlanet(Planet planetToSave){
+		if (globalGalaxyList == null)
+			globalGalaxyList = (GalaxyList)Resources.Load("Databases/GalaxyDatabase");
+
+		if (globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID].savedMapHeight.GetLength (0) == 0) 
+			globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID].savedMapHeight = new int[planetToSave.savedMapHeight.GetLength (0)];
+
+		planetToSave.savedMapHeight.CopyTo(globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID].savedMapHeight,0);
+
+		int maximalHeight = GameObject.FindGameObjectWithTag ("grid").GetComponent<PlanetGenerator> ().maximalHeight;
+
+		if (globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID].savedMapMatrix == null) 
+			globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID].savedMapMatrix = new int[planetToSave.savedMapMatrix.GetLength(0),maximalHeight];
+
+		for (int x = 0; x < planetToSave.savedMapMatrix.GetLength(0); x++)
+			for (int y = 0; y < planetToSave.savedMapMatrix.GetLength(1); y++)
+				globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID].savedMapMatrix[x, y] = planetToSave.savedMapMatrix[x, y];
+
+		globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID].tilesType = planetToSave.tilesType;
+
+		globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID].playerLastPosition = new Vector3 (0, 0, 0);
+
+		globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID].playerLastPosition = planetToSave.playerLastPosition;
+
+		saveToJson (globalGalaxyList.galaxyList [planetToSave.galaxy].stellarSystemList [planetToSave.stellarSystem].planetList [planetToSave.planetID]);
+	}
+
+    public void SaveQuit()
+    {
+        savePlanet(planet);
+        Scenes.Load("HUB");
+    }
+
+    public void Continue()
+    {
+        Menu.SetActive(false);
+    }
+
+
+    void Update() {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Menu.SetActive(!Menu.activeSelf);
+        }
+
+        planet.playerLastPosition = mainCharacter.transform.position;
 		currentPos = frontGround.WorldToCell(planet.playerLastPosition);
 
 		int x = 0;
@@ -314,9 +372,9 @@ public class PlanetGenerator : MonoBehaviour {
 
 			if (i >= currentPos.x - fieldOfRender.x && i <= currentPos.x + fieldOfRender.x) {
 				for(int j = currentPos.y - fieldOfRender.y; j <= currentPos.y + fieldOfRender.y; j++){
-					if (j >= 0 && j <= planet.savedMapHeight [x]) {
+					if (j >= 0 && j < planet.savedMapMatrix.GetLength(1)) {
 						y = (int) Mathf.Clamp((float)j, 0.0f, (float)(maximalHeight-1));
-						if(planet.savedMapMatrix[x, y] >= 100){
+						if(planet.savedMapMatrix[x, y] >= 100) {
 							flora.SetTile (new Vector3Int (i, j, 0), planet.tilesType [planet.savedMapMatrix [x, y]-100]);
 						} else {
 							frontGround.SetColliderType (new Vector3Int (i, j, 0), Tile.ColliderType.Grid);
@@ -328,7 +386,7 @@ public class PlanetGenerator : MonoBehaviour {
 				}
 
 				for (int j = currentPos.y - fieldOfRender.y - additionalSight; j < currentPos.y - fieldOfRender.y; j++) 
-					if (j >= 0 && j < planet.savedMapHeight [x]) 
+					if (j >= 0 && j < planet.savedMapMatrix.GetLength(1)) 
 						frontGround.SetColliderType (new Vector3Int (i, j, 0), Tile.ColliderType.None);
 
 				if (currentPos.y + fieldOfRender.y < planet.savedMapHeight [x]) 

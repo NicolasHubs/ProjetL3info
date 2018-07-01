@@ -52,6 +52,7 @@ public class CloudSpawnScript : MonoBehaviour {
             cloud[0].GetComponent<Transform>().rotation
         );
         cloudClone.GetComponent<SpriteRenderer>().sprite = cloudSprite[Random.Range(0, 5)];
+        Debug.Log(Cloud.GetComponent<Transform>());
         cloudClone.GetComponent<Transform>().parent = Cloud.GetComponent<Transform>();
         cloudClone.GetComponent<CloudScript>().speed = speed[0];
         cloudClone.GetComponent<CloudScript>().colorDay = cloudColors[0];

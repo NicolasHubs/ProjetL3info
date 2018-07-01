@@ -8,11 +8,11 @@ using System.Linq;
 
 public class Hotbar : MonoBehaviour
 {
-
     [SerializeField]
     public KeyCode[] keyCodesForSlots = new KeyCode[999];
     [SerializeField]
     public int slotsInTotal;
+
 
 #if UNITY_EDITOR
     [MenuItem("Master System/Create/Hotbar")]        //creating the menu item
@@ -76,3 +76,4 @@ public class Hotbar : MonoBehaviour
         return slotsInTotal = inv.width * inv.height;
     }
 }
+

@@ -2,6 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Assets.HeroEditor.Common.CharacterScripts;
+using HeroEditor.Common.Enums;
+
 
 public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDragHandler
 {
@@ -10,20 +13,23 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
     private RectTransform rectTransformSlot;
     private CanvasGroup canvasGroup;
     private GameObject oldSlot;
+    private GameObject _player;
     private Inventory inventory;
     private Transform draggedItemBox;
+    private ItemDataBaseList _database;
 
     public delegate void ItemDelegate();
     public static event ItemDelegate updateInventoryList;
     void Start()
     {
+        _player = GameObject.FindGameObjectWithTag("Player");
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         rectTransformSlot = GameObject.FindGameObjectWithTag("DraggingItem").GetComponent<RectTransform>();
         inventory = transform.parent.parent.parent.GetComponent<Inventory>();
         draggedItemBox = GameObject.FindGameObjectWithTag("DraggingItem").transform;
+        _database = (ItemDataBaseList)Resources.Load("ItemDatabase");
     }
-
 
     public void OnDrag(PointerEventData data)
     {
@@ -46,8 +52,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
 
         inventory.OnUpdateItemList();
     }
-
-
 
     public void OnPointerDown(PointerEventData data)
     {
@@ -235,7 +239,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                 firstItemRectTransform.localPosition = Vector3.zero;
                             }
                             else
-                            {                                
+                            {
                                 firstItemGameObject.transform.SetParent(newSlot.transform);
                                 firstItemRectTransform.localPosition = Vector3.zero;
 
@@ -368,7 +372,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                             firstItemRectTransform.localPosition = Vector3.zero;
                         }
                         else
-                        {                            
+                        {
                             firstItemGameObject.transform.SetParent(newSlot.transform);
                             firstItemRectTransform.localPosition = Vector3.zero;
 
@@ -397,7 +401,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                         if (sameItemType && !sameItemRerferenced) //
                         {
                             Transform temp1 = secondItemGameObject.transform.parent.parent.parent;
-                            Transform temp2 = oldSlot.transform.parent.parent;                            
+                            Transform temp2 = oldSlot.transform.parent.parent;
 
                             firstItemGameObject.transform.SetParent(secondItemGameObject.transform.parent);
                             secondItemGameObject.transform.SetParent(oldSlot.transform);
@@ -552,7 +556,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                             {
                                 //if you are dragging an item from equipmentsystem to the inventory and try to swap it with the same itemtype
                                 if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() != null && firstItem.itemType == secondItem.itemType)
-                                {                                  
+                                {
 
                                     firstItemGameObject.transform.SetParent(secondItemGameObject.transform.parent);
                                     secondItemGameObject.transform.SetParent(oldSlot.transform);
@@ -588,7 +592,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                             firstItemRectTransform.localPosition = Vector3.zero;
                         }
                         else
-                        {                            
+                        {
                             firstItemGameObject.transform.SetParent(newSlot.transform);
                             firstItemRectTransform.localPosition = Vector3.zero;
 
@@ -598,24 +602,75 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                     }
 
                 }
-
-
             }
-
             else
             {
+                // position of the dropped item (i.e. gameObject)
+                Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mouse.z = 0;
+
+                // position of the player
+                Vector3 characPos = _player.transform.position;
+                print("Mouse --> " + mouse);
+                print("Characterpos --> " + characPos);
+                float DistMaxtTest = Mathf.Abs(mouse.y - characPos.y);
+                float distMax = Vector2.Distance(mouse, characPos);
+                print(distMax + " = " + DistMaxtTest);
+
+                PlanetGenerator scriptGen = GameObject.FindGameObjectWithTag("FrontGround").transform.parent.GetComponent<PlanetGenerator>();
+                UnityEngine.Tilemaps.Tilemap world = GameObject.FindGameObjectWithTag("FrontGround").GetComponent<UnityEngine.Tilemaps.Tilemap>();
+
+                // when dropping the item
                 GameObject dropItem = (GameObject)Instantiate(GetComponent<ItemOnObject>().item.itemModel);
                 dropItem.AddComponent<PickUpItem>();
-                dropItem.GetComponent<PickUpItem>().item = this.gameObject.GetComponent<ItemOnObject>().item;               
-                dropItem.transform.localPosition = GameObject.FindGameObjectWithTag("Player").transform.localPosition;
-                inventory.OnUpdateItemList();
-                if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() != null)
-                    inventory.GetComponent<Inventory>().UnEquipItem1(dropItem.GetComponent<PickUpItem>().item);
-                Destroy(this.gameObject);
+                dropItem.GetComponent<PickUpItem>().item = this.gameObject.GetComponent<ItemOnObject>().item;
 
+                if (dropItem.GetComponent<PickUpItem>().item.itemType == ItemType.FireWeapon1)
+                {
+                    if (_player.GetComponent<Animator>().GetBool("SwapToGun"))
+                    {
+                        GameObject.FindGameObjectWithTag("Hotbar").transform.GetChild(0).GetComponent<cursor>().UnequipWeapon();
+                    }
+                }
+                if (dropItem.GetComponent<PickUpItem>().item.itemType == ItemType.FireWeapon2)
+                {
+                    if (_player.GetComponent<Animator>().GetBool("SwapToSub"))
+                    {
+                        GameObject.FindGameObjectWithTag("Hotbar").transform.GetChild(0).GetComponent<cursor>().UnequipWeapon();
+                    }
+                }
+                if (dropItem.GetComponent<PickUpItem>().item.itemType == ItemType.MeleeWeapon)
+                {
+                    if (_player.GetComponent<Animator>().GetBool("SwapToKnife"))
+                    {
+                        GameObject.FindGameObjectWithTag("Hotbar").transform.GetChild(0).GetComponent<cursor>().UnequipWeapon();
+                    }
+                }
+                    if (distMax > 3f)
+                    {
+                        if (mouse.x - characPos.x < 0)
+                        {
+                            mouse.x = characPos.x - 3f;
+                        }
+                        else if (mouse.x - characPos.x > 0)
+                        {
+                            mouse.x = characPos.x + 3f;
+                        }
+                    }
+                    while (_database.getItemByID(scriptGen.planet.savedMapMatrix[world.WorldToCell(mouse).x, world.WorldToCell(mouse).y]).itemID > 0)
+                    {
+                        mouse.y += 1;
+                    }
+
+                    dropItem.transform.position = mouse;
+                   // dropItem.tag = "DroppedObject";
+
+                    inventory.OnUpdateItemList();
+                    if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() != null)
+                        inventory.GetComponent<Inventory>().UnEquipItem1(dropItem.GetComponent<PickUpItem>().item);
+                    Destroy(this.gameObject);
             }
         }
         inventory.OnUpdateItemList();
     }
-
 }

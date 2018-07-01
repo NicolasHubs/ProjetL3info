@@ -6,13 +6,21 @@ public static class Scenes {
 
 	private static Planet planet;
 
-	#if UNITY_EDITOR
 	public static void Load(string sceneName, Planet planetParam) {
 		Scenes.planet = new Planet ();
 		Scenes.planet = planetParam.clone();
 		SceneManager.LoadScene(sceneName);
 	}
-	#endif
+
+	public static void Load(string sceneName) {
+		SceneManager.LoadScene(sceneName);
+	}
+
+	public static AsyncOperation LoadAsync(string sceneName, Planet planetParam) {
+		Scenes.planet = new Planet ();
+		Scenes.planet = planetParam.clone();
+		return SceneManager.LoadSceneAsync(sceneName);
+	}
 
 	public static Planet getSceneParameter() {
 		return planet;

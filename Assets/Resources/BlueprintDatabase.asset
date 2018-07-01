@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c81ebb5a9a472b4f9be77b8725b246a, type: 3}
+  m_Name: BlueprintDatabase
+  m_EditorClassIdentifier: 
+  blueprints:
+  - ingredients: 010000000200000026000000270000002800000029000000
+    amount: 060000000600000006000000060000000600000006000000
+    finalItem:
+      itemName: Rublis
+      itemID: 42
+      itemDesc: This is a mysterious ore !
+      itemIcon: {fileID: 21300078, guid: 407d2c63d24d2044d8a4ca7d784cf95b, type: 3}
+      itemModel: {fileID: 1965074447437392, guid: 1b5016c927063f14b8c70c6d628d200a,
+        type: 2}
+      itemValue: 1
+      itemType: 22
+      itemWeight: 0
+      maxStack: 25
+      indexItemInList: 999
+      rarity: 0
+      assetTile: {fileID: 11400000, guid: 9af56ee605655364db77abdf148eac46, type: 2}
+      expToGain: 0
+      itemAttributes: []
+    amountOfFinalItem: 1
+    timeToCraft: 0
+  - ingredients: 010000000200000026000000270000002800000029000000
+    amount: 060000000600000006000000060000000600000006000000
+    finalItem:
+      itemName: Emeraude
+      itemID: 43
+      itemDesc: This is a beautiful ore !
+      itemIcon: {fileID: 21300202, guid: 531525dd92d5ee043b4489b2701890ae, type: 3}
+      itemModel: {fileID: 1841347747091982, guid: 6adf1f98dcd8ead4997e18767076709a,
+        type: 2}
+      itemValue: 1
+      itemType: 22
+      itemWeight: 0
+      maxStack: 25
+      indexItemInList: 999
+      rarity: 0
+      assetTile: {fileID: 11400000, guid: 17ca865ee55a77548b666f1bf0f371fa, type: 2}
+      expToGain: 0
+      itemAttributes: []
+    amountOfFinalItem: 1
+    timeToCraft: 0
+  - ingredients: 010000000200000026000000270000002800000029000000
+    amount: 060000000600000006000000060000000600000006000000
+    finalItem:
+      itemName: Jaune
+      itemID: 44
+      itemDesc: Yellow ore !
+      itemIcon: {fileID: 21300188, guid: 804203efe27be3644b9afe9d8655427e, type: 3}
+      itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+      itemValue: 1
+      itemType: 22
+      itemWeight: 0
+      maxStack: 10
+      indexItemInList: 999
+      rarity: 0
+      assetTile: {fileID: 11400000, guid: 99046106a3909fd40a38aea92e13aa4e, type: 2}
+      expToGain: 0
+      itemAttributes: []
+    amountOfFinalItem: 1
+    timeToCraft: 0
+  - ingredients: 010000000200000026000000270000002800000029000000
+    amount: 060000000600000006000000060000000600000006000000
+    finalItem:
+      itemName: Amathyste
+      itemID: 45
+      itemDesc: 'this is a purple ore ! '
+      itemIcon: {fileID: 21300034, guid: a4a079e0513b6774798c7936c3aece47, type: 3}
+      itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+      itemValue: 1
+      itemType: 22
+      itemWeight: 0
+      maxStack: 10
+      indexItemInList: 999
+      rarity: 0
+      assetTile: {fileID: 11400000, guid: 26db69425170b2e4c9b7b442bc6f1c70, type: 2}
+      expToGain: 0
+      itemAttributes: []
+    amountOfFinalItem: 1
+    timeToCraft: 0
+  - ingredients: 29000000
+    amount: 19000000
+    finalItem:
+      itemName: Toxic bloc
+      itemID: 39
+      itemDesc: Very good red potion.
+      itemIcon: {fileID: 21300040, guid: 2f9950b0dc386a14aa81f8665f0a20d2, type: 3}
+      itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+      itemValue: 5
+      itemType: 22
+      itemWeight: 0
+      maxStack: 10
+      indexItemInList: 999
+      rarity: 0
+      assetTile: {fileID: 11400000, guid: 50f65b195ef2a8d45b814ab37f55a87e, type: 2}
+      expToGain: 0
+      itemAttributes: []
+    amountOfFinalItem: 5
+    timeToCraft: 0

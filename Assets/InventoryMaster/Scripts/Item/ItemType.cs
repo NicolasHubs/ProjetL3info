@@ -20,7 +20,12 @@ public enum ItemType        //all ItemTypes...you can add some
     Ammo,
     UFPS_Grenade,
     UFPS_Weapon,
-    UFPS_Ammo
+    UFPS_Ammo,
+    MeleeWeapon, 
+    FireWeapon1,
+    FireWeapon2,
+    CanBeBuilt,
+    Textures
 
 }
 

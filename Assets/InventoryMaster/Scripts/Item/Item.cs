@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Tilemaps;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -16,13 +17,16 @@ public class Item
     public int maxStack = 1;
     public int indexItemInList = 999;    
     public int rarity;
+    public TileBase assetTile;
+    //Test
+    public int expToGain;
 
     [SerializeField]
     public List<ItemAttribute> itemAttributes = new List<ItemAttribute>();    
     
     public Item(){}
 
-    public Item(string name, int id, string desc, Sprite icon, GameObject model, int maxStack, ItemType type, string sendmessagetext, List<ItemAttribute> itemAttributes)                 //function to create a instance of the Item
+    public Item(string name, int id, string desc, Sprite icon, GameObject model, int maxStack, ItemType type, string sendmessagetext, List<ItemAttribute> itemAttributes, TileBase aT)                 //function to create a instance of the Item
     {
         itemName = name;
         itemID = id;
@@ -32,6 +36,7 @@ public class Item
         itemType = type;
         this.maxStack = maxStack;
         this.itemAttributes = itemAttributes;
+        this.assetTile = aT;
     }
 
     public Item getCopy()

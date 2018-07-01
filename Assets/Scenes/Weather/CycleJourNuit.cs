@@ -102,7 +102,6 @@ public class CycleJourNuit : MonoBehaviour {
 	void Update () {
 		playerPosition =  GameObject.FindGameObjectWithTag("Player").transform.position;
 		timeOfDay = timeOfDay + Time.deltaTime * speed;
-
 		if (timeOfDay > 86400)
 		{
 			timeOfDay = 0;

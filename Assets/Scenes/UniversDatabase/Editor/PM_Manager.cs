@@ -55,7 +55,7 @@ public class PM_Manager : EditorWindow {
 
 		Object galaxyDatabase = Resources.Load("Databases/GalaxyDatabase");
 		if (galaxyDatabase == null)
-			globalGalaxyList = CreateGalaxyDatabase.createGalaxyDatabase ();
+			globalGalaxyList = CreateGalaxyDatabase.createGalaxyDatabase();
 		else
 			globalGalaxyList = (GalaxyList)Resources.Load("Databases/GalaxyDatabase");
 		

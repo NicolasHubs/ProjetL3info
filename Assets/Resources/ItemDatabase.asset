@@ -1,0 +1,799 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4c29ddb3cf21d4e9b0596a8ba26af7, type: 3}
+  m_Name: ItemDatabase
+  m_EditorClassIdentifier: 
+  itemList:
+  - itemName: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemModel: {fileID: 0}
+    itemValue: 0
+    itemType: 0
+    itemWeight: 0
+    maxStack: 0
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Grass bloc
+    itemID: 1
+    itemDesc: A low, green plant that grows naturally over a lot of the earth's surface,
+      having groups of very thin leaves that grow close together in large numbers
+    itemIcon: {fileID: 21300040, guid: 7c56c831a4214ab4bad1a234c75103ac, type: 3}
+    itemModel: {fileID: 1305008482362100, guid: 1bcb0dc7c822e8242822307f4f0fcfbf,
+      type: 2}
+    itemValue: 1
+    itemType: 21
+    itemWeight: 0
+    maxStack: 200
+    indexItemInList: 999
+    rarity: 23
+    assetTile: {fileID: 11400000, guid: 90543af3c5790224fa9428f765bde2a3, type: 2}
+    expToGain: 50
+    itemAttributes:
+    - attributeName: 
+      attributeValue: 0
+    - attributeName: 
+      attributeValue: 0
+  - itemName: Snow bloc
+    itemID: 2
+    itemDesc: A low, green plant that grows naturally over a lot of the earth's surface,
+      having groups of very thin leaves that grow close together in large numbers
+    itemIcon: {fileID: 21300040, guid: ebabb12ff9d38dc4eb98a7b82ca6c931, type: 3}
+    itemModel: {fileID: 1715376748374710, guid: 5775e412e52627647a6fb404e0522552,
+      type: 2}
+    itemValue: 1
+    itemType: 21
+    itemWeight: 0
+    maxStack: 200
+    indexItemInList: 999
+    rarity: 23
+    assetTile: {fileID: 11400000, guid: 2e5dc2bf3f6dfd94f92bb9b2caac22f4, type: 2}
+    expToGain: 20
+    itemAttributes:
+    - attributeName: 
+      attributeValue: 0
+    - attributeName: 
+      attributeValue: 0
+  - itemName: Leather Chest
+    itemID: 3
+    itemDesc: 'This chest is created out of leather.
+
+      + 10 Health
+
+      + 10 Armor'
+    itemIcon: {fileID: 21300000, guid: fcd8bd2db18e92d42a7d14fc0e395888, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 6
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 10
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Health
+      attributeValue: 10
+    - attributeName: Armor
+      attributeValue: 10
+  - itemName: Iron Chest
+    itemID: 4
+    itemDesc: 'This chest is created out of iron.
+
+      + 20 Health
+
+      + 20 Armor'
+    itemIcon: {fileID: 21300000, guid: f5e3bff24c9077445a126833256147bd, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 6
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 80
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Health
+      attributeValue: 20
+    - attributeName: Armor
+      attributeValue: 20
+  - itemName: Bow
+    itemID: 5
+    itemDesc: 'This bow is pretty rar.
+
+      + 10 Damage'
+    itemIcon: {fileID: 21300000, guid: fe403a17b83e26d418073d2720f0e3c0, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 91
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Damage
+      attributeValue: 10
+  - itemName: Golden Bow
+    itemID: 6
+    itemDesc: 'This bow is legendary and has a low drop rate.
+
+      + 40 Damage'
+    itemIcon: {fileID: 21300000, guid: ea8c1dc6581654b4a9e7d6257135fbe9, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 96
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Damage
+      attributeValue: 40
+  - itemName: Leather Shoes
+    itemID: 7
+    itemDesc: 'This shoes are created out of leather.
+
+      + 10 Health
+
+      + 10 Armor'
+    itemIcon: {fileID: 21300000, guid: 3677eacbc4390644e97df27f50b96587, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 5
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 1
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Health
+      attributeValue: 10
+    - attributeName: Armor
+      attributeValue: 10
+  - itemName: Iron Shoes
+    itemID: 8
+    itemDesc: 'This shoes are created out of iron.
+
+      + 20 Health
+
+      + 20 Armor'
+    itemIcon: {fileID: 21300000, guid: ce2f65d4a0c353b409f2821db15cce5e, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 5
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 21
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Health
+      attributeValue: 20
+    - attributeName: Armor
+      attributeValue: 20
+  - itemName: Sword
+    itemID: 9
+    itemDesc: 'This sword is created out of wood.
+
+      + 10 Damage'
+    itemIcon: {fileID: 21300000, guid: 5bfa49903411b43448e6a525c69fc1fc, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 25
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Damage
+      attributeValue: 10
+  - itemName: HP Bottle
+    itemID: 10
+    itemDesc: 'Drink it to get some health back.
+
+      + 10 Health'
+    itemIcon: {fileID: 21300000, guid: 3ac254c0fa6214047a1df59938ba786f, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 2
+    itemWeight: 0
+    maxStack: 100
+    indexItemInList: 999
+    rarity: 84
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Health
+      attributeValue: 10
+  - itemName: Mana Bottle
+    itemID: 11
+    itemDesc: 'This mana bottle gives you mana back.
+
+      + 10 Mana'
+    itemIcon: {fileID: 21300000, guid: f1de9e836c79fde4aab8a740ec51eb32, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 5
+    itemType: 2
+    itemWeight: 0
+    maxStack: 10
+    indexItemInList: 999
+    rarity: 12
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Mana
+      attributeValue: 10
+  - itemName: Apple
+    itemID: 12
+    itemDesc: 'This apple could be good for applejuice.
+
+      + 10 Health'
+    itemIcon: {fileID: 21300000, guid: a4d3f378d1a88f346af15ee906321f2a, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 2
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 999
+    rarity: 100
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Health
+      attributeValue: 10
+  - itemName: Empty Bottle
+    itemID: 13
+    itemDesc: You can fill some juice into the bottle.
+    itemIcon: {fileID: 21300000, guid: a9893eef89a9a0742b835e8296428609, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 2
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 999
+    rarity: 13
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Raw Meat
+    itemID: 14
+    itemDesc: 'You can create some nice cooked meat out of it.
+
+      + 5 Health'
+    itemIcon: {fileID: 21300000, guid: b29cbbd10ecf3fd40991d4734d556c17, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 2
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 999
+    rarity: 35
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Health
+      attributeValue: 5
+  - itemName: Cooked Meat
+    itemID: 15
+    itemDesc: 'Very nice cooked meat.
+
+      + 20 Health'
+    itemIcon: {fileID: 21300000, guid: bb168a366e12e314ca3e7cec990092fe, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 2
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 999
+    rarity: 72
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Health
+      attributeValue: 20
+  - itemName: Bread
+    itemID: 16
+    itemDesc: 'Take some meat to it and you will get a nice hamburger.
+
+      + 10 Health'
+    itemIcon: {fileID: 21300000, guid: 0288dbaa9a46b7a4fa8f0b0b773b6024, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 2
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 999
+    rarity: 30
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Health
+      attributeValue: 10
+  - itemName: Hamburger
+    itemID: 17
+    itemDesc: 'This hamburger gives you health and mana back.
+
+      + 20 Health
+
+      + 20 Mana'
+    itemIcon: {fileID: 21300000, guid: bad82843ddb69514c9b6b8e381d175f3, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 2
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 999
+    rarity: 30
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Health
+      attributeValue: 20
+    - attributeName: Mana
+      attributeValue: 20
+  - itemName: Applejuice
+    itemID: 18
+    itemDesc: 'This applejuice gives you alot of health back.
+
+      + 50 Health'
+    itemIcon: {fileID: 21300000, guid: 6dc5762501dd2df4da399f6c16a85907, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 2
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 999
+    rarity: 31
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Health
+      attributeValue: 50
+  - itemName: Green Apple
+    itemID: 19
+    itemDesc: 'This is a green apple.
+
+      + 10 Health'
+    itemIcon: {fileID: 21300000, guid: 982145252540309429f63b70f4ac08d0, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 4
+    itemType: 2
+    itemWeight: 0
+    maxStack: 10
+    indexItemInList: 999
+    rarity: 60
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Health
+      attributeValue: 10
+  - itemName: Backpack
+    itemID: 20
+    itemDesc: 'This backpack is pretty big.
+
+      30 Slots'
+    itemIcon: {fileID: 21300000, guid: d484447c07683e045a964b5c96ef5417, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 13
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 35
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Slots
+      attributeValue: 30
+  - itemName: Backpack2
+    itemID: 21
+    itemDesc: 'This is a nice backpack.
+
+      36 Slots'
+    itemIcon: {fileID: 21300000, guid: a1fde3cbf081fbc4cbae9a28818c2a04, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 13
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 61
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Slots
+      attributeValue: 36
+  - itemName: Bullet
+    itemID: 22
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: 5f0f88702fe3baa4793a297bced9d8c0, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 15
+    itemType: 17
+    itemWeight: 0
+    maxStack: 999
+    indexItemInList: 999
+    rarity: 1
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Pistol01
+    itemID: 23
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: 435211a123255834d8dbd986692317b8, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 16
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 1
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Machinegun
+    itemID: 24
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: dd0061a2f7a74a04ebeb40c4b85e2557, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 16
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 1
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Machinegun Bullet
+    itemID: 25
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: 9cd40a53b397dab4e8815b43f4c04be4, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 50
+    itemType: 17
+    itemWeight: 0
+    maxStack: 999
+    indexItemInList: 999
+    rarity: 1
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Grenade
+    itemID: 26
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: 61133c9d383f3764bb714ef99ae8dc37, type: 3}
+    itemModel: {fileID: 100000, guid: 4cb7c2a50f87abf459d60c25eedc60b7, type: 2}
+    itemValue: 1
+    itemType: 15
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 999
+    rarity: 1
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Assault Rifle
+    itemID: 27
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: dd0061a2f7a74a04ebeb40c4b85e2557, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 16
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Shotgun
+    itemID: 28
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: 7ca0a8f6c1c45884f8d3a9d234506a24, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 16
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Shotgun Shell
+    itemID: 29
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: 7f16cada731089d46a6d936d91bd8958, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 17
+    itemWeight: 0
+    maxStack: 999
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Mace
+    itemID: 30
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: a225d3715e468b04ca832c017dfbcc0a, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 16
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Small Backpack
+    itemID: 31
+    itemDesc: 6 Slots
+    itemIcon: {fileID: 21300000, guid: a1fde3cbf081fbc4cbae9a28818c2a04, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 13
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Slots
+      attributeValue: 6
+  - itemName: Medium Backpack
+    itemID: 32
+    itemDesc: 12 Slots
+    itemIcon: {fileID: 21300000, guid: a1fde3cbf081fbc4cbae9a28818c2a04, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 13
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Slots
+      attributeValue: 12
+  - itemName: Large Backpack
+    itemID: 33
+    itemDesc: 16 Slots
+    itemIcon: {fileID: 21300000, guid: a1fde3cbf081fbc4cbae9a28818c2a04, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 13
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Slots
+      attributeValue: 16
+  - itemName: Military Backpack
+    itemID: 34
+    itemDesc: 20 Slots
+    itemIcon: {fileID: 21300000, guid: a1fde3cbf081fbc4cbae9a28818c2a04, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 13
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes:
+    - attributeName: Slots
+      attributeValue: 24
+  - itemName: Pistol01
+    itemID: 35
+    itemDesc: THIS IS A UFPS PISTOL
+    itemIcon: {fileID: 21300000, guid: 435211a123255834d8dbd986692317b8, type: 3}
+    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 2}
+    itemValue: 1
+    itemType: 16
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Fire Axe
+    itemID: 36
+    itemDesc: 'What an axe ! '
+    itemIcon: {fileID: 21300000, guid: 8f278e559fe7df34c8890a8101906ba0, type: 3}
+    itemModel: {fileID: 1554370333588586, guid: 15b3d7b2b16905f4d918ef10fe47ccc9,
+      type: 2}
+    itemValue: 1
+    itemType: 18
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Revolver
+    itemID: 37
+    itemDesc: It's dangerous, use it with caution !
+    itemIcon: {fileID: 21300000, guid: 27f7673a9168dca4aa97266ae00f9546, type: 3}
+    itemModel: {fileID: 1898947661092276, guid: d1a05bdbb86b36f46923e44f8a0fab85,
+      type: 2}
+    itemValue: 1
+    itemType: 19
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Volcano bloc
+    itemID: 38
+    itemDesc: A low, green plant that grows naturally over a lot of the earth's surface,
+      having groups of very thin leaves that grow close together in large numbers
+    itemIcon: {fileID: 21300040, guid: 5869d9a6621ea3c4a854faec71d66c72, type: 3}
+    itemModel: {fileID: 1492981832912436, guid: 82ce07aeef4475c40ad76bcfab5b4253,
+      type: 2}
+    itemValue: 1
+    itemType: 21
+    itemWeight: 0
+    maxStack: 200
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 11400000, guid: 4126e7bb958654c48bc641c26f23401c, type: 2}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Toxic bloc
+    itemID: 39
+    itemDesc: A low, green plant that grows naturally over a lot of the earth's surface,
+      having groups of very thin leaves that grow close together in large numbers
+    itemIcon: {fileID: 21300040, guid: 2f9950b0dc386a14aa81f8665f0a20d2, type: 3}
+    itemModel: {fileID: 1488916703755098, guid: 3dd8f5a24c00d20419f92def5bee24b2,
+      type: 2}
+    itemValue: 1
+    itemType: 21
+    itemWeight: 0
+    maxStack: 200
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 11400000, guid: 2403a2a5fc17cf54794bc393b7ef4a6e, type: 2}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Sand bloc
+    itemID: 40
+    itemDesc: A low, green plant that grows naturally over a lot of the earth's surface,
+      having groups of very thin leaves that grow close together in large numbers
+    itemIcon: {fileID: 21300040, guid: e25cc932b4647d948a3790949803b884, type: 3}
+    itemModel: {fileID: 1096660134987704, guid: 96fa0b00390bcfa4e961305c0bc4f73d,
+      type: 2}
+    itemValue: 1
+    itemType: 21
+    itemWeight: 0
+    maxStack: 200
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 11400000, guid: 4e342ebe9d4eacb479f64ce6a0e83e75, type: 2}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Jungle bloc
+    itemID: 41
+    itemDesc: A low, green plant that grows naturally over a lot of the earth's surface,
+      having groups of very thin leaves that grow close together in large numbers
+    itemIcon: {fileID: 21300040, guid: 448b7bc0e614a184e93d976465b48fb3, type: 3}
+    itemModel: {fileID: 1046715358467062, guid: f7c47ff1b2ea7334bb7c64b2a9938154,
+      type: 2}
+    itemValue: 1
+    itemType: 21
+    itemWeight: 0
+    maxStack: 200
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 11400000, guid: 97775d2f744340644a945de4771d7b3b, type: 2}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Rublis
+    itemID: 42
+    itemDesc: A ne pas confondre avec un Rubis MDR
+    itemIcon: {fileID: 21300078, guid: 407d2c63d24d2044d8a4ca7d784cf95b, type: 3}
+    itemModel: {fileID: 1965074447437392, guid: 1b5016c927063f14b8c70c6d628d200a,
+      type: 2}
+    itemValue: 1
+    itemType: 21
+    itemWeight: 0
+    maxStack: 50
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 11400000, guid: 9af56ee605655364db77abdf148eac46, type: 2}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Emeraude
+    itemID: 43
+    itemDesc: This is an emeraude
+    itemIcon: {fileID: 21300202, guid: 531525dd92d5ee043b4489b2701890ae, type: 3}
+    itemModel: {fileID: 1841347747091982, guid: 6adf1f98dcd8ead4997e18767076709a,
+      type: 2}
+    itemValue: 1
+    itemType: 21
+    itemWeight: 0
+    maxStack: 50
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 11400000, guid: 17ca865ee55a77548b666f1bf0f371fa, type: 2}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Jaune
+    itemID: 44
+    itemDesc: 'This is yellow '
+    itemIcon: {fileID: 21300188, guid: 804203efe27be3644b9afe9d8655427e, type: 3}
+    itemModel: {fileID: 1857906353944510, guid: 5ca2097965b12094685ae819aaf22a91,
+      type: 2}
+    itemValue: 1
+    itemType: 21
+    itemWeight: 0
+    maxStack: 50
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 11400000, guid: 99046106a3909fd40a38aea92e13aa4e, type: 2}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: Amethyste
+    itemID: 45
+    itemDesc: This is amethyste
+    itemIcon: {fileID: 21300034, guid: a4a079e0513b6774798c7936c3aece47, type: 3}
+    itemModel: {fileID: 1014930513121154, guid: d55fb148c3c4bde40aaf3b7b7a8dfb96,
+      type: 2}
+    itemValue: 1
+    itemType: 21
+    itemWeight: 0
+    maxStack: 50
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 11400000, guid: 26db69425170b2e4c9b7b442bc6f1c70, type: 2}
+    expToGain: 0
+    itemAttributes: []
+  - itemName: M-249
+    itemID: 46
+    itemDesc: This is a very lethal weapon !
+    itemIcon: {fileID: 21300000, guid: c3afb88cc04360b4db889cc4f6e6f6b5, type: 3}
+    itemModel: {fileID: 1223772732416876, guid: 2247dd7c82c7c9146ad08870ce17c0e2,
+      type: 2}
+    itemValue: 1
+    itemType: 20
+    itemWeight: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    assetTile: {fileID: 0}
+    expToGain: 0
+    itemAttributes: []

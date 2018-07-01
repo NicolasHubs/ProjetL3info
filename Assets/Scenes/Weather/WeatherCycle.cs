@@ -38,7 +38,7 @@ public class WeatherCycle : MonoBehaviour {
 
 	// Use this for initialization
 	void Start() {
-		time = 0;
+        time = 0;
 		timeFinal = 1000 * Random.Range(timeMin, timeMax);
 		weatherChanging = false;
 		backgroundColorsCurrent = new Color[2];
@@ -88,10 +88,6 @@ public class WeatherCycle : MonoBehaviour {
 			{
 				backgroundColorsCurrent[0] = background.GetComponent<Renderer>().material.GetColor("_TopColor");
 				backgroundColorsCurrent[1] = background.GetComponent<Renderer>().material.GetColor("_BottomColor");
-				for (int i = 0; i < 3; i++)
-				{
-					mountainColorsPresent[i] = mountains[i].GetComponent<SpriteRenderer>().color;
-				}
 				if (CycleJourNuit.timeOfDay < 12000 || CycleJourNuit.timeOfDay >= 75000) //Night Time
 				{
 					background.GetComponent<Renderer>().material.SetColor("_TopColor", Color.Lerp(backgroundColorsCurrent[0], backgroundColors[0], Time.deltaTime));
